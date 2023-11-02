@@ -1,18 +1,56 @@
-<header class="site-header">
-<link rel="stylesheet" href="header.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
-  <div id="header">
-    <nav>
-      <ul class="navbar">
-        <li class="nav-item"><a href="{{site.baseurl}}/">Home</a></li>
-        <li class="nav-item"><a href="{{site.baseurl}}/csa">Schedule</a></li>
-        <li class="nav-item"><a href="{{site.baseurl}}/blogs">Blogs</a></li>
-        <li class="nav-item"><a href="{{site.baseurl}}/calculator">Calculator</a></li>
-        <li class="nav-item"><a href="{{site.baseurl}}/PBL">PBL Vocab</a></li>
-        <li class="nav-item"><a href="{{ site.github.repository_url }}#readme">View On GitHub</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+<html>
+<head>
+  <style>
+    @font-face {
+      font-family: "Stussy Script Regular";
+      src: url("https://db.onlinewebfonts.com/t/44b510401952ca7bdaf2bc8512b43e80.eot");
+      src: url("https://db.onlinewebfonts.com/t/44b510401952ca7bdaf2bc8512b43e80.eot?#iefix")format("embedded-opentype"),
+      url("https://db.onlinewebfonts.com/t/44b510401952ca7bdaf2bc8512b43e80.woff2")format("woff2"),
+      url("https://db.onlinewebfonts.com/t/44b510401952ca7bdaf2bc8512b43e80.woff")format("woff"),
+      url("https://db.onlinewebfonts.com/t/44b510401952ca7bdaf2bc8512b43e80.ttf")format("truetype"),
+      url("https://db.onlinewebfonts.com/t/44b510401952ca7bdaf2bc8512b43e80.svg#Stussy Script Regular")format("svg");
+    }
+    
+    .nav {
+      display: flex; 
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px; 
+      color: black;
+      border-radius: 15px; 
+      border: 1px dotted lightgray;
+    }
+    
+    .nav li {
+      list-style: none;
+      margin: 0;
+    }
+    
+    .nav a {
+      text-decoration: none; 
+      color: inherit;
+      font-family: "Stussy Script Regular";
+      transition: color 0.4s; 
+    }
+    
+    .nav a:hover {
+      color: lightslategray; 
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div id="header">
+      <nav>
+        <ul class="nav">
+          <li class="fork"><a href="{{site.baseurl}}/">Home</a></li>
+          <li class="fork"><a href="{{site.baseurl}}/project">Calculator</a></li>
+          <li class="fork"><a href="{{site.baseurl}}/aboutme">About Me</a></li>
+          <li class="fork"><a href="{{site.baseurl}}/blogs">Blogs</a></li>
+          <li class="title"><a href="{{ site.github.repository_url }}#readme">GitHub Repository</a></li>
+        </ul>
+      </nav>
+    </div><!-- end header -->
+  </header>
+</body>
+</html>
