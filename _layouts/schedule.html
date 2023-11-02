@@ -2,6 +2,58 @@
 layout: default
 ---
 
+<style>
+  @font-face {
+  font-family: "Supreme V1";
+  src: url("https://db.onlinewebfonts.com/t/f462af0a8168d0a315da1c8d3fcf419b.eot");
+  src: url("https://db.onlinewebfonts.com/t/f462af0a8168d0a315da1c8d3fcf419b.eot?#iefix")format("embedded-opentype"),
+  url("https://db.onlinewebfonts.com/t/f462af0a8168d0a315da1c8d3fcf419b.woff2")format("woff2"),
+  url("https://db.onlinewebfonts.com/t/f462af0a8168d0a315da1c8d3fcf419b.woff")format("woff"),
+  url("https://db.onlinewebfonts.com/t/f462af0a8168d0a315da1c8d3fcf419b.ttf")format("truetype"),
+  url("https://db.onlinewebfonts.com/t/f462af0a8168d0a315da1c8d3fcf419b.svg#Supreme V1")format("svg");
+  } 
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+  }
+  h1 {
+    padding: 20px;
+    color: black;
+  }
+  h2 {
+    margin-top: 20px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  th, td {
+    padding: 10px;
+    text-align: left;
+  }
+  th {
+    background-color: rgb(44, 44, 44);
+    color: #fff;
+  }
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  a {
+    color: black;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  .custom-font {
+      font-family: "Supreme V1";
+      color: black;
+  }
+</style>
+
 {%comment%} 
 Setup course data
     - Extract data by course
@@ -10,8 +62,7 @@ Setup course data
 
 {% assign course = site.data[page.course] %} <!-- Load YML data -->
 {% assign units = page.units | split: ',' %}
-<h1>{{page.title}}</h1>
-<br>
+<h1 class="custom-font">{{page.title}}</h1>
 
 {%comment%} 
 Load all posts with site
@@ -43,9 +94,8 @@ Load all posts with site
   <tr>
     <th>Week</th>
     <th>Plans</th>
-    <th>Hacks</th>
+    <th>Blogs</th>
     <th>Tangibles</th>
-    <th>Lessons</th>
   </tr>
 
   {%comment%} 
@@ -64,7 +114,6 @@ Load all posts with site
     {% assign plans = null | compact %}
     {% assign hacks = null | compact %}
     {% assign tangibles = null | compact %}
-    {% assign lessons = null | compact %}
 
 
   {%comment%} 
@@ -97,9 +146,6 @@ Load all posts with site
           {% elsif post.type == "tangibles" %}
               {% assign tangibles = tangibles | unshift: title %}
               {% assign tangibles = tangibles | unshift: url %} 
-          {% elsif post.type == "lessons" %}
-              {% assign lessons = lessons | unshift: title %}
-              {% assign lessons = lessons | unshift: url %} 
           {% else %}
               {% assign uk = uk | unshift: title %}
               {% assign uk = uk | unshift: url %}     
@@ -112,10 +158,10 @@ Load all posts with site
   {%comment%} 
   <!-- ordering units and inserting column delimiters -->
   {%endcomment%}
-  {% assign units = units | concat:plans | concat:deli | concat:hacks | concat:deli | concat:tangibles | concat: deli | concat:lessons%}
+  {% assign units = units | concat:plans | concat:deli | concat:hacks | concat:deli | concat:tangibles  %}
 
   {%comment%} 
-  <!-- This Loop is maximum iterationss, since elements are pairs it will decrement a extra times at the end -->
+  <!-- This Loop is maximum iterations, since elements are pairs it will decrement a extra times at the end -->
   {%endcomment%}
   <tr>
   <td> {{ index }} </td> 
@@ -128,7 +174,7 @@ Load all posts with site
   <td>
       {% assign units = units | shift %} <!-- remove delimiter -->
     {% else %} <!-- make a link in the column -->
-      - <a href="{{site.baseurl}}/{{units[0]}}">{{units[1]}}</a> <br/> 
+      - <a href="{{site.baseurl}}{{units[0]}}">{{units[1]}}</a> <br/> 
       {% assign units = units | shift | shift %} <!-- remove title and url -->
     {% endif %}
   {% endfor %}

@@ -2,6 +2,31 @@
 layout: default
 ---
 
+<style>
+  @font-face {
+  font-family: "Supreme V1";
+  src: url("https://db.onlinewebfonts.com/t/f462af0a8168d0a315da1c8d3fcf419b.eot");
+  src: url("https://db.onlinewebfonts.com/t/f462af0a8168d0a315da1c8d3fcf419b.eot?#iefix")format("embedded-opentype"),
+  url("https://db.onlinewebfonts.com/t/f462af0a8168d0a315da1c8d3fcf419b.woff2")format("woff2"),
+  url("https://db.onlinewebfonts.com/t/f462af0a8168d0a315da1c8d3fcf419b.woff")format("woff"),
+  url("https://db.onlinewebfonts.com/t/f462af0a8168d0a315da1c8d3fcf419b.ttf")format("truetype"),
+  url("https://db.onlinewebfonts.com/t/f462af0a8168d0a315da1c8d3fcf419b.svg#Supreme V1")format("svg");
+}
+  body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: white;
+  }
+
+  h1 {
+      color: black;
+  }
+  .custom-font {
+      font-family: "Supreme V1";
+      color: black;
+  }
+</style>
+
 <div class="home">
   {%- if page.title -%}
     <h1 class="page-heading">{{ page.title }}</h1>
@@ -44,7 +69,7 @@ layout: default
 
   {%- if posts.size > 0 -%}
     {%- if page.list_title -%}
-      <h2 class="post-list-heading">{{ page.list_title }}</h2>
+      <h2 class="post-list-heading" font-color="black">{{ page.list_title }}</h2>
     {%- endif -%}
     <ul class="post-list">
       {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
@@ -76,17 +101,3 @@ layout: default
   {%- endif -%}
 
 </div>
-<style>
-  h1.page-heading {
-    text-align: center;
-    font-size: 35px;
-    color: #3498db;
-  }
-
-  .post-container {
-    margin-right: 500px;
-    margin-left: 15px;
-    text-align:left;
-    padding: 0px
-  }
-</style>

@@ -1,223 +1,212 @@
 ---
+toc: True
 layout: default
-title: Tay's Blog
+title: About Me
+type: hacks
+courses: {'csa': {'week': 0}}
+
 ---
-<html>
+
 <style>
-    #calculator {
-        width: 500px;
-        margin: 0 auto;
-        padding: 20px;
-        border-radius: 10px;
-        background: linear-gradient(to bottom right, #292b2c, #121212); /* Matching dark theme gradient */
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-        text-align: center;
-    }
-    #display {
-        font-size: 32px;
-        margin-bottom: 15px;
-        color: white;
-    }
-    button {
-        width: 80px;
-        height: 80px;
-        font-size: 24px;
-        margin: 5px;
-        border: none;
-        border-radius: 5px;
-        background: #484f93;
-        color: white;
-        transition: transform 0.2s, background-color 0.2s;
-    }
-    button:hover {
-        background: linear-gradient(to bottom right, #2c3e50, #34495e); 
-        transform: scale(1.1);
-    }
-        .image-container1 {
-            overflow: auto;
-            justify-content: center;
-            align-items: center;
-        }
-        .image-container1 img {
-            float: left;
-            margin-right: 50px;
-            margin-left: 400px;
-        }
-        .image-container2 {
-            overflow: auto;
-        }
-        .image-container2 img{
-            float: left;
-            margin-top: 50px;
-            margin-left: 430px;
-        }
-        table {
-            border: 1px solid black;
-            margin: 0 auto;
-            width: 70%;
-        }
-        th, td {
-            padding: 10px;
-        }
-        .content_img{
-            position: relative;
-            float: left;
-        }
-        .content_img div{
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            background: black;
-            color: white;
-            font-family: sans-serif;
-            opacity: 0;
-            visibility: hidden;
-            -webkit-transition: visibility 0s, opacity 0.5s linear; 
-            transition: visibility 0s, opacity 0.5s linear;
-            width: 100%;
-            padding: 10px;
-            box-sizing: border-box;
-            text-align: center;
-        }
-        .content_img:hover div{
-            width: 200px;
-            height: 100px;
-            padding: 2px;
-            visibility: visible;
-            opacity: 0.7; 
-        }
-        .content_img1{
-            position: relative;
-            float: left;
-        }
-        .content_img1 div{
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            background: white;
-            color: black;
-            font-family: sans-serif;
-            opacity: 0;
-            visibility: hidden;
-            -webkit-transition: visibility 0s, opacity 0.5s linear; 
-            transition: visibility 0s, opacity 0.5s linear;
-            width: 100%;
-            padding: 10px;
-            box-sizing: border-box;
-            text-align: center;
-        }
-        .content_img1:hover div{
-            width: 250px;
-            padding: 2px;
-            visibility: visible;
-            opacity: 0.9; 
-        }
+  @font-face {
+  font-family: "Supreme V1";
+  src: url("https://db.onlinewebfonts.com/t/f462af0a8168d0a315da1c8d3fcf419b.eot");
+  src: url("https://db.onlinewebfonts.com/t/f462af0a8168d0a315da1c8d3fcf419b.eot?#iefix")format("embedded-opentype"),
+  url("https://db.onlinewebfonts.com/t/f462af0a8168d0a315da1c8d3fcf419b.woff2")format("woff2"),
+  url("https://db.onlinewebfonts.com/t/f462af0a8168d0a315da1c8d3fcf419b.woff")format("woff"),
+  url("https://db.onlinewebfonts.com/t/f462af0a8168d0a315da1c8d3fcf419b.ttf")format("truetype"),
+  url("https://db.onlinewebfonts.com/t/f462af0a8168d0a315da1c8d3fcf419b.svg#Supreme V1")format("svg");
+}
+  body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: white;
+  }
+
+  h1 {
+      color: black;
+  }
+  .custom-font {
+      font-family: "Supreme V1";
+      color: black;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid black;
+  }
+  th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid black;
+  }
+  th {
+      background-color: white;
+  }
+  p {
+    font-size: 11px;
+    color: black;
+  }
+  body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: white;
+  }
+
+  h1 {
+      font-size: 24px;
+      color: black;
+  }
+  .custom-font {
+      font-family: "Supreme V1";
+      color: black;
+  }
+  	#calculator {
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  #result {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 20px;
+    border: 2px solid #000;
+    border-radius: 2px;
+  }
+
+  button {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    border: 2px solid #000;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+  }
+
+  button:hover {
+    background-color: #d0d0d0;
+  }
+  .alt {
+    background-color: rgb(44, 45, 48);
+    color: white;
+  }
+
+  .revert {
+    background-color: white;
+    color: black;
+  }
 </style>
-<body>
-<h1>Welcome to Tay's CSA Blog</h1>
-<p1>I am a junior at Del Norte High School. I am in period 1 Mort's CSA class.</p1>
-<br>
-<div class="image-container1">
-    <div class="content_img">
-        <img src="images/freeform.PNG" width="250">
-        <div>About Me! Love playing sports (running) and hanging out with family and friends.</div>
-    </div>
-    <div class="content_img">
-        <img src="images/tools.PNG" width="250">
-        <div>I Love My Tools! Super helpful - Google, VSCode, Java, Python, Jupyter, WSL, Ubuntu</div>
-    </div>
-</div>
-<div class="image-container2">
-    <div class="content_img1">
-        <img src="images/cool.jpg" height="480">
-        <div>IDK, cool image</div>
-    </div>
-</div>
-<br>
-<h1 style="margin-left: 40px">Class Schedule</h1>
-</body>
-<table border="1" style="text-align: center;">
-    <tr>
-        <th>Period</th>
-        <th>Class</th>
-        <th>Teacher</th>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>AP CSA</td>
-        <td>Mr. Mortenson</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>AP Physics</td>
-        <td>Mr. Liao</td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>AP English Language</td>
-        <td>Mrs. Darcey Hall</td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>AP Calculus BC</td>
-        <td>Mr. Bernabeo</td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>Offroll</td>
-        <td></td>
-    </tr>
-</table>
-<br>
-<h1>Calculator</h1>
-<div id="calculator">
-    <div id="display">0</div>
-    <button onclick="appendToDisplay('7')">7</button>
-    <button onclick="appendToDisplay('8')">8</button>
-    <button onclick="appendToDisplay('9')">9</button>
-    <button onclick="appendToDisplay('+')">+</button><br>
-    <button onclick="appendToDisplay('4')">4</button>
-    <button onclick="appendToDisplay('5')">5</button>
-    <button onclick="appendToDisplay('6')">6</button>
-    <button onclick="appendToDisplay('-')">-</button><br>
-    <button onclick="appendToDisplay('1')">1</button>
-    <button onclick="appendToDisplay('2')">2</button>
-    <button onclick="appendToDisplay('3')">3</button>
-    <button onclick="appendToDisplay('*')">*</button><br>
-    <button onclick="appendToDisplay('0')">0</button>
-    <button onclick="calculate()">=</button>
-    <button onclick="clearDisplay()">C</button>
-    <button onclick="appendToDisplay('/')">/</button>
-</div>
+
+<h1 class="custom-font" font-size="25px">Ethan Tran's Website</h1>
+
+<button class="alt" onClick="altTheme()">Alt</button>
+<button class="revert" onClick="revertColor()">OG</button>
 
 <script>
-    let displayValue = '0';
+    function altTheme() {
+        document.body.style.backgroundColor =  "rgb(44, 45, 48)";
+        document.querySelectorAll(".custom-font").forEach(element => {
+            element.style.color = "white"; 
+         document.querySelectorAll(".h1").forEach(element => {
+            element.style.color = "rgb(247, 247, 247)"; 
+            });
+        });
+    }
+    function revertColor() {
+        document.body.style.backgroundColor = "white";
+        document.querySelectorAll(".custom-font").forEach(element => {
+        element.style.color = "black"; 
 
-    function updateDisplay() {
-        document.getElementById('display').textContent = displayValue;
+    });
+    }
+</script>
+
+### My Freeform Drawing
+
+<p>I can't wait to code, code, code!</p>
+
+<img src="https://github.com/nighthawkcoders/student/assets/109186517/3a8cec44-415a-4821-8c2d-88bea49f75c6" height="275px">
+<img src="https://github.com/rachit-j/Rackets-Blog/assets/109186517/0936df9f-efa9-4a72-b37e-ca09fa3a41b1" height ="275px">
+<img src="https://github.com/realethantran/ethan_student/assets/109186517/b1ad8fc5-6588-47f5-9e4e-c4e0653ddcb5" height="275px">
+<head>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Period</th>
+                <th>Class</th>
+                <th>Teacher</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>AP Computer Science A</td>
+                <td>Mr. Mortensen</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>AP English Language</td>
+                <td>Mrs. Jenkins</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>AP U.S. History</td>
+                <td>Mr. Swanson</td>
+                </tr>
+                       <tr>
+                <td>4</td>
+                <td>AP Calculus AB</td>
+                <td>Mr. Froom</td>
+            </tr>
+
+<div></div>
+  <h1 class="custom-font">Basic Calculator</h1>
+  <div id="calculator">
+    <input type="text" id="result" readonly>
+    <br>
+    <button onclick="addToResult('1')">1</button>
+    <button onclick="addToResult('2')">2</button>
+    <button onclick="addToResult('3')">3</button>
+    <button onclick="addToResult('+')">+</button>
+    <br>
+    <button onclick="addToResult('4')">4</button>
+    <button onclick="addToResult('5')">5</button>
+    <button onclick="addToResult('6')">6</button>
+    <button onclick="addToResult('-')">-</button>
+    <br>
+    <button onclick="addToResult('7')">7</button>
+    <button onclick="addToResult('8')">8</button>
+    <button onclick="addToResult('9')">9</button>
+    <button onclick="addToResult('*')">*</button>
+    <br>
+    <button onclick="addToResult('0')">0</button>
+    <button onclick="calculate()">=</button>
+    <button onclick="clearResult()">A/C</button>
+    <button onclick="addToResult('/')">/</button>
+  </div>
+  
+  <script>
+    function addToResult(value) {
+      document.getElementById('result').value += value;
     }
 
-    function appendToDisplay(value) {
-        if (displayValue === '0') {
-            displayValue = value;
-        } else {
-            displayValue += value;
-        }
-        updateDisplay();
+    function clearResult() {
+      document.getElementById('result').value = '';
     }
 
     function calculate() {
-        try {
-            displayValue = eval(displayValue).toString();
-        } catch (error) {
-            displayValue = 'Error';
-        }
-        updateDisplay();
+      try {
+        const resultField = document.getElementById('result');
+        const expression = resultField.value;
+        const calculatedValue = eval(expression);
+        resultField.value = calculatedValue;
+      } catch (error) {
+        resultField.value = 'Error';
+      }
     }
-
-    function clearDisplay() {
-        displayValue = '0';
-        updateDisplay();
-    }
-</script>
-</html>
+  </script>
