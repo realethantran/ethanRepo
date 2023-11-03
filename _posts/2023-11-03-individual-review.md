@@ -51,5 +51,33 @@ courses: {'csa': {'week': 11}}
 
 - [Notable Backend Commit](https://github.com/Cosmic-Carnage/cosmic_backend_final/commit/58d56fe661c420adb53037f3c6659447e82dc978) - Setting up mapping + Image to Base64
 
+# CollegeBoard Quiz
+
+**Question 19**
+
+Topic 3.6 - Equivalent Boolean Expressions
+
+![image](https://github.com/Cosmic-Carnage/Passion-Project/assets/109186517/5b6455f4-0216-493a-8d17-3ffa3f47624c)
+
+- I read this problem wrong, the opposite of greater than is less than or equal. Thus, the opposite of (b > 7) is (b <= 7).
+
+**Question 37**
+
+Topic 4.1 - While Loops
+
+![image](https://github.com/Cosmic-Carnage/Passion-Project/assets/109186517/300dcdd5-db86-46a9-ae17-93f4939d7478)
+
+- Choice I works. Choice III works also, as it will cause the while loop to iterate while x is less than 7. The variable x is assigned 1 to start and then incremented by 2. It will be assigned the values 1, 3, 5 and then 7. When x has the value 7, the loop will terminate. The output will be 1, 3, 5.
+
+# Extra Credit Reviews
+
+[Link](https://github.com/realethantran/ethan_student/issues/3)
+
+# Reflection
+
+- This trimester has helped me hone my skills of integrating both frontend and backend and utilizing CRUD methods
+- Java Spring was something introduced to me this year, working with it has helped me get more comfortable utilizing it
+- Learned how to store images in the backend through work with Spacebook
+
 # My Blog
 [Link](https://ethan.nighthawkcodingsociety.com/)
