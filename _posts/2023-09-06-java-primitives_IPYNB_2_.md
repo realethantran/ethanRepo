@@ -4,7 +4,7 @@ title: U1 Primitive Data Types
 description: An introduction to primitive types using input, output, and a grading calculator example.
 categories: []
 type: hacks
-courses: {'csa': {'week': 4}}
+courses: {'csa': {'week': 8}}
 ---
 
 ### Overview
