@@ -76,6 +76,11 @@ Topic 4.1 - While Loops
 
 - Choice I works. Choice III works also, as it will cause the while loop to iterate while x is less than 7. The variable x is assigned 1 to start and then incremented by 2. It will be assigned the values 1, 3, 5 and then 7. When x has the value 7, the loop will terminate. The output will be 1, 3, 5.
 
+## AP Study Plans
+
+- To prepare for the AP Exam, I will follow a similar process to what I did last year in CSP
+- I will be sure to continue working on the Practice MCQs on CollegeBoard and doing test corrections with the included topics of the questions I am missing. This will allow me to view what concepts I am having trouble with so that I can watch the CollegeBoard videos on them and review.
+
 # Extra Credit Reviews
 
 [Link](https://github.com/realethantran/ethan_student/issues/3)
