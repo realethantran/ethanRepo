@@ -3,7 +3,7 @@ toc: True
 comments: True
 layout: post
 title: Individual Review - Ethan Tran
-description: None
+description: Ethan Tran's Individual Review for AP CSA Period 1 Trimester 1
 type: hacks
 courses: {'csa': {'week': 11}}
 ---
