@@ -10,6 +10,8 @@ courses: {'csa': {'week': 11}}
 
 # Code Contribution - Spacebook
 
+[Backend](https://cosmic-backend.stu.nighthawkcodingsociety.com/image/)
+
 ### Image to Base64 Code
 - Specify the base URL path so that all endpoints are relative to /image
 - GET request mapping fetches all records from our database
@@ -34,12 +36,17 @@ courses: {'csa': {'week': 11}}
 ## Frontend integration
 
 ### Image Viewer
+
+[Link](https://cosmic-carnage.github.io/Passion-Project/image)
+
 - Fetches the image from the backend based off value of fileName input by the user
 - URL is created for the blob (binary large object) to use it as an image source on the page
 
 ![image](https://github.com/realethantran/ethan_student/assets/109186517/6f0da296-8235-4ed7-9541-e5095cd6f789)
 
 ### Upload Image
+
+[Link](https://cosmic-carnage.github.io/Passion-Project/spacebook)
 
 ![image](https://github.com/realethantran/ethan_student/assets/109186517/d9c6db1b-0f6e-49c2-8d16-1afabc992832)
 
