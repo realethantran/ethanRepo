@@ -733,4 +733,5 @@ Create your own merge chart (like the first image in this 10.2 lesson) with your
 
 Recursion is a programming technique where a function calls itself to solve a problem. In each recursive call, the problem is broken down into smaller, similar subproblems. The recursion continues until a base case is reached, at which point the results are combined to solve the original problem.
 
-![image](https://github.com/Cosmic-Carnage/Issues/assets/109186517/4af05b41-3994-45d1-bc2e-9b8183d6859a)
+![image](https://github.com/Cosmic-Carnage/Issues/assets/109186517/9be6e7cf-cc7b-4563-8ce5-eaf43117b051)
+
