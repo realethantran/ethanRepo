@@ -759,7 +759,7 @@ $primary-color: #3498db; // Change this to an invalid color, e.g., 'red'
 ```
 
 
-```python
+```java
 %%html
 <div style="background-color: #3498db; padding: 20px;">
   <p style="color: #fff;">This is an example element with a primary color background.</p>
@@ -797,7 +797,7 @@ body {
 ```
 
 
-```python
+```java
 %%html
 <style>
   body {
