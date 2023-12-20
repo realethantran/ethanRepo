@@ -787,6 +787,30 @@ You can view the way this data is structured in the `person` sqlite.db table.
     - Using past group project materials is valid for this homework as long as the expectations are met.
 
 
+#### Ideas for 1.0/1.0
+
+- Incorporating both a "many-to-many" relationship and a JSONB column with information would be great.
+- Implementing JPA repository methods (think CRUD methods, custom queries, etc.) would show interest in modifying SQL database data.
+- Take extra notes on this lesson that show deeper research into Collections and SQL.
+
+Here, a many-to-many-relationship as shown between the player_id and team_id
+
+![image](https://github.com/realethantran/fastpages_EthanT/assets/109186517/a5f2b2cf-b2fc-4c77-9c8f-7900fa031708)
+
+Here is my code for this portion: 
+
+```
+@ManyToMany(fetch = FetchType.LAZY)
+@JoinTable(
+  name = "player_team",
+  joinColumns = @JoinColumn(name = "player_id"),
+  inverseJoinColumns = @JoinColumn(name = "team_id")
+)
+```
+
+This screenshot shows the the sqlite table for the basketball players database with a JSONB column for player data
+
+![image](https://github.com/realethantran/fastpages_EthanT/assets/109186517/bd0f68b8-2f3d-4db2-865d-c1945d5da89c)
 
 ## Extra Notes
 
@@ -858,12 +882,3 @@ Choosing appropriate data types ensures efficient storage and retrieval of data
 - The @OnDelete(action = OnDeleteAction.CASCADE) annotation indicates cascade operations, such as deleting all child entities (i.e. notes) when the parent entity (person) is deleted
 - This relationship pattern efficiently organizes data, especially in scenarios where one entity (i.e. person or tv show) is associated with multiple dependent entities (notes or genres)
 - The @JsonIgnore annotation often used in many-to-one relationships helps optimize data queries by preventing unnecessary data loading.
-
-
-
-
-### Ideas for 1.0/1.0
-
-- Incorporating both a "many-to-many" relationship and a JSONB column with information would be great.
-- Implementing JPA repository methods (think CRUD methods, custom queries, etc.) would show interest in modifying SQL database data.
-- Take extra notes on this lesson that show deeper research into Collections and SQL.
