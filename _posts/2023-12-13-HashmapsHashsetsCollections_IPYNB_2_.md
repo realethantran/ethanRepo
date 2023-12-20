@@ -812,6 +812,14 @@ This screenshot shows the the sqlite table for the basketball players database w
 
 ![image](https://github.com/realethantran/fastpages_EthanT/assets/109186517/bd0f68b8-2f3d-4db2-865d-c1945d5da89c)
 
+Here is my code for the JSONB column: 
+
+```
+@JdbcTypeCode(SqlTypes.JSON)
+    @Column(columnDefinition = "jsonb")
+    private Map<String, Map<String, Object>> player_data;
+```
+
 ## Extra Notes
 
 ### Collections Overview
