@@ -482,6 +482,10 @@ Additional Security Considerations
 1. Implementation 
 - Implement a simple authentication system using JWT with Java. Show how JWT works with postman. Get the request to be authorized
 
+> I am not sure if I did this correctly, here is a GET request I made on Postman
+
+![image](https://github.com/TEE-CSA/TEE-Frontend/assets/109186517/02f7c1ae-0c9a-4dcd-903b-39635834ccf9)
+
 2. MC Knowledge test (5) 
     - Which part of the JWT contains the actual data (claims)? 
         - Header
