@@ -1,10 +1,10 @@
 ---
 toc: True
 comments: False
-layout: post
+layout: notebook
 title: SASS Lesson
 description: Entire SASS Lesson.
-type: plans
+type: hacks
 courses: {'csa': {'week': 0}}
 ---
 
