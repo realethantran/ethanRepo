@@ -1,7 +1,7 @@
 ---
 toc: True
 comments: True
-layout: notebook
+layout: post
 title: HashMaps, HashSets, Collections, SQL Student Lessons
 description: by Tirth T, Haseeb B, Sreeja G, Ekam K, Drew R, Adan R
 courses: {'csp': {'week': 1}}

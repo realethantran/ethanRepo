@@ -1,7 +1,7 @@
 ---
 toc: True
 comments: False
-layout: notebook
+layout: post
 title: SASS Lesson
 description: Entire SASS Lesson.
 type: hacks
