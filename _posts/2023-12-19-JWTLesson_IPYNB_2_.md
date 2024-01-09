@@ -17,6 +17,10 @@
 
 Popcorn hack: list 3 real world applications of JWT: 
 
+1. Authentication and Authorization in Web Applications
+2. Single Sign-On (SSO)
+3. Microservices Architecture
+
 ## Why do you need JWT
 JSON Web Tokens (JWT) are crucial for secure and efficient user authentication in web development. 
 - They help manage user identity and sessions across different parts of a system. 
@@ -59,7 +63,7 @@ Decoded: algorithm, data, verify token hasn't been changed
 <span style="color:red;">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.<span style="color:purple;">eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.<span style="color:blue;">SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
 
 
-```Java
+```java
 // header
 {
     "alg": "HS256", //type of sign in algorithm used for encoding and decoding
@@ -71,7 +75,7 @@ Decoded: algorithm, data, verify token hasn't been changed
 - useful to signature type to decode
 
 
-```Java
+```java
 // payload
 {
 "sub": "123", //example of a registered claim
@@ -92,7 +96,7 @@ Decoded: algorithm, data, verify token hasn't been changed
 - exp/eat = expired at (date when toke becomes invalid)
 
 
-```Java
+```java
 //signature
 {
 HMACSHA256(
@@ -111,7 +115,7 @@ HMACSHA256(
 Header
 
 
-```Java
+```java
 import java.util.Base64;
 
 public class JwtHeaderExample {
@@ -138,7 +142,7 @@ JwtHeaderExample.main(null);
 Payload
 
 
-```Java
+```java
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
@@ -171,7 +175,7 @@ JwtPayloadExample.main(null);
 Signature
 
 
-```Java
+```java
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
@@ -226,7 +230,8 @@ Popcorn hack: write some comments that identify each part of the JWT
 etc
 
 
-```Java
+```java
+```java
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import javax.crypto.Mac;
@@ -235,47 +240,68 @@ import javax.crypto.spec.SecretKeySpec;
 public class JwtGenerator {
 
     public static void main(String[] args) {
+        // secret key used to sign the jwt
         String secretKey = "yourSecretKey";
+        // subject claim indicating the subject of the jwt (e.g., user ID)
         String subject = "userId123";
+        // expiration time for the jwt in milliseconds
         long expirationTimeMillis = System.currentTimeMillis() + 3600000;
 
+        // build the jwt using the provided parameters
         String jwt = buildJwt(secretKey, subject, expirationTimeMillis);
 
-        System.out.println("Generated JWT: " + jwt);
+        // display the generated jwt
+        System.out.println("generated jwt: " + jwt);
     }
 
     private static String buildJwt(String secretKey, String subject, long expirationTimeMillis) {
+        // jwt header containing information about the signing algorithm and token type
         String header = "{\"alg\":\"HS256\",\"typ\":\"JWT\"}";
+        // jwt payload containing the claims such as subject, issued at, and expiration time
         String payload = "{\"sub\":\"" + subject + "\",\"iat\":" + System.currentTimeMillis() / 1000 +
                 ",\"exp\":" + expirationTimeMillis / 1000 + "}";
 
+        // base64 url encoding of the jwt header
         String encodedHeader = base64UrlEncode(header);
+        // base64 url encoding of the jwt payload
         String encodedPayload = base64UrlEncode(payload);
 
+        // concatenate the encoded header and payload with a dot separator
         String dataToSign = encodedHeader + "." + encodedPayload;
+        // generate the jwt signature using the secret key
         String signature = signData(dataToSign, secretKey);
 
+        // concatenate the data to sign and the signature with a dot separator to form the final jwt
         return dataToSign + "." + signature;
     }
 
     private static String base64UrlEncode(String input) {
+        // base64 url encoding method
         return Base64.getUrlEncoder().encodeToString(input.getBytes(StandardCharsets.UTF_8));
     }
 
     private static String signData(String data, String secretKey) {
         try {
+            // initialize HmacSHA256 algorithm for signing
             Mac sha256Hmac = Mac.getInstance("HmacSHA256");
+            // create a secret key specification from the provided secret key
             SecretKeySpec secretKeySpec = new SecretKeySpec(secretKey.getBytes(StandardCharsets.UTF_8), "HmacSHA256");
+            // initialize the HmacSHA256 algorithm with the secret key
             sha256Hmac.init(secretKeySpec);
+            // generate the signature by applying the algorithm to the data
             byte[] signature = sha256Hmac.doFinal(data.getBytes(StandardCharsets.UTF_8));
+            // base64 url encode the generated signature
             return base64UrlEncode(new String(signature, StandardCharsets.UTF_8));
         } catch (Exception e) {
-            throw new RuntimeException("Error signing JWT", e);
+            // handle exceptions related to signing errors
+            throw new RuntimeException("error signing jwt", e);
         }
     }
 }
 
+// execute the main method to generate and display the jwt
 JwtGenerator.main(null);
+```
 ```
 
     Generated JWT: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VySWQxMjMiLCJpYXQiOjE3MDMwMDE3OTIsImV4cCI6MTcwMzAwNTM5Mn0=.24Tvv71877-9AQjvv71I77-977-977-977-9WO-_ve-_ve-_ve-_vQXvv73vv71bGe-_ve-_ve-_vSHbue-_vQ==
@@ -376,7 +402,7 @@ Key Usage
 - Token Reception: When the client receives the token, the signature is validated using the key.
 
 
-```Java
+```java
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.Claims;
 
@@ -401,7 +427,7 @@ Symmetric vs. Asymmetric Key Approaches
 - Asymmetric Key: Different keys are used to sign and validate the token, only the authorization server has the ability to sign it.
 
 
-```Java
+```java
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jws;
@@ -456,21 +482,21 @@ Additional Security Considerations
 2. MC Knowledge test (5) 
     - Which part of the JWT contains the actual data (claims)? 
         - Header
-        - Payload
+        - Payload - Answer
         - Signature
         - Encryption
     - What is the purpose of the header in a JWT?
         - It contains the signature for the JWT.
-        - It identifies the algorithm used to generate the signature. 
+        - It identifies the algorithm used to generate the signature. - Answer
         - It holds the encrypted data. 
         - It contains the user's information.
     - How are the parts of a JWT (header, payload, and signature) separated?
         - Comma
-        - Period
+        - Period - Answer
         - Colon
         - Semicolon
     - Which algorithm is commonly used for JWT signatures?
-        - HMAC (Hash-based Message Authentication Code)
+        - HMAC (Hash-based Message Authentication Code) - Answer
         - RSA (Rivest-Shamir-Adleman)
         - AES (Advanced Encryption Standard)
         - MD5 (Message Digest Algorithm 5)
@@ -478,4 +504,4 @@ Additional Security Considerations
         - Only via HTTP headers
         - Only as query parameters in the URL
         - In the request body as JSON
-        - Any of the above, depending on the application
+        - Any of the above, depending on the application - Answer
