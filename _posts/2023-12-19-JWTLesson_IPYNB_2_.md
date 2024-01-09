@@ -1,5 +1,11 @@
 ---
-
+toc: True
+comments: True
+layout: post
+title: JWT Lesson
+description: Lesson on Java Web Tokens
+courses: {'csp': {'week': 1}}
+type: hacks
 ---
 
 ## What is JWT
