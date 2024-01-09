@@ -339,6 +339,9 @@ Here is a diagram that makes it easier to understand the process tha happens bet
 
 Popcorn Hack: Create your own diagram to help visualize the JWT process
 
+![Client (1)](https://github.com/TEE-CSA/TEE-Frontend/assets/109186517/f4b348b2-1eb4-4515-bd3c-4412ffc4ada9)
+
+
 <h2> JWT Walkthrough </h2>
 - Clone this repo and follow along in each JWT file: https://github.com/vivianknee/jwtlessonBackend.git
 
