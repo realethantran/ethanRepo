@@ -1,6 +1,15 @@
 ---
-
+toc: True
+comments: True
+layout: post
+title: JWT Lesson
+author: Emma, Vivian, Grace, Aliya, Kevin, Isabelle
+description: JWT lesson
+type: hacks
 ---
+
+<h1>JWT - Java, Security Lesson </h1>
+Period 1 - Emma, Vivian, Grace, Aliya, Kevin, Isabelle
 
 ## What is JWT
 - JSON Web Token (JWT)
@@ -330,8 +339,9 @@ JwtGenerator.main(null);
     - Sends http 200
 
 Here is a diagram that makes it easier to understand the process tha happens between JWT and the API calls. 
+<html>
 <img alt="JWTApi" src="{{site.baseurl}}/images/JwtAPI.png">
-
+</html>
 - User posts with their login information
 - server does authentication to confirm the user
 - store the user in the memory of the server, send a corresponding ID with a cookie back to the client
@@ -339,7 +349,7 @@ Here is a diagram that makes it easier to understand the process tha happens bet
 
 Popcorn Hack: Create your own diagram to help visualize the JWT process
 
-![Client (1)](https://github.com/TEE-CSA/TEE-Frontend/assets/109186517/f4b348b2-1eb4-4515-bd3c-4412ffc4ada9)
+> See at the bottom of this page
 
 
 <h2> JWT Walkthrough </h2>
@@ -479,12 +489,18 @@ Additional Security Considerations
 - Regular Key Rotation: rotate keys regularly for security and to limit the impact of compromised key
 
 ## Hacks
+
+> Popcorn Hack Visual
+
+![image](https://github.com/TEE-CSA/TEE-Frontend/assets/109186517/f4b348b2-1eb4-4515-bd3c-4412ffc4ada9){width=500px}
+
 1. Implementation 
 - Implement a simple authentication system using JWT with Java. Show how JWT works with postman. Get the request to be authorized
 
 > I am not sure if I did this correctly, here is a GET request I made on Postman
 
-![image](https://github.com/TEE-CSA/TEE-Frontend/assets/109186517/02f7c1ae-0c9a-4dcd-903b-39635834ccf9)
+![image](https://github.com/TEE-CSA/TEE-Frontend/assets/109186517/02f7c1ae-0c9a-4dcd-903b-39635834ccf9){width=500px}
+
 
 2. MC Knowledge test (5) 
     - Which part of the JWT contains the actual data (claims)? 
