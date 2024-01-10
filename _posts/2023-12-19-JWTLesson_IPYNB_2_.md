@@ -1,11 +1,5 @@
 ---
-toc: True
-comments: True
-layout: post
-title: JWT Lesson
-description: Lesson on Java Web Tokens
-courses: {'csp': {'week': 1}}
-type: hacks
+
 ---
 
 ## What is JWT
@@ -42,13 +36,13 @@ JSON Web Tokens (JWT) are crucial for secure and efficient user authentication i
 - This is the structure of a JSON Web Token: 
 
 1. Header
-    - The header typically consists of two parts: the type of the ____, which is JWT, and the ____ that is used, such as HMAC SHA256 or RSA SHA256. It is Base64Url encoded to form the first part of the JWT
+    - The header typically consists of two parts: the type of the **token**, which is JWT, and the **algorithm** that is used, such as HMAC SHA256 or RSA SHA256. It is Base64Url encoded to form the first part of the JWT
 2. Payload
     - Claims and user data
     - claims are statements about the entity (users)
     - There are three types of claims: 
         - registered: predefined claims that are no mandatory but recommended
-        - ___: claims defined within the IA and JSON web token registry
+        - **public**: claims defined within the IA and JSON web token registry
         - private: custom claims created to share information between parties that agree to using them
 3. Signature
     - Ensuring integrity and authenticity
