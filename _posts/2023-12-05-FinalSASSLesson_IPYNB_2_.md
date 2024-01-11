@@ -5,7 +5,7 @@ layout: post
 title: SASS Lesson
 description: Entire SASS Lesson.
 type: hacks
-courses: {'csa': {'week': 0}}
+courses: {'csa': {'week': 15}}
 ---
 
 # Introduction to SASS

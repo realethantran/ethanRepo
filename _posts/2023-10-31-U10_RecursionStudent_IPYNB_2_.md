@@ -4,7 +4,7 @@ comments: True
 layout: post
 title: U10 Recursion P1 Student
 description: Lesson on Java recursion.
-type: ccc
+type: hacks
 courses: {'csa': {'week': 11}}
 authors: David, Derrick
 ---

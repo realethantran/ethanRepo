@@ -6,6 +6,7 @@ title: JWT Lesson
 author: Emma, Vivian, Grace, Aliya, Kevin, Isabelle
 description: JWT lesson
 type: hacks
+courses: {'csa': {'week': 17}}
 ---
 
 <h1>JWT - Java, Security Lesson </h1>

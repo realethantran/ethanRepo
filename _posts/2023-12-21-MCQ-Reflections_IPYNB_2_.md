@@ -4,8 +4,8 @@ comments: True
 layout: post
 title: College Board Quiz Reflection
 description: A reflection on this trimester so far (Journey, Learnings, and Discoveries)
-type: ccc
-courses: {'csa': {'week': 11}}
+type: hacks
+courses: {'csa': {'week': 17}}
 authors: Ethan Tran
 ---
 

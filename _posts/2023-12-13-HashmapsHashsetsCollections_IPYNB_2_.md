@@ -4,7 +4,7 @@ comments: True
 layout: post
 title: HashMaps, HashSets, Collections, SQL Student Lessons
 description: by Tirth T, Haseeb B, Sreeja G, Ekam K, Drew R, Adan R
-courses: {'csp': {'week': 1}}
+courses: {'csa': {'week': 16}}
 type: hacks
 ---
 
