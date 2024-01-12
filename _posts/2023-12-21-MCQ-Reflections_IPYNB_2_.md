@@ -42,3 +42,108 @@ authors: Ethan Tran
 
 - My answer, d, was incorrect because it would require the second set of nested loops to initialize row to val – 1, increment both row and col in each iteration inner loop (instead of row being decremented) and changing the condition on the inner loop to col < 5 && row < 5
 - Choice E is the correct answer because the first set of nested for loops sets each element in board to “O”. The next for loop starts val at 0 and increments by 1 until val is 4, when val is 5 the loop terminates. When val is even, board is not updated, so nothing happens when val is 0. When val is 1, row is assigned 1 and col is assigned 0. The boolean condition in the while loop is true, so board[1][0] is assigned “X”. Then col is incremented to 1 and row is decremented to 0 and board[0][1] is assigned “X”. Then col is incremented to 2 and row is decremented to -1 and the while loop terminates. When val is 2, nothing changes about board. When val is 3, row is assigned 3 and col is assigned 0. The boolean condition in the while loop is true, so board[3][0] is assigned “X”. Then col is incremented to 1 and row is decremented to 2 and board[2][1] is assigned “X”. Then col is incremented to 2 and row is decremented to 1 and board[1][2] is assigned “X”. Then col is incremented to 3 and row is decremented to 0 and board[0][3] is assigned “X”. Finally, col is incremented to 4 and row is decremented to -1 and the while loop terminates. When val is 4, nothing changes about board.
+
+# Unit Notes
+
+## Unit 1
+
+### Arithmetic Operators
+- **Addition:** `+`
+- **Subtraction:** `-`
+- **Multiplication:** `*`
+- **Division:** `/`
+  - Example: `20 % 8` returns `2` (not `2.5`)
+- **Modulus:** `%`
+  - Gives the remainder
+  - Example: `11 % 3` returns `2`
+
+### Assignment Statement
+A statement that assigns values to variables.
+
+### Assignment Operators
+These operators can be applied to the primitive data types `int` and `double`, even if both are present in the same expression.
+
+### Integer Division
+When both divisor and dividend are integers, the output/quotient is an integer. You can control the output type (int or double) by casting the operands.
+- Example:
+  - `(int) 6.0/8` results in `0`
+  - `(double) 6/8` results in `0.75`
+
+### Constant Identifiers
+Constant identifiers are capitalized.
+
+### Use of Constants or Final Variables
+A common use of a constant or final variable is in arrays.
+
+## Unit 2
+
+### Instance Methods
+- Include constructors, accessors, and mutators.
+
+#### Constructors
+- Create an object or a new instance of the class.
+- Default constructor: No arguments.
+  - Provides initial values for each new object.
+- Constructors with parameters set instance variables to the parameter values.
+- Object variables store values and addresses of their respective objects.
+
+#### Accessors
+- Access class objects without modifying them.
+- Return information about the object.
+- The dot (.) operator signals a method of a class.
+
+#### Mutators
+- Alter the state of an object.
+- Change at least one instance variable of the object.
+- Invoked similarly to an accessor in a client program.
+
+### Static Methods
+- Perform an operation for the entire class, not individual objects.
+- Sometimes known as a class method.
+
+#### Static Methods vs. Instance Methods
+- Static methods use the keyword `static` for implementation.
+- No implied objects in static methods (unlike instance methods).
+- Static methods can use static variables in the code.
+
+### Method Overloading
+- Two or more methods in the same class with the same name but different inputs or parameter lists.
+- Compiler decides which method to call based on the method's signature.
+- Method signature consists of the method's name and parameter types.
+- Return type is irrelevant for overloaded methods.
+  - Two methods cannot have different return types with similar method signatures (compiler error).
+
+## Unit 5
+
+### Preconditions
+- Conditions that must be true before the code is implemented.
+- Ensure the validity of the program/software.
+- Often used by software designers and programmers.
+
+### Postconditions
+- Conditions that should be true after a method is run.
+- Describes the output/outcome after the method is run.
+- Can show any changes that occurred to the instance variables.
+- These conditions help determine the validity of the program/software.
+- Software designers and programmers usually use this.
+
+### Use-case Diagram System
+- Diagram showing different ways a user can interact or use the program before it's built.
+
+### Accessor Methods
+- Also known as get methods or getters.
+- Explain how to get the value of an instance variable.
+- Return by value, and the original value can't be modified.
+- A way to access the instance variables of the class.
+- Non-void method returns only a single value.
+- The header has the return type instead of the keyword void.
+- Accessor methods return primitive types.
+- Return keyword/expression references an object and returns a copy of the reference (not the original object).
+- `toString` method is an overridden method incorporated in classes to show a description of the object.
+- Called when print statements are passed as objects.
+
+### Mutator Methods
+- Also known as set methods or setters.
+- Allow changes to the values of instance variables.
+- Void methods don't return a value but take parameters for instance variables.
+

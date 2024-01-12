@@ -20,5 +20,8 @@ type: hacks
 
 ## My work
 
+- [Scrum Board](https://github.com/orgs/TEE-CSA/projects/1)
+- [Project Improvements](https://github.com/TEE-CSA/TEE-Frontend/issues/9)
+- [Project Code](https://github.com/TEE-CSA/TEE-Frontend/issues/7)
 - [Commits](https://github.com/realethantran)
 - [Timebox](https://ethan.nighthawkcodingsociety.com/)
