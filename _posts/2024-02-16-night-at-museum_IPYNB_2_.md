@@ -1,12 +1,12 @@
 ---
 toc: True
-comments: True
 layout: post
 title: N@tM Capture the Moment
 description: A reflection on Night at the Museum (2/15/2024)
 type: hacks
 courses: {'csa': {'week': 23}}
 authors: Ethan Tran
+comments: True
 ---
 
 ## Two Trimester focus planning
