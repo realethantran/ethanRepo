@@ -40,24 +40,52 @@ With the CSA AP Exam, I am taking a similar approach to last year as it helped m
    
 ## AP Work
 
-| Key    | Value                                                                                |
-|--------|--------------------------------------------------------------------------------------|
-| Name   | Ethan Tran                                                                           |
-| Period | 1                                                                                    |
-| FRQ 1  | [FRQ 1 Solutions](https://realethantran.github.io/ethanRepo/2024/02/25/frq1_IPYNB_2_.html) |
-| FRQ 2  | [FRQ 2 Solutions](https://realethantran.github.io/ethanRepo/2024/02/25/frq2_IPYNB_2_.html) |
-| FRQ 3  | [FRQ 3 Solutions](https://realethantran.github.io/ethanRepo/2024/02/25/frq3_IPYNB_2_.html) |
-| FRQ 4  | [FRQ 4 Solutions](https://realethantran.github.io/ethanRepo/2024/02/26/frq4_IPYNB_2_.html) |
-| Issue  | [Issue (FRQ Associations/Connections to Project)](https://github.com/realethantran/ethanRepo/issues/2) |
+<table role="table" style="border: 2px solid black;">
+<thead>
+<tr>
+<th style="border: 1px solid black;">Key</th>
+<th style="border: 1px solid black;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border: 1px solid black;">Name</td>
+<td style="border: 1px solid black;">Ethan Tran</td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">FRQ 1</td>
+<td style="border: 1px solid black;"><a href="https://realethantran.github.io/ethanRepo/2024/02/25/frq1_IPYNB_2_.html" rel="nofollow">Solution</a></td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">FRQ 2</td>
+<td style="border: 1px solid black;"><a href="https://realethantran.github.io/ethanRepo/2024/02/25/frq2_IPYNB_2_.html" rel="nofollow">Solution</a></td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">FRQ 3</td>
+<td style="border: 1px solid black;"><a href="https://realethantran.github.io/ethanRepo/2024/02/25/frq3_IPYNB_2_.html" rel="nofollow">Solution</a></td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">FRQ 4</td>
+<td style="border: 1px solid black;"><a href="https://realethantran.github.io/ethanRepo/2024/02/26/frq4_IPYNB_2_.html" rel="nofollow">Solution</a></td>
+</tr>
+<tr>
+<td style="border: 1px solid black;">Issue</td>
+<td style="border: 1px solid black;"><a href="https://github.com/realethantran/ethanRepo/issues/2">Issue (FRQ Associations/Connections to Project)</a></td>
+</tr>
+</tbody>
+</table>
 
 
 > Frontend Insights 
+
 ![image](https://github.com/realethantran/ethanBlog/assets/109186517/8fed2eae-8cd7-406e-b3e2-efe47e2fb6a5)
 
 > Backend Insights 
+
 ![image](https://github.com/realethantran/ethanBlog/assets/109186517/adec68b8-f3e5-4528-a398-1238ad587339)
 
 > GitHub Commits
+
 ![image](https://github.com/realethantran/ethanBlog/assets/109186517/f830cff4-b361-46d3-8962-343edbd1df87)
 
 - [x] [GitHub Pages Blog](https://realethantran.github.io/ethanRepo/)
