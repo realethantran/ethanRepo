@@ -28,6 +28,9 @@ comments: True
 # Individual Work 
 
 - [x] 93% or better in last trimester of AP CSA
+
+<img src="https://github.com/realethantran/ethanBlog/assets/109186517/11ca5bdf-7138-4c7b-86ee-762abfce8b3d" width="650">
+
 - [x] Individual Progress: 
    - [x] AP preparation progress
 
@@ -35,7 +38,6 @@ With the CSA AP Exam, I am taking a similar approach to last year as it helped m
 
 - [x] [MCQ Review + Notes](https://ethan.nighthawkcodingsociety.com/2023/12/21/MCQ-Reflections_IPYNB_2_.html)
      - [x] [FRQ Connections + Takeaways](https://github.com/realethantran/ethanRepo/issues/2)
-   - [x] Key commits
    - [x] GitHub Analytics
    
 ## AP Work
