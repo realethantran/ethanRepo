@@ -38,46 +38,18 @@ With the CSA AP Exam, I am taking a similar approach to last year as it helped m
    - [x] Key commits
    - [x] GitHub Analytics
    
-- AP Work
+## AP Work
 
-<table role="table">
-<thead>
-<tr>
-<th>Key</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Name</td>
-<td>Ethan Tran</td>
-</tr>
-<tr>
-<td>Period</td>
-<td>1</td>
-</tr>
-<tr>
-<td>FRQ 1</td>
-<td><a href="https://realethantran.github.io/ethanRepo/2024/02/25/frq1_IPYNB_2_.html" rel="nofollow">FRQ 1 Solutions</a></td>
-</tr>
-<tr>
-<td>FRQ 2</td>
-<td><a href="https://realethantran.github.io/ethanRepo/2024/02/25/frq2_IPYNB_2_.html" rel="nofollow">FRQ 2 Solutions</a></td>
-</tr>
-<tr>
-<td>FRQ 3</td>
-<td><a href="https://realethantran.github.io/ethanRepo/2024/02/25/frq3_IPYNB_2_.html" rel="nofollow">FRQ 3 Solutions</a></td>
-</tr>
-<tr>
-<td>FRQ 4</td>
-<td><a href="https://realethantran.github.io/ethanRepo/2024/02/26/frq4_IPYNB_2_.html" rel="nofollow">FRQ 4 Solutions</a></td>
-</tr>
-<tr>
-<td>Issue</td>
-<td><a href="https://github.com/realethantran/ethanRepo/issues/2">Issue (FRQ Associations/Connections to Project)</a></td>
-</tr>
-</tbody>
-</table>
+| Key    | Value                                                                                |
+|--------|--------------------------------------------------------------------------------------|
+| Name   | Ethan Tran                                                                           |
+| Period | 1                                                                                    |
+| FRQ 1  | [FRQ 1 Solutions](https://realethantran.github.io/ethanRepo/2024/02/25/frq1_IPYNB_2_.html) |
+| FRQ 2  | [FRQ 2 Solutions](https://realethantran.github.io/ethanRepo/2024/02/25/frq2_IPYNB_2_.html) |
+| FRQ 3  | [FRQ 3 Solutions](https://realethantran.github.io/ethanRepo/2024/02/25/frq3_IPYNB_2_.html) |
+| FRQ 4  | [FRQ 4 Solutions](https://realethantran.github.io/ethanRepo/2024/02/26/frq4_IPYNB_2_.html) |
+| Issue  | [Issue (FRQ Associations/Connections to Project)](https://github.com/realethantran/ethanRepo/issues/2) |
+
 
 > Frontend Insights 
 ![image](https://github.com/realethantran/ethanBlog/assets/109186517/8fed2eae-8cd7-406e-b3e2-efe47e2fb6a5)
