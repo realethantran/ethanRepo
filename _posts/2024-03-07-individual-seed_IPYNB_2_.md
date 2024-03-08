@@ -38,8 +38,10 @@ With the CSA AP Exam, I am taking a similar approach to last year as it helped m
 
 - [x] [MCQ Review + Notes](https://ethan.nighthawkcodingsociety.com/2023/12/21/MCQ-Reflections_IPYNB_2_.html)
      - [x] [FRQ Connections + Takeaways](https://github.com/realethantran/ethanRepo/issues/2)
-   - [x] GitHub Analytics
-   
+- [x] [Tri2 Racing Game Work](https://github.com/realethantran/ethan_student/issues/5)
+- [x] [ASL Planning](https://github.com/The-GPT-Warriors/ASLFrontend/issues/29#issue-2125708391)
+   - [x] GitHub Analytics (See Bottom of Blog for Screenshots)
+
 ## AP Work
 
 <table role="table" style="border: 2px solid black;">
@@ -77,6 +79,7 @@ With the CSA AP Exam, I am taking a similar approach to last year as it helped m
 </tbody>
 </table>
 
+## Github Analytics/Commits
 
 > Frontend Insights 
 
