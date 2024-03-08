@@ -11,13 +11,19 @@ comments: True
 
 # Debugging 
 
+## Breakpoint at beginning of /leaderboard code
+
+<img src="https://github.com/Codemaxxers/Issues/assets/109186517/b4c1973e-e1e5-42af-9c2b-b64644dff299" width="650">
+
 ## User Data after Step-In (Backend)
 
-![image](https://github.com/realethantran/ethanBlog/assets/109186517/acb13256-6f7d-4a70-aa19-73ab6d77a93b)
+- Data added after game is played (not signed in, thus, null username)
 
+<img src="https://github.com/realethantran/ethanBlog/assets/109186517/acb13256-6f7d-4a70-aa19-73ab6d77a93b" width="650">
 
-## Data/Breakpoint After Step-In (Frontend)
-![image](https://github.com/realethantran/ethanBlog/assets/109186517/171df7ac-564e-488a-8403-3da656abeaa4)
+## Breakpoint at Fetch (Frontend)
+
+<img src="https://github.com/realethantran/ethanBlog/assets/109186517/171df7ac-564e-488a-8403-3da656abeaa4" width="650">
 
 # Individual Work 
 
