@@ -1,0 +1,86 @@
+---
+toc: True
+layout: post
+title: Individual Seed Blog
+description: My work for Tri2
+type: hacks
+courses: {'csa': {'week': 25}}
+authors: Ethan Tran
+comments: True
+---
+
+# Debugging 
+
+## User Data after Step-In (Backend)
+
+![image](https://github.com/realethantran/ethanBlog/assets/109186517/acb13256-6f7d-4a70-aa19-73ab6d77a93b)
+
+
+## Data/Breakpoint After Step-In (Frontend)
+![image](https://github.com/realethantran/ethanBlog/assets/109186517/171df7ac-564e-488a-8403-3da656abeaa4)
+
+# Individual Work 
+
+- [x] 93% or better in last trimester of AP CSA
+- [x] Individual Progress: 
+   - [x] AP preparation progress
+
+With the CSA AP Exam, I am taking a similar approach to last year as it helped me to get a 5 on the AP CSP exam. This year, I am continuing to complete the work given by Mr. Mortensen and checking for which units I need most help on, then taking notes. Finally, I review the units using the AP textbook that I have at home.
+
+- [x] [MCQ Review + Notes](https://ethan.nighthawkcodingsociety.com/2023/12/21/MCQ-Reflections_IPYNB_2_.html)
+     - [x] [FRQ Connections + Takeaways](https://github.com/realethantran/ethanRepo/issues/2)
+   - [x] Key commits
+   - [x] GitHub Analytics
+   
+- AP Work
+
+<table role="table">
+<thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>Ethan Tran</td>
+</tr>
+<tr>
+<td>Period</td>
+<td>1</td>
+</tr>
+<tr>
+<td>FRQ 1</td>
+<td><a href="https://realethantran.github.io/ethanRepo/2024/02/25/frq1_IPYNB_2_.html" rel="nofollow">FRQ 1 Solutions</a></td>
+</tr>
+<tr>
+<td>FRQ 2</td>
+<td><a href="https://realethantran.github.io/ethanRepo/2024/02/25/frq2_IPYNB_2_.html" rel="nofollow">FRQ 2 Solutions</a></td>
+</tr>
+<tr>
+<td>FRQ 3</td>
+<td><a href="https://realethantran.github.io/ethanRepo/2024/02/25/frq3_IPYNB_2_.html" rel="nofollow">FRQ 3 Solutions</a></td>
+</tr>
+<tr>
+<td>FRQ 4</td>
+<td><a href="https://realethantran.github.io/ethanRepo/2024/02/26/frq4_IPYNB_2_.html" rel="nofollow">FRQ 4 Solutions</a></td>
+</tr>
+<tr>
+<td>Issue</td>
+<td><a href="https://github.com/realethantran/ethanRepo/issues/2">Issue (FRQ Associations/Connections to Project)</a></td>
+</tr>
+</tbody>
+</table>
+
+> Frontend Insights 
+![image](https://github.com/realethantran/ethanBlog/assets/109186517/8fed2eae-8cd7-406e-b3e2-efe47e2fb6a5)
+
+> Backend Insights 
+![image](https://github.com/realethantran/ethanBlog/assets/109186517/adec68b8-f3e5-4528-a398-1238ad587339)
+
+> GitHub Commits
+![image](https://github.com/realethantran/ethanBlog/assets/109186517/f830cff4-b361-46d3-8962-343edbd1df87)
+
+- [x] [GitHub Pages Blog](https://realethantran.github.io/ethanRepo/)
+  - [x] [Scrum Board](https://github.com/orgs/The-GPT-Warriors/projects/1/views/1?layout=board) with delegated tasks
