@@ -19,7 +19,7 @@ comments: True
 
 - Data added after game is played (not signed in, thus, null username)
 
-<img src="https://github.com/realethantran/ethanBlog/assets/109186517/acb13256-6f7d-4a70-aa19-73ab6d77a93b" width="650">
+<img src="https://github.com/Emaad-Mir/emaad-github-pages1/assets/109186517/d97b6484-0aee-4ef4-842a-fb08510bb2ac" width="650">
 
 ## Breakpoint at Fetch (Frontend)
 
