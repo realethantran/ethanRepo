@@ -41,7 +41,7 @@ Implement the following mutator (setter) methods for the BankAccount class:
 Ensure that the balance is never negative.
 
 
-```Java
+```java
 public class BankAccount {
     private String accountHolder;
     private double balance;
@@ -107,7 +107,7 @@ When an object of that class is created using the new keyword, Java automaticall
 (b) Create an example of an overloaded constructor within a class. You must use at least three variables. Include the correct initialization of variables and correct headers for the constructor. Then, run the constructor at least twice with different variables and demonstrate that these two objects called different constructors. 
 
 
-```Java
+```java
 public class Car {
     private String brand;
     private String model;
@@ -168,19 +168,3 @@ Car.main(null);
     Engine: Inline-4
     
 
-
-## Question 5 - Inheritence:
-
-Situation: You are developing a program to manage a zoo, where various types of animals are kept in different enclosures. To streamline your code, you decide to use inheritance to model the relationships between different types of animals and their behaviors.
-
-(a) Explain the concept of inheritance in Java. Provide an example scenario where inheritance is useful.
-
-(b) Code:
-
-You need to implement a Java class hierarchy to represent different types of animals in the zoo. Create a superclass Animal with basic attributes and methods common to all animals, and at least three subclasses representing specific types of animals with additional attributes and methods. Include comments to explain your code, specifically how inheritance is used.
-
-
-
-```Java
-
-```
