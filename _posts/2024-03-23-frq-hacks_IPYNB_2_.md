@@ -47,17 +47,3 @@ GradeCalc.main(null);
 
     Average grade: 20.0
 
-
-## Question 5
-
-a. Explain the roles and usage of the if statement, while loop, and else statement in Java programming. Provide examples illustrating each.
-
-
-b. 
-
-You need to implement a method `printGradeStatus` that takes an integer `score` as input and prints "Pass" if the score is greater than or equal to 60, and "Fail" otherwise. Write the method signature and the method implementation. Include comments to explain your code.
-
-
-```java
-
-```
