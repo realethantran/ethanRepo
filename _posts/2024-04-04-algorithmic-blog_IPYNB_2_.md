@@ -312,51 +312,6 @@ class LinkedList<T extends Comparable<T>> {
         }
     }
 
-    public void bubbleSort() {
-        boolean swapped;
-        Node<T> ptr1;
-        Node<T> lptr = null;
-
-        if (head == null)
-            return;
-
-        do {
-            swapped = false;
-            ptr1 = head;
-
-            while (ptr1.next != lptr) {
-                if (ptr1.data.compareTo(ptr1.next.data) > 0) {
-                    T temp = ptr1.data;
-                    ptr1.data = ptr1.next.data;
-                    ptr1.next.data = temp;
-                    swapped = true;
-                }
-                ptr1 = ptr1.next;
-            }
-            lptr = ptr1;
-        } while (swapped);
-    }
-
-    public void selectionSort() {
-        Node<T> current = head;
-
-        while (current != null) {
-            Node<T> min = current;
-            Node<T> r = current.next;
-
-            while (r != null) {
-                if (r.data.compareTo(min.data) < 0)
-                    min = r;
-                r = r.next;
-            }
-
-            T temp = current.data;
-            current.data = min.data;
-            min.data = temp;
-            current = current.next;
-        }
-    }
-
     public void mergeSort() {
         head = mergeSort(head);
     }
@@ -429,68 +384,61 @@ class LinkedList<T extends Comparable<T>> {
 
 public class Main {
     public static void main(String[] args) {
-        LinkedList<NBAPlayer> players = new LinkedList<>();
-        players.add(new NBAPlayer("Shai Gilgeous-Alexander", 23, 22.6));
-        players.add(new NBAPlayer("Ja Morant", 12, 24.5));
-        players.add(new NBAPlayer("Kawhi Leonard", 2, 25.8));
-        players.add(new NBAPlayer("Scottie Barnes", 4, 18.3));
+        LinkedList<FlowerGroupMember> members = new LinkedList<>();
+        members.add(new FlowerGroupMember("Alara", 1));
+        members.add(new FlowerGroupMember("Abigail", 2));
+        members.add(new FlowerGroupMember("Aditi", 3));
+        members.add(new FlowerGroupMember("Yuri", 4));
+        members.add(new FlowerGroupMember("Aditya", 5));
+        members.add(new FlowerGroupMember("Jishnu", 6));
+        members.add(new FlowerGroupMember("Ethan T", 7));
+        members.add(new FlowerGroupMember("Alex", 8));
+        members.add(new FlowerGroupMember("Tanvi", 9));
+        members.add(new FlowerGroupMember("James", 10));
+        members.add(new FlowerGroupMember("Anthony", 11));
+        members.add(new FlowerGroupMember("Emaad", 12));
+        members.add(new FlowerGroupMember("Tay", 13));
+        members.add(new FlowerGroupMember("Krishiv", 13));
+        members.add(new FlowerGroupMember("David", 14));
 
         System.out.println("Original List:");
-        System.out.println(players);
-
-        // bubble sort
-        players.bubbleSort();
-        System.out.println("\nSorted List (Bubble Sort):");
-        System.out.println(players);
-
-        // selection sort
-        players.selectionSort();
-        System.out.println("\nSorted List (Selection Sort):");
-        System.out.println(players);
+        System.out.println(members);
 
         //  merge sort
-        players.mergeSort();
+        members.mergeSort();
         System.out.println("\nSorted List (Merge Sort):");
-        System.out.println(players);
+        System.out.println(members);
     }
 }
 
-class NBAPlayer implements Comparable<NBAPlayer> {
+class FlowerGroupMember implements Comparable<FlowerGroupMember> {
     private String name;
-    private int jerseyNumber;
-    private double averagePoints;
+    private int number;
 
-    public NBAPlayer(String name, int jerseyNumber, double averagePoints) {
+    public FlowerGroupMember(String name, int number) {
         this.name = name;
-        this.jerseyNumber = jerseyNumber;
-        this.averagePoints = averagePoints;
+        this.number = number;
     }
 
     @Override
-    public int compareTo(NBAPlayer other) {
-        // compare players based on average points
-        return Double.compare(this.averagePoints, other.averagePoints);
+    public int compareTo(FlowerGroupMember other) {
+        // compare members based on their numbers
+        return Integer.compare(this.number, other.number);
     }
 
     @Override
     public String toString() {
-        return "{\"name\": \"" + name + "\", \"jerseyNumber\": " + jerseyNumber + ", \"averagePoints\": " + averagePoints + "}";
+        return "{\"name\": \"" + name + "\", \"number\": " + number + "}";
     }
 }
 Main.main(null);
 ```
 
     Original List:
-    [{"name": "Shai Gilgeous-Alexander", "jerseyNumber": 23, "averagePoints": 22.6}, {"name": "Ja Morant", "jerseyNumber": 12, "averagePoints": 24.5}, {"name": "Kawhi Leonard", "jerseyNumber": 2, "averagePoints": 25.8}, {"name": "Scottie Barnes", "jerseyNumber": 4, "averagePoints": 18.3}]
-    
-    Sorted List (Bubble Sort):
-    [{"name": "Scottie Barnes", "jerseyNumber": 4, "averagePoints": 18.3}, {"name": "Shai Gilgeous-Alexander", "jerseyNumber": 23, "averagePoints": 22.6}, {"name": "Ja Morant", "jerseyNumber": 12, "averagePoints": 24.5}, {"name": "Kawhi Leonard", "jerseyNumber": 2, "averagePoints": 25.8}]
-    
-    Sorted List (Selection Sort):
-    [{"name": "Scottie Barnes", "jerseyNumber": 4, "averagePoints": 18.3}, {"name": "Shai Gilgeous-Alexander", "jerseyNumber": 23, "averagePoints": 22.6}, {"name": "Ja Morant", "jerseyNumber": 12, "averagePoints": 24.5}, {"name": "Kawhi Leonard", "jerseyNumber": 2, "averagePoints": 25.8}]
+    [{"name": "Alara", "number": 1}, {"name": "Abigail", "number": 2}, {"name": "Aditi", "number": 3}, {"name": "Yuri", "number": 4}, {"name": "Aditya", "number": 5}, {"name": "Jishnu", "number": 6}, {"name": "Ethan T", "number": 7}, {"name": "Alex", "number": 8}, {"name": "Tanvi", "number": 9}, {"name": "James", "number": 10}, {"name": "Anthony", "number": 11}, {"name": "Emaad", "number": 12}, {"name": "Tay", "number": 13}, {"name": "Krishiv", "number": 13}, {"name": "David", "number": 14}]
     
     Sorted List (Merge Sort):
-    [{"name": "Scottie Barnes", "jerseyNumber": 4, "averagePoints": 18.3}, {"name": "Shai Gilgeous-Alexander", "jerseyNumber": 23, "averagePoints": 22.6}, {"name": "Ja Morant", "jerseyNumber": 12, "averagePoints": 24.5}, {"name": "Kawhi Leonard", "jerseyNumber": 2, "averagePoints": 25.8}]
+    [{"name": "Alara", "number": 1}, {"name": "Abigail", "number": 2}, {"name": "Aditi", "number": 3}, {"name": "Yuri", "number": 4}, {"name": "Aditya", "number": 5}, {"name": "Jishnu", "number": 6}, {"name": "Ethan T", "number": 7}, {"name": "Alex", "number": 8}, {"name": "Tanvi", "number": 9}, {"name": "James", "number": 10}, {"name": "Anthony", "number": 11}, {"name": "Emaad", "number": 12}, {"name": "Tay", "number": 13}, {"name": "Krishiv", "number": 13}, {"name": "David", "number": 14}]
 
 
 ## Algorithmic Performance Experience
