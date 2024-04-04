@@ -1,1 +1,1 @@
-[Blog Link](https://cosmic-carnage.github.io/newRepo/)
+[Blog Link](https://realethantran.github.io/ethanRepo/)
