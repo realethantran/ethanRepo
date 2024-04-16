@@ -18,20 +18,19 @@ Bubble sort is iteratively goes through the list, compares nearby elements, and 
 
 
 ```java
-    // bubble sort
-    public static void bubblesort(List<FlowerGroupMember> list) {
-        int n = list.size();
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
-                if (list.get(j).getNumber() > list.get(j + 1).getNumber()) {
-                    // swap list[j] and list[j+1]
-                    FlowerGroupMember temp = list.get(j);
-                    list.set(j, list.get(j + 1));
-                    list.set(j + 1, temp);
-                }
+public static void bubblesort(List<FlowerGroupMember> list) {
+    int n = list.size(); // get size of list
+    for (int i = 0; i < n - 1; i++) { // loop through the list
+        for (int j = 0; j < n - i - 1; j++) { // loop through unsorted part of the list
+            if (list.get(j).getNumber() > list.get(j + 1).getNumber()) { // check if current element > next element
+                // swap list[j] and list[j+1]
+                FlowerGroupMember temp = list.get(j); // store current element in temporary variable
+                list.set(j, list.get(j + 1)); // set current element to next element
+                list.set(j + 1, temp); // set next element to temporary variable
             }
         }
     }
+}
 ```
 
 ### Selection Sort
@@ -42,22 +41,21 @@ Selection sort splits the given list into two parts: sorted (at the beginning of
 
 
 ```java
-    // selection sort
-    public static void selectionsort(List<FlowerGroupMember> list) {
-        int n = list.size();
-        for (int i = 0; i < n - 1; i++) {
-            int minIndex = i;
-            for (int j = i + 1; j < n; j++) {
-                if (list.get(j).getNumber() < list.get(minIndex).getNumber()) {
-                    minIndex = j;
-                }
+public static void selectionsort(List<FlowerGroupMember> list) {
+    int n = list.size(); // get size of list
+    for (int i = 0; i < n - 1; i++) { // loop through list
+        int minIndex = i; // assume current index is minimum
+        for (int j = i + 1; j < n; j++) { // loop through remaining elements
+            if (list.get(j).getNumber() < list.get(minIndex).getNumber()) { // compare numbers
+                minIndex = j; // update minimum index if smaller number found
             }
-            // swap list[i] and list[minIndex]
-            FlowerGroupMember temp = list.get(i);
-            list.set(i, list.get(minIndex));
-            list.set(minIndex, temp);
         }
+        // swap list[i] and list[minIndex]
+        FlowerGroupMember temp = list.get(i); // store current element in temporary variable
+        list.set(i, list.get(minIndex)); // set current element to minimum element
+        list.set(minIndex, temp); // set minimum element to temporary variable
     }
+}
 ```
 
 ### Insertion Sort
@@ -68,19 +66,19 @@ Insertion sort builds the final sorted Array one element at a time, iterating th
 
 
 ```java
-    // insertion sort
-    public static void insertionsort(List<FlowerGroupMember> list) {
-        int n = list.size();
-        for (int i = 1; i < n; i++) {
-            FlowerGroupMember key = list.get(i);
-            int j = i - 1;
-            while (j >= 0 && list.get(j).getNumber() > key.getNumber()) {
-                list.set(j + 1, list.get(j));
-                j = j - 1;
-            }
-            list.set(j + 1, key);
+public static void insertionsort(List<FlowerGroupMember> list) {
+    int n = list.size();  // get size of list
+    for (int i = 1; i < n; i++) {  // iterate through list starting from second element
+        FlowerGroupMember key = list.get(i);  // current element to be inserted
+        int j = i - 1;  // index of previous element
+        // move elements of list[0..i-1] that are greater than key to one position ahead of their current position
+        while (j >= 0 && list.get(j).getNumber() > key.getNumber()) {
+            list.set(j + 1, list.get(j));  // shift element to right
+            j = j - 1;  // move to previous element
         }
+        list.set(j + 1, key);  // insert key at its correct position
     }
+}
 ```
 
 ### Merge Sort
@@ -90,93 +88,123 @@ Merge sort divides the input array into smaller halves until each sub-array cont
 
 
 ```java
-    // merge sort
-    public static void mergesort(List<FlowerGroupMember> list, int left, int right) {
-        if (left < right) {
-            int mid = (left + right) / 2;
-            mergesort(list, left, mid);
-            mergesort(list, mid + 1, right);
-            merge(list, left, mid, right);
-        }
+public static void mergesort(List<FlowerGroupMember> list, int left, int right) {
+    // check if there's more than one element in the sublist
+    if (left < right) {
+        // calculate the middle index
+        int mid = (left + right) / 2;
+        
+        // recursively sort the left and right sublists
+        mergesort(list, left, mid);
+        mergesort(list, mid + 1, right);
+        
+        // merge the sorted sublists
+        merge(list, left, mid, right);
+    }
+}
+
+// merge function to merge two sorted sublists into one sorted list
+private static void merge(List<FlowerGroupMember> list, int left, int mid, int right) {
+    // calculate the sizes of the two sublists
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+
+    // create temporary lists to hold the two sublists
+    List<FlowerGroupMember> leftList = new ArrayList<>();
+    List<FlowerGroupMember> rightList = new ArrayList<>();
+
+    // populate the left sublist
+    for (int i = 0; i < n1; ++i) {
+        leftList.add(list.get(left + i));
+    }
+    
+    // populate the right sublist
+    for (int j = 0; j < n2; ++j) {
+        rightList.add(list.get(mid + 1 + j));
     }
 
-    private static void merge(List<FlowerGroupMember> list, int left, int mid, int right) {
-        int n1 = mid - left + 1;
-        int n2 = right - mid;
+    // initialize indices for the two sublists and the merged list
+    int i = 0, j = 0;
+    int k = left;
 
-        List<FlowerGroupMember> leftList = new ArrayList<>();
-        List<FlowerGroupMember> rightList = new ArrayList<>();
-
-        for (int i = 0; i < n1; ++i) {
-            leftList.add(list.get(left + i));
-        }
-        for (int j = 0; j < n2; ++j) {
-            rightList.add(list.get(mid + 1 + j));
-        }
-
-        int i = 0, j = 0;
-        int k = left;
-        while (i < n1 && j < n2) {
-            if (leftList.get(i).getNumber() <= rightList.get(j).getNumber()) {
-                list.set(k, leftList.get(i));
-                i++;
-            } else {
-                list.set(k, rightList.get(j));
-                j++;
-            }
-            k++;
-        }
-
-        while (i < n1) {
+    // merge the two sublists into the main list
+    while (i < n1 && j < n2) {
+        if (leftList.get(i).getNumber() <= rightList.get(j).getNumber()) {
             list.set(k, leftList.get(i));
             i++;
-            k++;
-        }
-
-        while (j < n2) {
+        } else {
             list.set(k, rightList.get(j));
             j++;
-            k++;
         }
+        k++;
     }
+
+    // copy any remaining elements from the left sublist
+    while (i < n1) {
+        list.set(k, leftList.get(i));
+        i++;
+        k++;
+    }
+
+    // copy any remaining elements from the right sublist
+    while (j < n2) {
+        list.set(k, rightList.get(j));
+        j++;
+        k++;
+    }
+}
 ```
 
 ### Quick Sort
 
-quick sort splits the array based on a selected pivot element, in which elements smaller than the pivot are moved to its left, and larger elements to its right. This process continues until the entire array is sorted by sorting the sub-arrays before and after the pivot element. quick sort has an average time complexity of O(n log n), making it efficient for large arrays, but it could degrade to O(n^2) in a worst-case scenario. However, it is widely used due to its average-case performance and in-place sorting characteristic, making it memory-efficient.
+Quick sort splits the array based on a selected pivot element, in which elements smaller than the pivot are moved to its left, and larger elements to its right. This process continues until the entire array is sorted by sorting the sub-arrays before and after the pivot element. quick sort has an average time complexity of O(n log n), making it efficient for large arrays, but it could degrade to O(n^2) in a worst-case scenario. However, it is widely used due to its average-case performance and in-place sorting characteristic, making it memory-efficient.
 
 > Code
 
 
 ```java
-    // quick sort
-    public static void quicksort(List<FlowerGroupMember> list, int low, int high) {
-        if (low < high) {
-            int pi = partition(list, low, high);
-            quicksort(list, low, pi - 1);
-            quicksort(list, pi + 1, high);
+public static void quicksort(List<FlowerGroupMember> list, int low, int high) {
+    // check if the list has more than one element
+    if (low < high) {
+        // find the partition index
+        int pi = partition(list, low, high);
+        
+        // recursively sort the elements before and after partition
+        quicksort(list, low, pi - 1);
+        quicksort(list, pi + 1, high);
+    }
+}
+
+// partition function for quick sort
+private static int partition(List<FlowerGroupMember> list, int low, int high) {
+    // select the pivot element (last element in this case)
+    int pivot = list.get(high).getNumber();
+    
+    // index of smaller element
+    int i = (low - 1);
+    
+    // iterate through the list
+    for (int j = low; j < high; j++) {
+        // if current element is smaller than the pivot
+        if (list.get(j).getNumber() < pivot) {
+            // increment the index of smaller element
+            i++;
+
+            // swap list[i] and list[j]
+            FlowerGroupMember temp = list.get(i);
+            list.set(i, list.get(j));
+            list.set(j, temp);
         }
     }
 
-    private static int partition(List<FlowerGroupMember> list, int low, int high) {
-        int pivot = list.get(high).getNumber();
-        int i = (low - 1);
-        for (int j = low; j < high; j++) {
-            if (list.get(j).getNumber() < pivot) {
-                i++;
+    // swap list[i + 1] and list[high] (or the pivot)
+    FlowerGroupMember temp = list.get(i + 1);
+    list.set(i + 1, list.get(high));
+    list.set(high, temp);
 
-                FlowerGroupMember temp = list.get(i);
-                list.set(i, list.get(j));
-                list.set(j, temp);
-            }
-        }
-
-        FlowerGroupMember temp = list.get(i + 1);
-        list.set(i + 1, list.get(high));
-        list.set(high, temp);
-
-        return i + 1;
-    }
+    // return the partition index
+    return i + 1;
+}
 ```
 
 ### Sort Implementation with Flower Group 
