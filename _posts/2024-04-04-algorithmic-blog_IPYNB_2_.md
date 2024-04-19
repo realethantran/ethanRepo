@@ -17,7 +17,7 @@ Bubble sort is iteratively goes through the list, compares nearby elements, and 
 > Code
 
 
-```Java
+```java
 // bubbleSort
 public void bubbleSort(List<FlowerGroupMember> list) {
     int n = list.size();
@@ -38,7 +38,7 @@ Selection sort splits the given list into two parts: sorted (at the beginning of
 > Code
 
 
-```Java
+```java
 // selectionSort
 public void selectionSort(List<FlowerGroupMember> list) {
     int n = list.size();
@@ -61,7 +61,7 @@ Insertion sort builds the final sorted Array one element at a time, iterating th
 > Code 
 
 
-```Java
+```java
 // insertionSort
 public void insertionSort(List<FlowerGroupMember> list) {
     int n = list.size();
@@ -83,7 +83,7 @@ Merge sort divides the input array into smaller halves until each sub-array cont
 > Code
 
 
-```Java
+```java
 // mergeSort
 public void mergeSort(List<FlowerGroupMember> list) {
     if (list.size() <= 1) {
@@ -135,7 +135,7 @@ Quick sort splits the array based on a selected pivot element, in which elements
 > Code
 
 
-```Java
+```java
 // quickSort
 private void quickSort(List<FlowerGroupMember> list, int low, int high) {
     if (low < high) {
@@ -172,7 +172,7 @@ private void swap(List<FlowerGroupMember> list, int i, int j) {
 ### Sort Implementation with Flower Group 
 
 
-```Java
+```java
 import java.util.ArrayList;
 import java.util.List;
 
