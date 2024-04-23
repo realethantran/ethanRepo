@@ -12,23 +12,23 @@ courses: {'csse': {'week': 1}, 'csp': {'week': 1, 'categories': ['4.A']}, 'csa':
 
 ### Bubble Sort
 
-Bubble sort is iteratively goes through the list, compares nearby elements, and switches items if necessary to keep them in the correct order. It is inefficient for large datasets, as it has an O(n^2) time complexity meaning that larger datasets mean more operations used to sort.
+Bubble sort steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. This process is repeated until no swaps are needed, meaning the list is sorted. It is inefficient for large datasets, as it has an O(n^2) time complexity meaning that larger datasets mean more operations used to sort.
 
 ### Selection Sort
 
-Selection sort splits the given list into two parts: sorted (at the beginning of the list) and the unsorted part falling after. The items start in the unsorted part while the sorted part is empty. The algorithm moves the smallest/maximum (depends on sort) element from the unsorted section to the end of the sorted part with each iteration.Its time complexity is O(n^2), meaning that it is inefficient for very large datasets but it can be helpful for tiny datasets.
+Selection sort splits the given list into two parts. The sort iterates over the list and finds the minimum (or maximum) element. It then swaps that element with the first (or last) unsorted element in the list. This process is repeated for each position in the list. Its time complexity is O(n^2), meaning that it is inefficient for very large datasets but it can be helpful for tiny datasets.
 
 ### Insertion Sort
 
-Insertion sort builds the final sorted Array one element at a time, iterating through the input Array and moving each element into the correct position through comparing it with elements to its left. It has a time complexity of O(n^2), making it inefficient with large Arrays, but it is efficient for small data sets or nearly sorted Arrays as it is adaptive to partially sorted Arrays, and space-efficient due to its in-place sorting nature.
+Insertion sort imagines the list is already sorted except for the current element. It then inserts the current element into its correct position in the already sorted sub-list. This process is repeated for each element in the list. It has a time complexity of O(n^2), making it inefficient with large Arrays, but it is efficient for small data sets or nearly sorted Arrays as it is adaptive to partially sorted Arrays, and space-efficient due to its in-place sorting nature.
 
 ### Merge Sort
 
-Merge sort divides the input array into smaller halves until each sub-array contains a single element, then merges the smaller arrays into sorted order. It has a time complexity of O(n log n), which means that it is efficient even for large arrays.
+Merge sort is a divide-and-conquer sort. It divides the unsorted list into sub-lists containing a single element (base case). Then, it merges the sub-lists in a way that preserves the sorted order. It has a time complexity of O(n log n), which means that it is efficient even for large arrays.
 
 ### Quick Sort
 
-Quick sort splits the array based on a selected pivot element, in which elements smaller than the pivot are moved to its left, and larger elements to its right. This process continues until the entire array is sorted by sorting the sub-arrays before and after the pivot element. quick sort has an average time complexity of O(n log n), making it efficient for large arrays, but it could degrade to O(n^2) in a worst-case scenario. However, it is widely used due to its average-case performance and in-place sorting characteristic, making it memory-efficient.
+Quick sort, like merge sort is a divide-and-conquer algorithm. It picks a pivot element from the list and partitions the remaining elements into two sub-lists: elements less than the pivot and elements greater than the pivot. Then, it recursively sorts the sub-lists and combines them in sorted order. Quick sort has an average time complexity of O(n log n), making it efficient for large arrays, but it could degrade to O(n^2) in a worst-case scenario. However, it is widely used due to its average-case performance and in-place sorting characteristic, making it memory-efficient.
 
 ### Class for All Sorts
 
