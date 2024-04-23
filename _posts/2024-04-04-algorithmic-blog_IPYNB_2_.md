@@ -33,7 +33,7 @@ Quick sort, like merge sort is a divide-and-conquer algorithm. It picks a pivot 
 ### Class for All Sorts
 
 
-```java
+```Java
 import java.util.ArrayList;
 import java.util.List;
 
@@ -260,13 +260,16 @@ public class Main {
         Sorts sorter = new Sorts();
 
         for (FlowerGroupMember.KeyType key : FlowerGroupMember.KeyType.values()) {
-            System.out.println("Before Sorting by " + key.name() + ":");
+
+            // display list of all keys before sort by specific key
+            System.out.println("Before " + key.name() + " Sort:");
             for (FlowerGroupMember member : gardenMembers) {
                 member.setSortKey(key);
                 System.out.println(member);
             }
             System.out.println();
 
+            // sort using each algorithm
             sorter.bubbleSort(new ArrayList<>(gardenMembers));
             System.out.println("After Bubble Sort:");
             gardenMembers.forEach(System.out::println);
@@ -278,11 +281,11 @@ public class Main {
             sorter.insertionSort(new ArrayList<>(gardenMembers));
             System.out.println("After Insertion Sort:");
             gardenMembers.forEach(System.out::println);
-            
+
             sorter.quickSort(new ArrayList<>(gardenMembers));
             System.out.println("After Quick Sort:");
             gardenMembers.forEach(System.out::println);
-            
+
             sorter.mergeSort(new ArrayList<>(gardenMembers));
             System.out.println("After Merge Sort:");
             gardenMembers.forEach(System.out::println);
@@ -296,7 +299,7 @@ Main.main(null);
 
     Original Garden:
     Garden{members=[{"name": "Tanvi", "number": 9, "flowerType": "Peony"}, {"name": "Yuri", "number": 4, "flowerType": "Daisy"}, {"name": "Abigail", "number": 2, "flowerType": "Tulip"}, {"name": "Aditya", "number": 5, "flowerType": "Sunflower"}, {"name": "Alara", "number": 1, "flowerType": "Rose"}, {"name": "Ethan T", "number": 7, "flowerType": "Carnation"}, {"name": "David", "number": 14, "flowerType": "Poppy"}, {"name": "James", "number": 10, "flowerType": "Cherry Blossom"}, {"name": "Emaad", "number": 12, "flowerType": "Freesia"}, {"name": "Tay", "number": 13, "flowerType": "Gerbera"}, {"name": "Anthony", "number": 11, "flowerType": "Dahlia"}, {"name": "Aditi", "number": 3, "flowerType": "Lily"}, {"name": "Alex", "number": 8, "flowerType": "Hydrangea"}, {"name": "Jishnu", "number": 6, "flowerType": "Orchid"}, {"name": "Krishiv", "number": 13, "flowerType": "Anemone"}]}
-    Before Sorting by NAME:
+    Before NAME Sort:
     {"name": "Tanvi", "number": 9, "flowerType": "Peony"}
     {"name": "Yuri", "number": 4, "flowerType": "Daisy"}
     {"name": "Abigail", "number": 2, "flowerType": "Tulip"}
@@ -394,7 +397,7 @@ Main.main(null);
     {"name": "Jishnu", "number": 6, "flowerType": "Orchid"}
     {"name": "Krishiv", "number": 13, "flowerType": "Anemone"}
     
-    Before Sorting by NUMBER:
+    Before NUMBER Sort:
     {"name": "Tanvi", "number": 9, "flowerType": "Peony"}
     {"name": "Yuri", "number": 4, "flowerType": "Daisy"}
     {"name": "Abigail", "number": 2, "flowerType": "Tulip"}
@@ -492,7 +495,7 @@ Main.main(null);
     {"name": "Jishnu", "number": 6, "flowerType": "Orchid"}
     {"name": "Krishiv", "number": 13, "flowerType": "Anemone"}
     
-    Before Sorting by FLOWERTYPE:
+    Before FLOWERTYPE Sort:
     {"name": "Tanvi", "number": 9, "flowerType": "Peony"}
     {"name": "Yuri", "number": 4, "flowerType": "Daisy"}
     {"name": "Abigail", "number": 2, "flowerType": "Tulip"}
