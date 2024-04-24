@@ -33,7 +33,7 @@ Quick sort, like merge sort is a divide-and-conquer algorithm. It picks a pivot 
 ### Class for All Sorts
 
 
-```Java
+```java
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
