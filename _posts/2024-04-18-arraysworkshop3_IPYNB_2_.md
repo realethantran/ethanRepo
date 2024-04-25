@@ -206,6 +206,72 @@ public ArrayList<String> getDelimitersList(String[] tokens)
 
 PART A: How does the use of an array simplify the management of related data compared to individual variables?
 
+A separate variable is needed for each piece of data, making it hard to keep track of and access them together. Arrays solve this by storing all the related data points in a single unit. This simplifies access as an is used index to refer to each specific data item within the array itself.
+
 <br>
 
 PART B: Develop an algorithm to find the median value of an integer array WITHOUT sorting the array.
+
+
+```Java
+public class MedianFinder {
+
+    public static double findMedian(int[] arr) {
+      if (arr.length == 0) {
+        throw new IllegalArgumentException("Array cannot be empty");
+      }
+  
+      int n = arr.length;
+      int middleIndex = n % 2 == 0 ? n / 2 - 1 : n / 2;
+  
+      return quickSelect(arr, 0, n - 1, middleIndex);
+    }
+  
+    private static int quickSelect(int[] arr, int low, int high, int k) {
+      if (low == high) {
+        return arr[low];
+      }
+  
+      // random pivot
+      int pivot = partition(arr, low, high);
+  
+      if (k == pivot - low) {
+        return arr[pivot];
+      } else if (k < pivot - low) {
+        return quickSelect(arr, low, pivot - 1, k);
+      } else {
+        return quickSelect(arr, pivot + 1, high, k - pivot + low);
+      }
+    }
+  
+    private static int partition(int[] arr, int low, int high) {
+      int pivot = arr[high];
+      int i = low - 1;
+  
+      for (int j = low; j < high; j++) {
+        if (arr[j] <= pivot) {
+          i++;
+          swap(arr, i, j);
+        }
+      }
+      swap(arr, i + 1, high);
+      return i + 1;
+    }
+  
+    private static void swap(int[] arr, int i, int j) {
+      int temp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = temp;
+    }
+  
+    public static void main(String[] args) {
+      int[] numbers = {12, 2, 2, 4, 23};
+      double median = findMedian(numbers);
+      System.out.println("Median of array: " + median);
+    }
+  }
+MedianFinder.main(null)
+```
+
+    Median of array: 4.0
+

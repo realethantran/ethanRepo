@@ -130,25 +130,43 @@ public class Seasons {
 }
 
 Seasons.main(null);
-
-
 ```
+
+    February
+    Changed Value
+
 
 ### Popcorn Hack:
 
 
 
 ```Java
+import java.util.Arrays;
+
 public class TrimesterGrades {
 
-    private int[][] trimesterGrades = {
+    private static int[][] trimesterGrades = {
         {85, 90, 78, 92, 99}, // tri 1
         {92, 88, 91, 97, 80}, // tri 2
         {79, 85, 83, 95, 67}  // tri 3
     };
 
+    public static void main(String[] args) {
+        trimesterGrades[2][2] = 90;
+
+        for (int[] trimester : trimesterGrades) {
+            System.out.println(Arrays.toString(trimester));
+        }
+    }
 }
+
+TrimesterGrades.main(null);
 ```
+
+    [85, 90, 78, 92, 99]
+    [92, 88, 91, 97, 80]
+    [79, 85, 90, 95, 67]
+
 
 The 2D array keeps track of a students grade, grouped by each trimester. 
 The student, currently in Trimester 3, retook a test in their 3rd period, which raised that grade to 90. 

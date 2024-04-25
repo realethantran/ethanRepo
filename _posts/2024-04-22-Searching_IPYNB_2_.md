@@ -38,6 +38,11 @@ courses: {'csse': {'week': 1}, 'csp': {'week': 1, 'categories': ['4.A']}, 'csa':
 
 ```Java
 // Write the answer here
+
+for(int index = items.length - 1; index>=0; index --) { // first row on the left
+    if (items[index] == num)
+    return index;
+}
 ```
 
 ### Question 2
@@ -46,6 +51,12 @@ courses: {'csse': {'week': 1}, 'csp': {'week': 1, 'categories': ['4.A']}, 'csa':
 
 ```Java
 // Write the answer here
+
+for(int index = 0; index < items.size(); i++){ // first row on the right
+    if(items.get(index) == num){
+        return index;
+    }
+}
 ```
 
 ## Searching for a double vs int vs object
@@ -168,7 +179,7 @@ LinearSearch.example2(null);
 
 2. When is it preferred to use linear search over binary search?
 
-(answer here)
+Linear search is preferred over binary search when the data lacks a defined structure or order/unsorted list.
 
 <h2> Recursive algorithms </h2>
 
@@ -182,6 +193,9 @@ LinearSearch.example2(null);
 <h4> Popcorn Hack </h4>
 
 What are some examples of algorithms that would be useful to have recursion? 
+
+1) Sorting algorithms
+2) Fibonacci coding algorithm
 
 <h2> Binary Search </h2>
 
@@ -253,6 +267,8 @@ BinarySearch.main(null);
 <h4> Popcorn Hack </h4>
 
 What iteration did it find f?
+
+Iteration 2
 
 ## Hashmap searching
 
@@ -414,22 +430,27 @@ public class Garage {
             System.out.println(key + ": " + garage.get(key));
         }
     }
+    // remove car from garage by key
+    public Car removeCar(String key) {
+        Car removedCar = garage.remove(key);
+        if (removedCar == null) {
+        System.out.println(key + " not found");
+        } else {
+        System.out.println("Car Removed: " + key + ", " + removedCar);
+        }
+        return removedCar;
+    }
 
     public static void main(String[] args) {
         Garage myGarage = new Garage();
         myGarage.printGarage();
-
-        // Removing a car from the garage tester code
-        // String key = "Lambo";
-        // Car car = garage.remove(key);
-        // if (car == null) {
-        //     System.out.println(key + " not found");
-        // } else {
-        //     System.out.println("Removed: " + key + ", " + car);
-        // }
+    
+        String keyToRemove = "Lambo"; 
+        myGarage.removeCar(keyToRemove);
+    
+        myGarage.printGarage();
+      }
     }
-}
-
 Garage.main(null);
 ```
 
@@ -437,19 +458,54 @@ Garage.main(null);
     Porsche: 2021 Porsche 911 Turbo S
     Lambo: 2021 Lamborghini Aventador
     McLaren: 2021 McLaren 720S
+    Car Removed: Lambo, 2021 Lamborghini Aventador
+    Ferrari: 2021 Ferrari F8 Tributo
+    Porsche: 2021 Porsche 911 Turbo S
+    McLaren: 2021 McLaren 720S
+
+
+
+```Java
+    // remove car from garage by key
+    public Car removeCar(String key) {
+        Car removedCar = garage.remove(key);
+        if (removedCar == null) {
+        System.out.println(key + " not found");
+        } else {
+        System.out.println("Car Removed: " + key + ", " + removedCar);
+        }
+        return removedCar;
+    }
+Garage.main(null);
+```
+
+    Ferrari: 2021 Ferrari F8 Tributo
+    Porsche: 2021 Porsche 911 Turbo S
+    Lambo: 2021 Lamborghini Aventador
+    McLaren: 2021 McLaren 720S
+    Car Removed: Lambo, 2021 Lamborghini Aventador
+    Ferrari: 2021 Ferrari F8 Tributo
+    Porsche: 2021 Porsche 911 Turbo S
+    McLaren: 2021 McLaren 720S
 
 
 # HACKS (you should be able to do with chatgpt)
 
 1. Is sequential/linear or binary more efficient? Why?
-2. Why might you not always be able to use binary search?
-3. Which of the following implements a method named contains for searching an array sequentially, confirming whether or not the array contains a requested element?
+Binary search is more efficient than sequential search, particularly for large datasets.  Sequential search checks each element one by one, while binary search repeatedly divides the search space in half. This allows binary search to reach the target element much faster, as the number of comparisons grows logarithmically with data size, compared to linearly for sequential search.  However, binary search requires the data to first be sorted. If the data is already sorted or searches are performed much more frequently than sorting, binary search is the clear winner.
 
+2. Why might you not always be able to use binary search?
+Binary search relies on a sorted data structure. If the data is not sorted to begin, the binary search will not work. It wouldn't be able to efficiently narrow down the search range because it relies on comparing elements in the middle with the target value. Additionally, binary search isn't ideal for situations where you need to find all occurrences of a specific value. It's designed to find a single element efficiently.
+
+3. Which of the following implements a method named contains for searching an array sequentially, confirming whether or not the array contains a requested element?
+Method 4 implements a method named contains for searching an array sequentially, confirming whether or not the array contains a requested element.
 
 ![](https://raw.githubusercontent.com/Codemaxxers/codemaxxerblog/main/images/4isanswer.jpg)
 
 # Answer the comment in the code
 
+
+```Java
 public static int foo(int[] arr, int x) {
 
     for(int i = 0; i < arr.length; i++) {
@@ -479,5 +535,8 @@ for(int i = 0; i < 20; i++) {
     }
 
 }
+```
 
 ### Answer:
+
+Based off the given method, "Indubitably!" is output 10 times.
