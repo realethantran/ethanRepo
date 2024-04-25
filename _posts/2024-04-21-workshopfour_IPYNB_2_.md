@@ -53,7 +53,7 @@ r: number of rows (number of arrays)
 c: number of columns (length of each array)
 
 
-```Java
+```java
 public class Seasons {
 
     private String[][] Seasons = new String[2][3];
@@ -110,7 +110,7 @@ To update the element of a 2D array, all you need to do is reference its locatio
 
 
 
-```Java
+```java
 public class Seasons {
 
     private String[][] seasons = new String[2][3];
@@ -140,7 +140,7 @@ Seasons.main(null);
 
 
 
-```Java
+```java
 import java.util.Arrays;
 
 public class TrimesterGrades {
@@ -203,7 +203,7 @@ Show how they would write code that changes the grade for the 3rd period class
 ![image](https://github.com/John-sCC/jcc_frontend/assets/82348259/dee9cdf9-9d6f-4b9c-b5e2-35cb9fa58c9b)
 
 
-```Java
+```java
 public class RowMajorIndexing {
     public static void main(String[] args) {
         int[][] matrix = {
@@ -238,7 +238,7 @@ RowMajorIndexing.main(null)
 
 
 
-```Java
+```java
 public class ColumnMajorIndexing {
     public static void main(String[] args) {
         int[][] matrix = {
