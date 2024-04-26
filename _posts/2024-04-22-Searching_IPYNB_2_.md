@@ -36,7 +36,7 @@ courses: {'csse': {'week': 1}, 'csp': {'week': 1, 'categories': ['4.A']}, 'csa':
 
 
 
-```Java
+```java
 // Write the answer here
 
 for(int index = items.length - 1; index>=0; index --) { // first row on the left
@@ -49,7 +49,7 @@ for(int index = items.length - 1; index>=0; index --) { // first row on the left
 ![question2](https://raw.githubusercontent.com/Codemaxxers/codemaxxerblog/main/images/question2.png)
 
 
-```Java
+```java
 // Write the answer here
 
 for(int index = 0; index < items.size(); i++){ // first row on the right
@@ -95,7 +95,7 @@ Return the position of key in arr or -1 if key is not in arr.
 Return true if key is in arr; otherwise, return false.
 
 
-```Java
+```java
 import java.util.ArrayList;
 
 public class LinearSearch {
@@ -157,7 +157,7 @@ public class LinearSearch {
 ```
 
 
-```Java
+```java
 // Example with Iterative Implementation
 LinearSearch.example1(null);
 ```
@@ -166,7 +166,7 @@ LinearSearch.example1(null);
 
 
 
-```Java
+```java
 // Example with Recursive Implementation
 LinearSearch.example2(null);
 ```
@@ -222,7 +222,7 @@ What are some examples of algorithms that would be useful to have recursion?
 
 
 
-```Java
+```java
 public class BinarySearch {
     static char[] arr = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
 
@@ -279,7 +279,7 @@ Iteration 2
 4. No keys can be the same, or else the old data is lost, and is replaced by the new one
 
 
-```Java
+```java
 import java.util.HashMap;
 
 public class HashMapSearching {
@@ -321,7 +321,7 @@ HashMapSearching.main(null);
 1. Create a method to delete data based off the key
 
 
-```Java
+```java
 import java.util.HashMap;
 
 public abstract class Collectable implements Comparable <Collectable> {
@@ -465,7 +465,7 @@ Garage.main(null);
 
 
 
-```Java
+```java
     // remove car from garage by key
     public Car removeCar(String key) {
         Car removedCar = garage.remove(key);
@@ -505,7 +505,7 @@ Method 4 implements a method named contains for searching an array sequentially,
 # Answer the comment in the code
 
 
-```Java
+```java
 public static int foo(int[] arr, int x) {
 
     for(int i = 0; i < arr.length; i++) {
