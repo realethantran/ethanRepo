@@ -5,7 +5,7 @@ toc: True
 layout: post
 ---
 
-<h2>  8.1: Declaring + Initializing 2D Arrays; Determining their  </h2>
+### 8.1: Declaring + Initializing 2D Arrays; Determining their 
 
 > Review: 
 Arrays are a collection (list) of elements (primitive or object reference type data)  
@@ -38,7 +38,7 @@ Note that this is a non-rectangular 2D array
 This is a rectangular 2D array. Non-rectangular 2D arrays are not a part of the CSA course
 
 
-<h4> Declaring a 2D array </h2>
+### Declaring a 2D array 
 
 2D Arrays can be declared like this: 
 
@@ -71,31 +71,6 @@ public class Seasons {
 
 ```
 
-
-### Size of 2D Arrays
-
-The size of the 2D array is classified by number of rows by number of columns 
-
-Number of rows can be found like this: 
-
-``` r = trimesterCourses.length ```
-
-This would give the number of arrays within the 2D array, since each array is an element
-
-For number of columns: 
-
-``` c = trimesterCourses[0].length ```
-
-This finds the number of elements of the first array within the 2D array.
-
-
-<h3> Accessing the Elements of a 2D Array </h3>
-
-The elements of a 2D array can be accessed using index
-
-``` Seasons[0][2] ```
-
-
 **Output: February**
 
 the value in the first bracket is the index of the rows, or which array we are accessing. In this case, the 0th index means we are accessing the first array 
@@ -104,10 +79,6 @@ The value in the second bracket is the index within the array. So we are looking
 
 
 To update the element of a 2D array, all you need to do is reference its location and change the value. 
-
-
-
-
 
 
 ```java

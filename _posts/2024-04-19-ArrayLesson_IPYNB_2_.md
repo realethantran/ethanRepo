@@ -305,6 +305,7 @@ Complete method arraySum below.
 /** Returns the sum of the entries in the one-dimensional array arr.
  */ 
 public static int arraySum(int[] arr) 
+    
 ```
 
 <img width="667" alt="image" src="https://github.com/AniCricKet/musical-guacamole/assets/91163802/84cb12be-b868-441a-96d0-51b12ff0d697">
