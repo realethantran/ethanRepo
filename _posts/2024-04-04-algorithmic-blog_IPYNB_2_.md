@@ -30,66 +30,24 @@ Merge sort is a divide-and-conquer sort. It divides the unsorted list into sub-l
 
 Quick sort, like merge sort is a divide-and-conquer algorithm. It picks a pivot element from the list and partitions the remaining elements into two sub-lists: elements less than the pivot and elements greater than the pivot. Then, it recursively sorts the sub-lists and combines them in sorted order. Quick sort has an average time complexity of O(n log n), making it efficient for large arrays, but it could degrade to O(n^2) in a worst-case scenario. However, it is widely used due to its average-case performance and in-place sorting characteristic, making it memory-efficient.
 
-### Class for All Sorts
+## FlowerGroupMember Comparable
 
 
-```java
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-
+```Java
 public class FlowerGroupMember implements Comparable<FlowerGroupMember> {
-    private String name;
-    private int number;
-    private String flowerType;
+    // instance variables
+    private String name;         
+    private int number;          
+    private String flowerType; 
 
-    public interface KeyTypes {
-        String name();
-    }
-
-    public enum KeyType implements KeyTypes {
-        NAME, NUMBER, FLOWERTYPE
-    }
-
-    private KeyType sortKey = KeyType.NUMBER;
-
+    // constructor
     public FlowerGroupMember(String name, int number, String flowerType) {
         this.name = name;
         this.number = number;
         this.flowerType = flowerType;
     }
 
-    public void setSortKey(KeyType key) {
-        sortKey = key;
-    }
-
-    private KeyType getSortKey() {
-        return sortKey;
-    }
-
-    private String getSortKeyValue() {
-        switch (sortKey) {
-            case NAME:
-                return name;
-            case NUMBER:
-                return String.format("%03d", number);
-            case FLOWERTYPE:
-                return flowerType;
-            default:
-                return name;
-        }
-    }
-
-    @Override
-    public int compareTo(FlowerGroupMember other) {
-        return this.getSortKeyValue().compareTo(other.getSortKeyValue());
-    }
-
-    @Override
-    public String toString() {
-        return "{\"name\": \"" + name + "\", \"number\": " + number + ", \"flowerType\": \"" + flowerType + "\"}";
-    }
-
+    // getters
     public String getName() {
         return name;
     }
@@ -101,13 +59,44 @@ public class FlowerGroupMember implements Comparable<FlowerGroupMember> {
     public String getFlowerType() {
         return flowerType;
     }
+
+    // setters
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public void setFlowerType(String flowerType) {
+        this.flowerType = flowerType;
+    }
+
+    // compareTo method
+    @Override
+    public int compareTo(FlowerGroupMember other) {
+        // compare members
+        return this.name.compareTo(other.name);
+    }
+
+    // toString method for better object representation
+    @Override
+    public String toString() {
+        return "FlowerGroupMember{" +
+                "name='" + name + '\'' +
+                ", number=" + number +
+                ", flowerType='" + flowerType + '\'' +
+                '}';
+    }
 }
 
-class Garden {
+// garden class 
+public class Garden {
     private List<FlowerGroupMember> members;
 
     public Garden() {
-        this.members = new ArrayList<>();
+        members = new ArrayList<>();
     }
 
     public void addMember(FlowerGroupMember member) {
@@ -117,132 +106,140 @@ class Garden {
     public List<FlowerGroupMember> getMembers() {
         return members;
     }
-
-    public void setMembers(List<FlowerGroupMember> members) {
-        this.members = members;
-    }
-
-    @Override
-    public String toString() {
-        return "Garden{" +
-                "members=" + members +
-                '}';
-    }
 }
+```
 
-class Sorts {
-    public void bubbleSort(List<FlowerGroupMember> list, Comparator<FlowerGroupMember> comparator) {
-        int n = list.size();
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
-                if (comparator.compare(list.get(j), list.get(j + 1)) > 0) {
-                    swap(list, j, j + 1);
+## Class for all the sorts
+
+
+```Java
+public class Sorts {
+    // bubble sort method
+    public void bubbleSort(List<FlowerGroupMember> list) {
+        int n = list.size(); // get the size of the list
+        for (int i = 0; i < n - 1; i++) { // iterate over the list
+            for (int j = 0; j < n - i - 1; j++) { // inner loop for comparisons
+                if (list.get(j).compareTo(list.get(j + 1)) > 0) { // compare adjacent elements
+                    swap(list, j, j + 1); // swap if elements are out of order
                 }
             }
         }
     }
 
-    public void selectionSort(List<FlowerGroupMember> list, Comparator<FlowerGroupMember> comparator) {
-        int n = list.size();
-        for (int i = 0; i < n - 1; i++) {
-            int minIndex = i;
-            for (int j = i + 1; j < n; j++) {
-                if (comparator.compare(list.get(j), list.get(minIndex)) < 0) {
-                    minIndex = j;
+    // selection sort method
+    public void selectionSort(List<FlowerGroupMember> list) {
+        int n = list.size(); // get the size of the list
+        for (int i = 0; i < n - 1; i++) { // iterate over the list
+            int minIndex = i; // assume the minimum is the first element
+            for (int j = i + 1; j < n; j++) { // find the minimum element in the remaining list
+                if (list.get(j).compareTo(list.get(minIndex)) < 0) { // compare elements
+                    minIndex = j; // update the minimum element index
                 }
             }
-            swap(list, i, minIndex);
+            swap(list, i, minIndex); // swap the found minimum with the first element
         }
     }
 
-    public void insertionSort(List<FlowerGroupMember> list, Comparator<FlowerGroupMember> comparator) {
-        int n = list.size();
-        for (int i = 1; i < n; i++) {
-            FlowerGroupMember key = list.get(i);
-            int j = i - 1;
-            while (j >= 0 && comparator.compare(list.get(j), key) > 0) {
-                list.set(j + 1, list.get(j));
-                j = j - 1;
+    // insertion sort method
+    public void insertionSort(List<FlowerGroupMember> list) {
+        int n = list.size(); // get the size of the list
+        for (int i = 1; i < n; i++) { // iterate over the list starting from the second element
+            FlowerGroupMember key = list.get(i); // store the current element
+            int j = i - 1; // initialize the previous element index
+            while (j >= 0 && list.get(j).compareTo(key) > 0) { // move elements greater than key to one position ahead
+                list.set(j + 1, list.get(j)); // shift element
+                j = j - 1; // move to the previous element
             }
-            list.set(j + 1, key);
+            list.set(j + 1, key); // place the key at its correct position
         }
     }
 
-    public void mergeSort(List<FlowerGroupMember> list, Comparator<FlowerGroupMember> comparator) {
-        if (list.size() <= 1) {
+    // merge sort method
+    public void mergeSort(List<FlowerGroupMember> list) {
+        if (list.size() <= 1) // base case: if the list size is 1 or less
             return;
-        }
 
-        int mid = list.size() / 2;
+        int mid = list.size() / 2; // find the midpoint
+        List<FlowerGroupMember> left = new ArrayList<>(list.subList(0, mid)); // create left sublist
+        List<FlowerGroupMember> right = new ArrayList<>(list.subList(mid, list.size())); // create right sublist
 
-        List<FlowerGroupMember> left = new ArrayList<>(list.subList(0, mid));
-        List<FlowerGroupMember> right = new ArrayList<>(list.subList(mid, list.size()));
+        mergeSort(left); // recursively sort the left sublist
+        mergeSort(right); // recursively sort the right sublist
 
-        mergeSort(left, comparator);
-        mergeSort(right, comparator);
-
-        merge(list, left, right, comparator);
+        merge(list, left, right); // merge the sorted sublists
     }
 
-    private void merge(List<FlowerGroupMember> list, List<FlowerGroupMember> left, List<FlowerGroupMember> right, Comparator<FlowerGroupMember> comparator) {
-        int i = 0, j = 0, k = 0;
+    // merge method to combine sorted sublists
+    private void merge(List<FlowerGroupMember> list, List<FlowerGroupMember> left, List<FlowerGroupMember> right) {
+        int i = 0, j = 0, k = 0; // initialize pointers for left, right, and merged list
 
-        while (i < left.size() && j < right.size()) {
-            if (comparator.compare(left.get(i), right.get(j)) < 0) {
-                list.set(k++, left.get(i++));
+        while (i < left.size() && j < right.size()) { // iterate until one sublist is exhausted
+            if (left.get(i).compareTo(right.get(j)) <= 0) { // compare elements of sublists
+                list.set(k++, left.get(i++)); // add smaller element to the merged list
             } else {
-                list.set(k++, right.get(j++));
+                list.set(k++, right.get(j++)); // add smaller element to the merged list
             }
         }
 
-        while (i < left.size()) {
+        while (i < left.size()) { // add remaining elements from left sublist
             list.set(k++, left.get(i++));
         }
 
-        while (j < right.size()) {
+        while (j < right.size()) { // add remaining elements from right sublist
             list.set(k++, right.get(j++));
         }
     }
 
-    public void quickSort(List<FlowerGroupMember> list, Comparator<FlowerGroupMember> comparator) {
-        quickSort(list, 0, list.size() - 1, comparator);
+    // quick sort method
+    public void quickSort(List<FlowerGroupMember> list) {
+        quickSort(list, 0, list.size() - 1); // call the quicksort helper method
     }
 
-    private void quickSort(List<FlowerGroupMember> list, int low, int high, Comparator<FlowerGroupMember> comparator) {
-        if (low < high) {
-            int partitionIndex = partition(list, low, high, comparator);
+    // quicksort helper method
+    private void quickSort(List<FlowerGroupMember> list, int low, int high) {
+        if (low < high) { // base case: if low index is less than high index
+            int pi = partition(list, low, high); // partition the list and get the pivot index
 
-            quickSort(list, low, partitionIndex - 1, comparator);
-            quickSort(list, partitionIndex + 1, high, comparator);
+            quickSort(list, low, pi - 1); // recursively sort the left sublist
+            quickSort(list, pi + 1, high); // recursively sort the right sublist
         }
     }
 
-    private int partition(List<FlowerGroupMember> list, int low, int high, Comparator<FlowerGroupMember> comparator) {
-        FlowerGroupMember pivot = list.get(high);
-        int i = low - 1;
-
-        for (int j = low; j < high; j++) {
-            if (comparator.compare(list.get(j), pivot) < 0) {
-                i++;
-                swap(list, i, j);
+    // partition method for quicksort
+    private int partition(List<FlowerGroupMember> list, int low, int high) {
+        FlowerGroupMember pivot = list.get(high); // choose the last element as the pivot
+        int i = low - 1; // initialize the smaller element index
+        for (int j = low; j < high; j++) { // iterate through the list
+            if (list.get(j).compareTo(pivot) < 0) { // if the current element is smaller than the pivot
+                i++; // increment the smaller element index
+                swap(list, i, j); // swap the elements
             }
         }
 
-        swap(list, i + 1, high);
-
-        return i + 1;
+        swap(list, i + 1, high); // place the pivot in the correct position
+        return i + 1; // return the pivot index
     }
 
+    // swap method to exchange elements in the list
     private void swap(List<FlowerGroupMember> list, int i, int j) {
-        FlowerGroupMember temp = list.get(i);
-        list.set(i, list.get(j));
-        list.set(j, temp);
+        FlowerGroupMember temp = list.get(i); // store the first element in a temporary variable
+        list.set(i, list.get(j)); // assign the second element to the first element's position
+        list.set(j, temp); // assign the temporary variable to the second element's position
     }
 }
+```
+
+## Main Class for testing
+
+
+```Java
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
         Garden garden = new Garden();
+
         garden.addMember(new FlowerGroupMember("Tanvi", 9, "Peony"));
         garden.addMember(new FlowerGroupMember("Yuri", 4, "Daisy"));
         garden.addMember(new FlowerGroupMember("Abigail", 2, "Tulip"));
@@ -259,354 +256,224 @@ public class Main {
         garden.addMember(new FlowerGroupMember("Jishnu", 6, "Orchid"));
         garden.addMember(new FlowerGroupMember("Krishiv", 13, "Anemone"));
 
-        System.out.println("Original Garden:");
-        System.out.println(garden);
-
-        List<FlowerGroupMember> gardenMembers = garden.getMembers();
+        List<FlowerGroupMember> members = garden.getMembers();
 
         Sorts sorter = new Sorts();
 
-        for (FlowerGroupMember.KeyType key : FlowerGroupMember.KeyType.values()) {
-            Comparator<FlowerGroupMember> comparator = Comparator.comparing(member -> {
-                switch (key) {
-                    case NAME:
-                        return member.getName();
-                    case NUMBER:
-                        return String.format("%03d", member.getNumber());
-                    case FLOWERTYPE:
-                        return member.getFlowerType();
-                    default:
-                        return member.getName();
-                }
-            });
+        // Apply different sorting algorithms
+        System.out.println("Unsorted list:");
+        printList(members);
 
-            System.out.println("Before " + key.name() + " Sort:");
-            gardenMembers.forEach(System.out::println);
-            System.out.println();
+        // Sort by name (alphabetical)
+        List<FlowerGroupMember> nameSorted = new ArrayList<>(members);
+        nameSorted.sort((m1, m2) -> m1.getName().compareTo(m2.getName()));
+        System.out.println("\nSorted by name:");
+        printList(nameSorted);
 
-            sorter.bubbleSort(gardenMembers, comparator);
-            System.out.println("After Bubble Sort:");
-            gardenMembers.forEach(System.out::println);
+        // Sort by number (numerical)
+        List<FlowerGroupMember> numberSorted = new ArrayList<>(members);
+        numberSorted.sort((m1, m2) -> Integer.compare(m1.getNumber(), m2.getNumber()));
+        System.out.println("\nSorted by number:");
+        printList(numberSorted);
 
-            sorter.selectionSort(gardenMembers, comparator);
-            System.out.println("After Selection Sort:");
-            gardenMembers.forEach(System.out::println);
+        // Sort by flowerType (alphabetical)
+        List<FlowerGroupMember> flowerTypeSorted = new ArrayList<>(members);
+        flowerTypeSorted.sort((m1, m2) -> m1.getFlowerType().compareTo(m2.getFlowerType()));
+        System.out.println("\nSorted by flower type:");
+        printList(flowerTypeSorted);
 
-            sorter.insertionSort(gardenMembers, comparator);
-            System.out.println("After Insertion Sort:");
-            gardenMembers.forEach(System.out::println);
+        // Bubble Sort
+        List<FlowerGroupMember> bubbleSorted = new ArrayList<>(members);
+        sorter.bubbleSort(bubbleSorted);
+        System.out.println("\nBubble Sort:");
+        printList(bubbleSorted);
 
-            sorter.quickSort(gardenMembers, comparator);
-            System.out.println("After Quick Sort:");
-            gardenMembers.forEach(System.out::println);
+        // Selection Sort
+        List<FlowerGroupMember> selectionSorted = new ArrayList<>(members);
+        sorter.selectionSort(selectionSorted);
+        System.out.println("\nSelection Sort:");
+        printList(selectionSorted);
 
-            sorter.mergeSort(gardenMembers, comparator);
-            System.out.println("After Merge Sort:");
-            gardenMembers.forEach(System.out::println);
+        // Insertion Sort
+        List<FlowerGroupMember> insertionSorted = new ArrayList<>(members);
+        sorter.insertionSort(insertionSorted);
+        System.out.println("\nInsertion Sort:");
+        printList(insertionSorted);
 
-            System.out.println();
+        // Merge Sort
+        List<FlowerGroupMember> mergeSorted = new ArrayList<>(members);
+        sorter.mergeSort(mergeSorted);
+        System.out.println("\nMerge Sort:");
+        printList(mergeSorted);
+
+        // Quick Sort
+        List<FlowerGroupMember> quickSorted = new ArrayList<>(members);
+        sorter.quickSort(quickSorted);
+        System.out.println("\nQuick Sort:");
+        printList(quickSorted);
+    }
+
+    private static void printList(List<FlowerGroupMember> list) {
+        for (FlowerGroupMember member : list) {
+            System.out.println(member);
         }
     }
 }
 Main.main(null);
 ```
 
-    Original Garden:
-    Garden{members=[{"name": "Tanvi", "number": 9, "flowerType": "Peony"}, {"name": "Yuri", "number": 4, "flowerType": "Daisy"}, {"name": "Abigail", "number": 2, "flowerType": "Tulip"}, {"name": "Aditya", "number": 5, "flowerType": "Sunflower"}, {"name": "Alara", "number": 1, "flowerType": "Rose"}, {"name": "Ethan T", "number": 7, "flowerType": "Carnation"}, {"name": "David", "number": 14, "flowerType": "Poppy"}, {"name": "James", "number": 10, "flowerType": "Cherry Blossom"}, {"name": "Emaad", "number": 12, "flowerType": "Freesia"}, {"name": "Tay", "number": 13, "flowerType": "Gerbera"}, {"name": "Anthony", "number": 11, "flowerType": "Dahlia"}, {"name": "Aditi", "number": 3, "flowerType": "Lily"}, {"name": "Alex", "number": 8, "flowerType": "Hydrangea"}, {"name": "Jishnu", "number": 6, "flowerType": "Orchid"}, {"name": "Krishiv", "number": 13, "flowerType": "Anemone"}]}
-    Before NAME Sort:
-    {"name": "Tanvi", "number": 9, "flowerType": "Peony"}
-    {"name": "Yuri", "number": 4, "flowerType": "Daisy"}
-    {"name": "Abigail", "number": 2, "flowerType": "Tulip"}
-    {"name": "Aditya", "number": 5, "flowerType": "Sunflower"}
-    {"name": "Alara", "number": 1, "flowerType": "Rose"}
-    {"name": "Ethan T", "number": 7, "flowerType": "Carnation"}
-    {"name": "David", "number": 14, "flowerType": "Poppy"}
-    {"name": "James", "number": 10, "flowerType": "Cherry Blossom"}
-    {"name": "Emaad", "number": 12, "flowerType": "Freesia"}
-    {"name": "Tay", "number": 13, "flowerType": "Gerbera"}
-    {"name": "Anthony", "number": 11, "flowerType": "Dahlia"}
-    {"name": "Aditi", "number": 3, "flowerType": "Lily"}
-    {"name": "Alex", "number": 8, "flowerType": "Hydrangea"}
-    {"name": "Jishnu", "number": 6, "flowerType": "Orchid"}
-    {"name": "Krishiv", "number": 13, "flowerType": "Anemone"}
+    Unsorted list:
+    FlowerGroupMember{name='Tanvi', number=9, flowerType='Peony'}
+    FlowerGroupMember{name='Yuri', number=4, flowerType='Daisy'}
+    FlowerGroupMember{name='Abigail', number=2, flowerType='Tulip'}
+    FlowerGroupMember{name='Aditya', number=5, flowerType='Sunflower'}
+    FlowerGroupMember{name='Alara', number=1, flowerType='Rose'}
+    FlowerGroupMember{name='Ethan T', number=7, flowerType='Carnation'}
+    FlowerGroupMember{name='David', number=14, flowerType='Poppy'}
+    FlowerGroupMember{name='James', number=10, flowerType='Cherry Blossom'}
+    FlowerGroupMember{name='Emaad', number=12, flowerType='Freesia'}
+    FlowerGroupMember{name='Tay', number=13, flowerType='Gerbera'}
+    FlowerGroupMember{name='Anthony', number=11, flowerType='Dahlia'}
+    FlowerGroupMember{name='Aditi', number=3, flowerType='Lily'}
+    FlowerGroupMember{name='Alex', number=8, flowerType='Hydrangea'}
+    FlowerGroupMember{name='Jishnu', number=6, flowerType='Orchid'}
+    FlowerGroupMember{name='Krishiv', number=13, flowerType='Anemone'}
     
-    After Bubble Sort:
-    {"name": "Abigail", "number": 2, "flowerType": "Tulip"}
-    {"name": "Aditi", "number": 3, "flowerType": "Lily"}
-    {"name": "Aditya", "number": 5, "flowerType": "Sunflower"}
-    {"name": "Alara", "number": 1, "flowerType": "Rose"}
-    {"name": "Alex", "number": 8, "flowerType": "Hydrangea"}
-    {"name": "Anthony", "number": 11, "flowerType": "Dahlia"}
-    {"name": "David", "number": 14, "flowerType": "Poppy"}
-    {"name": "Emaad", "number": 12, "flowerType": "Freesia"}
-    {"name": "Ethan T", "number": 7, "flowerType": "Carnation"}
-    {"name": "James", "number": 10, "flowerType": "Cherry Blossom"}
-    {"name": "Jishnu", "number": 6, "flowerType": "Orchid"}
-    {"name": "Krishiv", "number": 13, "flowerType": "Anemone"}
-    {"name": "Tanvi", "number": 9, "flowerType": "Peony"}
-    {"name": "Tay", "number": 13, "flowerType": "Gerbera"}
-    {"name": "Yuri", "number": 4, "flowerType": "Daisy"}
-    After Selection Sort:
-    {"name": "Abigail", "number": 2, "flowerType": "Tulip"}
-    {"name": "Aditi", "number": 3, "flowerType": "Lily"}
-    {"name": "Aditya", "number": 5, "flowerType": "Sunflower"}
-    {"name": "Alara", "number": 1, "flowerType": "Rose"}
-    {"name": "Alex", "number": 8, "flowerType": "Hydrangea"}
-    {"name": "Anthony", "number": 11, "flowerType": "Dahlia"}
-    {"name": "David", "number": 14, "flowerType": "Poppy"}
-    {"name": "Emaad", "number": 12, "flowerType": "Freesia"}
-    {"name": "Ethan T", "number": 7, "flowerType": "Carnation"}
-    {"name": "James", "number": 10, "flowerType": "Cherry Blossom"}
-    {"name": "Jishnu", "number": 6, "flowerType": "Orchid"}
-    {"name": "Krishiv", "number": 13, "flowerType": "Anemone"}
-    {"name": "Tanvi", "number": 9, "flowerType": "Peony"}
-    {"name": "Tay", "number": 13, "flowerType": "Gerbera"}
-    {"name": "Yuri", "number": 4, "flowerType": "Daisy"}
-    After Insertion Sort:
-    {"name": "Abigail", "number": 2, "flowerType": "Tulip"}
-    {"name": "Aditi", "number": 3, "flowerType": "Lily"}
-    {"name": "Aditya", "number": 5, "flowerType": "Sunflower"}
-    {"name": "Alara", "number": 1, "flowerType": "Rose"}
-    {"name": "Alex", "number": 8, "flowerType": "Hydrangea"}
-    {"name": "Anthony", "number": 11, "flowerType": "Dahlia"}
-    {"name": "David", "number": 14, "flowerType": "Poppy"}
-    {"name": "Emaad", "number": 12, "flowerType": "Freesia"}
-    {"name": "Ethan T", "number": 7, "flowerType": "Carnation"}
-    {"name": "James", "number": 10, "flowerType": "Cherry Blossom"}
-    {"name": "Jishnu", "number": 6, "flowerType": "Orchid"}
-    {"name": "Krishiv", "number": 13, "flowerType": "Anemone"}
-    {"name": "Tanvi", "number": 9, "flowerType": "Peony"}
-    {"name": "Tay", "number": 13, "flowerType": "Gerbera"}
-    {"name": "Yuri", "number": 4, "flowerType": "Daisy"}
-    After Quick Sort:
-    {"name": "Abigail", "number": 2, "flowerType": "Tulip"}
-    {"name": "Aditi", "number": 3, "flowerType": "Lily"}
-    {"name": "Aditya", "number": 5, "flowerType": "Sunflower"}
-    {"name": "Alara", "number": 1, "flowerType": "Rose"}
-    {"name": "Alex", "number": 8, "flowerType": "Hydrangea"}
-    {"name": "Anthony", "number": 11, "flowerType": "Dahlia"}
-    {"name": "David", "number": 14, "flowerType": "Poppy"}
-    {"name": "Emaad", "number": 12, "flowerType": "Freesia"}
-    {"name": "Ethan T", "number": 7, "flowerType": "Carnation"}
-    {"name": "James", "number": 10, "flowerType": "Cherry Blossom"}
-    {"name": "Jishnu", "number": 6, "flowerType": "Orchid"}
-    {"name": "Krishiv", "number": 13, "flowerType": "Anemone"}
-    {"name": "Tanvi", "number": 9, "flowerType": "Peony"}
-    {"name": "Tay", "number": 13, "flowerType": "Gerbera"}
-    {"name": "Yuri", "number": 4, "flowerType": "Daisy"}
-    After Merge Sort:
-    {"name": "Abigail", "number": 2, "flowerType": "Tulip"}
-    {"name": "Aditi", "number": 3, "flowerType": "Lily"}
-    {"name": "Aditya", "number": 5, "flowerType": "Sunflower"}
-    {"name": "Alara", "number": 1, "flowerType": "Rose"}
-    {"name": "Alex", "number": 8, "flowerType": "Hydrangea"}
-    {"name": "Anthony", "number": 11, "flowerType": "Dahlia"}
-    {"name": "David", "number": 14, "flowerType": "Poppy"}
-    {"name": "Emaad", "number": 12, "flowerType": "Freesia"}
-    {"name": "Ethan T", "number": 7, "flowerType": "Carnation"}
-    {"name": "James", "number": 10, "flowerType": "Cherry Blossom"}
-    {"name": "Jishnu", "number": 6, "flowerType": "Orchid"}
-    {"name": "Krishiv", "number": 13, "flowerType": "Anemone"}
-    {"name": "Tanvi", "number": 9, "flowerType": "Peony"}
-    {"name": "Tay", "number": 13, "flowerType": "Gerbera"}
-    {"name": "Yuri", "number": 4, "flowerType": "Daisy"}
+    Sorted by name:
+    FlowerGroupMember{name='Abigail', number=2, flowerType='Tulip'}
+    FlowerGroupMember{name='Aditi', number=3, flowerType='Lily'}
+    FlowerGroupMember{name='Aditya', number=5, flowerType='Sunflower'}
+    FlowerGroupMember{name='Alara', number=1, flowerType='Rose'}
+    FlowerGroupMember{name='Alex', number=8, flowerType='Hydrangea'}
+    FlowerGroupMember{name='Anthony', number=11, flowerType='Dahlia'}
+    FlowerGroupMember{name='David', number=14, flowerType='Poppy'}
+    FlowerGroupMember{name='Emaad', number=12, flowerType='Freesia'}
+    FlowerGroupMember{name='Ethan T', number=7, flowerType='Carnation'}
+    FlowerGroupMember{name='James', number=10, flowerType='Cherry Blossom'}
+    FlowerGroupMember{name='Jishnu', number=6, flowerType='Orchid'}
+    FlowerGroupMember{name='Krishiv', number=13, flowerType='Anemone'}
+    FlowerGroupMember{name='Tanvi', number=9, flowerType='Peony'}
+    FlowerGroupMember{name='Tay', number=13, flowerType='Gerbera'}
+    FlowerGroupMember{name='Yuri', number=4, flowerType='Daisy'}
     
-    Before NUMBER Sort:
-    {"name": "Abigail", "number": 2, "flowerType": "Tulip"}
-    {"name": "Aditi", "number": 3, "flowerType": "Lily"}
-    {"name": "Aditya", "number": 5, "flowerType": "Sunflower"}
-    {"name": "Alara", "number": 1, "flowerType": "Rose"}
-    {"name": "Alex", "number": 8, "flowerType": "Hydrangea"}
-    {"name": "Anthony", "number": 11, "flowerType": "Dahlia"}
-    {"name": "David", "number": 14, "flowerType": "Poppy"}
-    {"name": "Emaad", "number": 12, "flowerType": "Freesia"}
-    {"name": "Ethan T", "number": 7, "flowerType": "Carnation"}
-    {"name": "James", "number": 10, "flowerType": "Cherry Blossom"}
-    {"name": "Jishnu", "number": 6, "flowerType": "Orchid"}
-    {"name": "Krishiv", "number": 13, "flowerType": "Anemone"}
-    {"name": "Tanvi", "number": 9, "flowerType": "Peony"}
-    {"name": "Tay", "number": 13, "flowerType": "Gerbera"}
-    {"name": "Yuri", "number": 4, "flowerType": "Daisy"}
+    Sorted by number:
+    FlowerGroupMember{name='Alara', number=1, flowerType='Rose'}
+    FlowerGroupMember{name='Abigail', number=2, flowerType='Tulip'}
+    FlowerGroupMember{name='Aditi', number=3, flowerType='Lily'}
+    FlowerGroupMember{name='Yuri', number=4, flowerType='Daisy'}
+    FlowerGroupMember{name='Aditya', number=5, flowerType='Sunflower'}
+    FlowerGroupMember{name='Jishnu', number=6, flowerType='Orchid'}
+    FlowerGroupMember{name='Ethan T', number=7, flowerType='Carnation'}
+    FlowerGroupMember{name='Alex', number=8, flowerType='Hydrangea'}
+    FlowerGroupMember{name='Tanvi', number=9, flowerType='Peony'}
+    FlowerGroupMember{name='James', number=10, flowerType='Cherry Blossom'}
+    FlowerGroupMember{name='Anthony', number=11, flowerType='Dahlia'}
+    FlowerGroupMember{name='Emaad', number=12, flowerType='Freesia'}
+    FlowerGroupMember{name='Tay', number=13, flowerType='Gerbera'}
+    FlowerGroupMember{name='Krishiv', number=13, flowerType='Anemone'}
+    FlowerGroupMember{name='David', number=14, flowerType='Poppy'}
     
-    After Bubble Sort:
-    {"name": "Alara", "number": 1, "flowerType": "Rose"}
-    {"name": "Abigail", "number": 2, "flowerType": "Tulip"}
-    {"name": "Aditi", "number": 3, "flowerType": "Lily"}
-    {"name": "Yuri", "number": 4, "flowerType": "Daisy"}
-    {"name": "Aditya", "number": 5, "flowerType": "Sunflower"}
-    {"name": "Jishnu", "number": 6, "flowerType": "Orchid"}
-    {"name": "Ethan T", "number": 7, "flowerType": "Carnation"}
-    {"name": "Alex", "number": 8, "flowerType": "Hydrangea"}
-    {"name": "Tanvi", "number": 9, "flowerType": "Peony"}
-    {"name": "James", "number": 10, "flowerType": "Cherry Blossom"}
-    {"name": "Anthony", "number": 11, "flowerType": "Dahlia"}
-    {"name": "Emaad", "number": 12, "flowerType": "Freesia"}
-    {"name": "Krishiv", "number": 13, "flowerType": "Anemone"}
-    {"name": "Tay", "number": 13, "flowerType": "Gerbera"}
-    {"name": "David", "number": 14, "flowerType": "Poppy"}
-    After Selection Sort:
-    {"name": "Alara", "number": 1, "flowerType": "Rose"}
-    {"name": "Abigail", "number": 2, "flowerType": "Tulip"}
-    {"name": "Aditi", "number": 3, "flowerType": "Lily"}
-    {"name": "Yuri", "number": 4, "flowerType": "Daisy"}
-    {"name": "Aditya", "number": 5, "flowerType": "Sunflower"}
-    {"name": "Jishnu", "number": 6, "flowerType": "Orchid"}
-    {"name": "Ethan T", "number": 7, "flowerType": "Carnation"}
-    {"name": "Alex", "number": 8, "flowerType": "Hydrangea"}
-    {"name": "Tanvi", "number": 9, "flowerType": "Peony"}
-    {"name": "James", "number": 10, "flowerType": "Cherry Blossom"}
-    {"name": "Anthony", "number": 11, "flowerType": "Dahlia"}
-    {"name": "Emaad", "number": 12, "flowerType": "Freesia"}
-    {"name": "Krishiv", "number": 13, "flowerType": "Anemone"}
-    {"name": "Tay", "number": 13, "flowerType": "Gerbera"}
-    {"name": "David", "number": 14, "flowerType": "Poppy"}
-    After Insertion Sort:
-    {"name": "Alara", "number": 1, "flowerType": "Rose"}
-    {"name": "Abigail", "number": 2, "flowerType": "Tulip"}
-    {"name": "Aditi", "number": 3, "flowerType": "Lily"}
-    {"name": "Yuri", "number": 4, "flowerType": "Daisy"}
-    {"name": "Aditya", "number": 5, "flowerType": "Sunflower"}
-    {"name": "Jishnu", "number": 6, "flowerType": "Orchid"}
-    {"name": "Ethan T", "number": 7, "flowerType": "Carnation"}
-    {"name": "Alex", "number": 8, "flowerType": "Hydrangea"}
-    {"name": "Tanvi", "number": 9, "flowerType": "Peony"}
-    {"name": "James", "number": 10, "flowerType": "Cherry Blossom"}
-    {"name": "Anthony", "number": 11, "flowerType": "Dahlia"}
-    {"name": "Emaad", "number": 12, "flowerType": "Freesia"}
-    {"name": "Krishiv", "number": 13, "flowerType": "Anemone"}
-    {"name": "Tay", "number": 13, "flowerType": "Gerbera"}
-    {"name": "David", "number": 14, "flowerType": "Poppy"}
-    After Quick Sort:
-    {"name": "Alara", "number": 1, "flowerType": "Rose"}
-    {"name": "Abigail", "number": 2, "flowerType": "Tulip"}
-    {"name": "Aditi", "number": 3, "flowerType": "Lily"}
-    {"name": "Yuri", "number": 4, "flowerType": "Daisy"}
-    {"name": "Aditya", "number": 5, "flowerType": "Sunflower"}
-    {"name": "Jishnu", "number": 6, "flowerType": "Orchid"}
-    {"name": "Ethan T", "number": 7, "flowerType": "Carnation"}
-    {"name": "Alex", "number": 8, "flowerType": "Hydrangea"}
-    {"name": "Tanvi", "number": 9, "flowerType": "Peony"}
-    {"name": "James", "number": 10, "flowerType": "Cherry Blossom"}
-    {"name": "Anthony", "number": 11, "flowerType": "Dahlia"}
-    {"name": "Emaad", "number": 12, "flowerType": "Freesia"}
-    {"name": "Tay", "number": 13, "flowerType": "Gerbera"}
-    {"name": "Krishiv", "number": 13, "flowerType": "Anemone"}
-    {"name": "David", "number": 14, "flowerType": "Poppy"}
-    After Merge Sort:
-    {"name": "Alara", "number": 1, "flowerType": "Rose"}
-    {"name": "Abigail", "number": 2, "flowerType": "Tulip"}
-    {"name": "Aditi", "number": 3, "flowerType": "Lily"}
-    {"name": "Yuri", "number": 4, "flowerType": "Daisy"}
-    {"name": "Aditya", "number": 5, "flowerType": "Sunflower"}
-    {"name": "Jishnu", "number": 6, "flowerType": "Orchid"}
-    {"name": "Ethan T", "number": 7, "flowerType": "Carnation"}
-    {"name": "Alex", "number": 8, "flowerType": "Hydrangea"}
-    {"name": "Tanvi", "number": 9, "flowerType": "Peony"}
-    {"name": "James", "number": 10, "flowerType": "Cherry Blossom"}
-    {"name": "Anthony", "number": 11, "flowerType": "Dahlia"}
-    {"name": "Emaad", "number": 12, "flowerType": "Freesia"}
-    {"name": "Krishiv", "number": 13, "flowerType": "Anemone"}
-    {"name": "Tay", "number": 13, "flowerType": "Gerbera"}
-    {"name": "David", "number": 14, "flowerType": "Poppy"}
+    Sorted by flower type:
+    FlowerGroupMember{name='Krishiv', number=13, flowerType='Anemone'}
+    FlowerGroupMember{name='Ethan T', number=7, flowerType='Carnation'}
+    FlowerGroupMember{name='James', number=10, flowerType='Cherry Blossom'}
+    FlowerGroupMember{name='Anthony', number=11, flowerType='Dahlia'}
+    FlowerGroupMember{name='Yuri', number=4, flowerType='Daisy'}
+    FlowerGroupMember{name='Emaad', number=12, flowerType='Freesia'}
+    FlowerGroupMember{name='Tay', number=13, flowerType='Gerbera'}
+    FlowerGroupMember{name='Alex', number=8, flowerType='Hydrangea'}
+    FlowerGroupMember{name='Aditi', number=3, flowerType='Lily'}
+    FlowerGroupMember{name='Jishnu', number=6, flowerType='Orchid'}
+    FlowerGroupMember{name='Tanvi', number=9, flowerType='Peony'}
+    FlowerGroupMember{name='David', number=14, flowerType='Poppy'}
+    FlowerGroupMember{name='Alara', number=1, flowerType='Rose'}
+    FlowerGroupMember{name='Aditya', number=5, flowerType='Sunflower'}
+    FlowerGroupMember{name='Abigail', number=2, flowerType='Tulip'}
     
-    Before FLOWERTYPE Sort:
-    {"name": "Alara", "number": 1, "flowerType": "Rose"}
-    {"name": "Abigail", "number": 2, "flowerType": "Tulip"}
-    {"name": "Aditi", "number": 3, "flowerType": "Lily"}
-    {"name": "Yuri", "number": 4, "flowerType": "Daisy"}
-    {"name": "Aditya", "number": 5, "flowerType": "Sunflower"}
-    {"name": "Jishnu", "number": 6, "flowerType": "Orchid"}
-    {"name": "Ethan T", "number": 7, "flowerType": "Carnation"}
-    {"name": "Alex", "number": 8, "flowerType": "Hydrangea"}
-    {"name": "Tanvi", "number": 9, "flowerType": "Peony"}
-    {"name": "James", "number": 10, "flowerType": "Cherry Blossom"}
-    {"name": "Anthony", "number": 11, "flowerType": "Dahlia"}
-    {"name": "Emaad", "number": 12, "flowerType": "Freesia"}
-    {"name": "Krishiv", "number": 13, "flowerType": "Anemone"}
-    {"name": "Tay", "number": 13, "flowerType": "Gerbera"}
-    {"name": "David", "number": 14, "flowerType": "Poppy"}
+    Bubble Sort:
+    FlowerGroupMember{name='Abigail', number=2, flowerType='Tulip'}
+    FlowerGroupMember{name='Aditi', number=3, flowerType='Lily'}
+    FlowerGroupMember{name='Aditya', number=5, flowerType='Sunflower'}
+    FlowerGroupMember{name='Alara', number=1, flowerType='Rose'}
+    FlowerGroupMember{name='Alex', number=8, flowerType='Hydrangea'}
+    FlowerGroupMember{name='Anthony', number=11, flowerType='Dahlia'}
+    FlowerGroupMember{name='David', number=14, flowerType='Poppy'}
+    FlowerGroupMember{name='Emaad', number=12, flowerType='Freesia'}
+    FlowerGroupMember{name='Ethan T', number=7, flowerType='Carnation'}
+    FlowerGroupMember{name='James', number=10, flowerType='Cherry Blossom'}
+    FlowerGroupMember{name='Jishnu', number=6, flowerType='Orchid'}
+    FlowerGroupMember{name='Krishiv', number=13, flowerType='Anemone'}
+    FlowerGroupMember{name='Tanvi', number=9, flowerType='Peony'}
+    FlowerGroupMember{name='Tay', number=13, flowerType='Gerbera'}
+    FlowerGroupMember{name='Yuri', number=4, flowerType='Daisy'}
     
-    After Bubble Sort:
-    {"name": "Krishiv", "number": 13, "flowerType": "Anemone"}
-    {"name": "Ethan T", "number": 7, "flowerType": "Carnation"}
-    {"name": "James", "number": 10, "flowerType": "Cherry Blossom"}
-    {"name": "Anthony", "number": 11, "flowerType": "Dahlia"}
-    {"name": "Yuri", "number": 4, "flowerType": "Daisy"}
-    {"name": "Emaad", "number": 12, "flowerType": "Freesia"}
-    {"name": "Tay", "number": 13, "flowerType": "Gerbera"}
-    {"name": "Alex", "number": 8, "flowerType": "Hydrangea"}
-    {"name": "Aditi", "number": 3, "flowerType": "Lily"}
-    {"name": "Jishnu", "number": 6, "flowerType": "Orchid"}
-    {"name": "Tanvi", "number": 9, "flowerType": "Peony"}
-    {"name": "David", "number": 14, "flowerType": "Poppy"}
-    {"name": "Alara", "number": 1, "flowerType": "Rose"}
-    {"name": "Aditya", "number": 5, "flowerType": "Sunflower"}
-    {"name": "Abigail", "number": 2, "flowerType": "Tulip"}
-    After Selection Sort:
-    {"name": "Krishiv", "number": 13, "flowerType": "Anemone"}
-    {"name": "Ethan T", "number": 7, "flowerType": "Carnation"}
-    {"name": "James", "number": 10, "flowerType": "Cherry Blossom"}
-    {"name": "Anthony", "number": 11, "flowerType": "Dahlia"}
-    {"name": "Yuri", "number": 4, "flowerType": "Daisy"}
-    {"name": "Emaad", "number": 12, "flowerType": "Freesia"}
-    {"name": "Tay", "number": 13, "flowerType": "Gerbera"}
-    {"name": "Alex", "number": 8, "flowerType": "Hydrangea"}
-    {"name": "Aditi", "number": 3, "flowerType": "Lily"}
-    {"name": "Jishnu", "number": 6, "flowerType": "Orchid"}
-    {"name": "Tanvi", "number": 9, "flowerType": "Peony"}
-    {"name": "David", "number": 14, "flowerType": "Poppy"}
-    {"name": "Alara", "number": 1, "flowerType": "Rose"}
-    {"name": "Aditya", "number": 5, "flowerType": "Sunflower"}
-    {"name": "Abigail", "number": 2, "flowerType": "Tulip"}
-    After Insertion Sort:
-    {"name": "Krishiv", "number": 13, "flowerType": "Anemone"}
-    {"name": "Ethan T", "number": 7, "flowerType": "Carnation"}
-    {"name": "James", "number": 10, "flowerType": "Cherry Blossom"}
-    {"name": "Anthony", "number": 11, "flowerType": "Dahlia"}
-    {"name": "Yuri", "number": 4, "flowerType": "Daisy"}
-    {"name": "Emaad", "number": 12, "flowerType": "Freesia"}
-    {"name": "Tay", "number": 13, "flowerType": "Gerbera"}
-    {"name": "Alex", "number": 8, "flowerType": "Hydrangea"}
-    {"name": "Aditi", "number": 3, "flowerType": "Lily"}
-    {"name": "Jishnu", "number": 6, "flowerType": "Orchid"}
-    {"name": "Tanvi", "number": 9, "flowerType": "Peony"}
-    {"name": "David", "number": 14, "flowerType": "Poppy"}
-    {"name": "Alara", "number": 1, "flowerType": "Rose"}
-    {"name": "Aditya", "number": 5, "flowerType": "Sunflower"}
-    {"name": "Abigail", "number": 2, "flowerType": "Tulip"}
-    After Quick Sort:
-    {"name": "Krishiv", "number": 13, "flowerType": "Anemone"}
-    {"name": "Ethan T", "number": 7, "flowerType": "Carnation"}
-    {"name": "James", "number": 10, "flowerType": "Cherry Blossom"}
-    {"name": "Anthony", "number": 11, "flowerType": "Dahlia"}
-    {"name": "Yuri", "number": 4, "flowerType": "Daisy"}
-    {"name": "Emaad", "number": 12, "flowerType": "Freesia"}
-    {"name": "Tay", "number": 13, "flowerType": "Gerbera"}
-    {"name": "Alex", "number": 8, "flowerType": "Hydrangea"}
-    {"name": "Aditi", "number": 3, "flowerType": "Lily"}
-    {"name": "Jishnu", "number": 6, "flowerType": "Orchid"}
-    {"name": "Tanvi", "number": 9, "flowerType": "Peony"}
-    {"name": "David", "number": 14, "flowerType": "Poppy"}
-    {"name": "Alara", "number": 1, "flowerType": "Rose"}
-    {"name": "Aditya", "number": 5, "flowerType": "Sunflower"}
-    {"name": "Abigail", "number": 2, "flowerType": "Tulip"}
-    After Merge Sort:
-    {"name": "Krishiv", "number": 13, "flowerType": "Anemone"}
-    {"name": "Ethan T", "number": 7, "flowerType": "Carnation"}
-    {"name": "James", "number": 10, "flowerType": "Cherry Blossom"}
-    {"name": "Anthony", "number": 11, "flowerType": "Dahlia"}
-    {"name": "Yuri", "number": 4, "flowerType": "Daisy"}
-    {"name": "Emaad", "number": 12, "flowerType": "Freesia"}
-    {"name": "Tay", "number": 13, "flowerType": "Gerbera"}
-    {"name": "Alex", "number": 8, "flowerType": "Hydrangea"}
-    {"name": "Aditi", "number": 3, "flowerType": "Lily"}
-    {"name": "Jishnu", "number": 6, "flowerType": "Orchid"}
-    {"name": "Tanvi", "number": 9, "flowerType": "Peony"}
-    {"name": "David", "number": 14, "flowerType": "Poppy"}
-    {"name": "Alara", "number": 1, "flowerType": "Rose"}
-    {"name": "Aditya", "number": 5, "flowerType": "Sunflower"}
-    {"name": "Abigail", "number": 2, "flowerType": "Tulip"}
+    Selection Sort:
+    FlowerGroupMember{name='Abigail', number=2, flowerType='Tulip'}
+    FlowerGroupMember{name='Aditi', number=3, flowerType='Lily'}
+    FlowerGroupMember{name='Aditya', number=5, flowerType='Sunflower'}
+    FlowerGroupMember{name='Alara', number=1, flowerType='Rose'}
+    FlowerGroupMember{name='Alex', number=8, flowerType='Hydrangea'}
+    FlowerGroupMember{name='Anthony', number=11, flowerType='Dahlia'}
+    FlowerGroupMember{name='David', number=14, flowerType='Poppy'}
+    FlowerGroupMember{name='Emaad', number=12, flowerType='Freesia'}
+    FlowerGroupMember{name='Ethan T', number=7, flowerType='Carnation'}
+    FlowerGroupMember{name='James', number=10, flowerType='Cherry Blossom'}
+    FlowerGroupMember{name='Jishnu', number=6, flowerType='Orchid'}
+    FlowerGroupMember{name='Krishiv', number=13, flowerType='Anemone'}
+    FlowerGroupMember{name='Tanvi', number=9, flowerType='Peony'}
+    FlowerGroupMember{name='Tay', number=13, flowerType='Gerbera'}
+    FlowerGroupMember{name='Yuri', number=4, flowerType='Daisy'}
     
+    Insertion Sort:
+    FlowerGroupMember{name='Abigail', number=2, flowerType='Tulip'}
+    FlowerGroupMember{name='Aditi', number=3, flowerType='Lily'}
+    FlowerGroupMember{name='Aditya', number=5, flowerType='Sunflower'}
+    FlowerGroupMember{name='Alara', number=1, flowerType='Rose'}
+    FlowerGroupMember{name='Alex', number=8, flowerType='Hydrangea'}
+    FlowerGroupMember{name='Anthony', number=11, flowerType='Dahlia'}
+    FlowerGroupMember{name='David', number=14, flowerType='Poppy'}
+    FlowerGroupMember{name='Emaad', number=12, flowerType='Freesia'}
+    FlowerGroupMember{name='Ethan T', number=7, flowerType='Carnation'}
+    FlowerGroupMember{name='James', number=10, flowerType='Cherry Blossom'}
+    FlowerGroupMember{name='Jishnu', number=6, flowerType='Orchid'}
+    FlowerGroupMember{name='Krishiv', number=13, flowerType='Anemone'}
+    FlowerGroupMember{name='Tanvi', number=9, flowerType='Peony'}
+    FlowerGroupMember{name='Tay', number=13, flowerType='Gerbera'}
+    FlowerGroupMember{name='Yuri', number=4, flowerType='Daisy'}
+    
+    Merge Sort:
+    FlowerGroupMember{name='Abigail', number=2, flowerType='Tulip'}
+    FlowerGroupMember{name='Aditi', number=3, flowerType='Lily'}
+    FlowerGroupMember{name='Aditya', number=5, flowerType='Sunflower'}
+    FlowerGroupMember{name='Alara', number=1, flowerType='Rose'}
+    FlowerGroupMember{name='Alex', number=8, flowerType='Hydrangea'}
+    FlowerGroupMember{name='Anthony', number=11, flowerType='Dahlia'}
+    FlowerGroupMember{name='David', number=14, flowerType='Poppy'}
+    FlowerGroupMember{name='Emaad', number=12, flowerType='Freesia'}
+    FlowerGroupMember{name='Ethan T', number=7, flowerType='Carnation'}
+    FlowerGroupMember{name='James', number=10, flowerType='Cherry Blossom'}
+    FlowerGroupMember{name='Jishnu', number=6, flowerType='Orchid'}
+    FlowerGroupMember{name='Krishiv', number=13, flowerType='Anemone'}
+    FlowerGroupMember{name='Tanvi', number=9, flowerType='Peony'}
+    FlowerGroupMember{name='Tay', number=13, flowerType='Gerbera'}
+    FlowerGroupMember{name='Yuri', number=4, flowerType='Daisy'}
+    
+    Quick Sort:
+    FlowerGroupMember{name='Abigail', number=2, flowerType='Tulip'}
+    FlowerGroupMember{name='Aditi', number=3, flowerType='Lily'}
+    FlowerGroupMember{name='Aditya', number=5, flowerType='Sunflower'}
+    FlowerGroupMember{name='Alara', number=1, flowerType='Rose'}
+    FlowerGroupMember{name='Alex', number=8, flowerType='Hydrangea'}
+    FlowerGroupMember{name='Anthony', number=11, flowerType='Dahlia'}
+    FlowerGroupMember{name='David', number=14, flowerType='Poppy'}
+    FlowerGroupMember{name='Emaad', number=12, flowerType='Freesia'}
+    FlowerGroupMember{name='Ethan T', number=7, flowerType='Carnation'}
+    FlowerGroupMember{name='James', number=10, flowerType='Cherry Blossom'}
+    FlowerGroupMember{name='Jishnu', number=6, flowerType='Orchid'}
+    FlowerGroupMember{name='Krishiv', number=13, flowerType='Anemone'}
+    FlowerGroupMember{name='Tanvi', number=9, flowerType='Peony'}
+    FlowerGroupMember{name='Tay', number=13, flowerType='Gerbera'}
+    FlowerGroupMember{name='Yuri', number=4, flowerType='Daisy'}
 
 
 ## Algorithmic Performance Experience

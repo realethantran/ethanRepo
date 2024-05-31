@@ -316,6 +316,7 @@ public static int arraySum(int[] arr)
 ```python
 /** Returns a one-dimensional array in which the entry at index k is the sum of * the entries of row k of the two-dimensional array arr2D. */ 
 public static int[] rowSums(int[][] arr2D)
+
 ```
 
 ![image](https://github.com/AniCricKet/musical-guacamole/assets/91163802/40654587-a7af-4918-ab01-5000ba097a9b)

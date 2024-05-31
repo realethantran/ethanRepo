@@ -19,7 +19,7 @@ type: plans
 - **ArrayIndexOutOfBoundsException**: Accessing elements outside the bounds of the array leads to this exception.
 
 
-```Java
+```java
 public class ArrayExceptionExample {
     public static void main(String[] args) {
         int[] numbers = {1, 2, 3, 4, 5};
@@ -44,7 +44,7 @@ ArrayExceptionExample.main(null);
 
 
 
-```Java
+```java
 import java.util.Random;
 
 public class Array {
@@ -88,7 +88,7 @@ Array.main(null);
 - **Flexibility**: Program code using an enhanced `for` loop for array traversal can be rewritten using an indexed `for` loop or a `while` loop.
 
 
-```Java
+```java
 public class ArrayTraversal {
     public static void main(String[] args) {
         // creating integer array
@@ -163,7 +163,7 @@ public ArrayList<String> getDelimitersList (String[] tokens)
 **GIVEN SOLUTION**
 
 
-```Java
+```java
 public ArrayList<String> getDelimitersList(String[] tokens)
 {
     // creating a new ArrayList to store delimiter tokens
@@ -213,7 +213,7 @@ A separate variable is needed for each piece of data, making it hard to keep tra
 PART B: Develop an algorithm to find the median value of an integer array WITHOUT sorting the array.
 
 
-```Java
+```java
 public class MedianFinder {
 
     public static double findMedian(int[] arr) {
