@@ -129,31 +129,6 @@ public class Garden {
     public void sortMembers() {
         Collections.sort(members);
     }
-
-    public static void main(String[] args) {
-        Garden garden = new Garden();
-        
-        garden.addMember(new FlowerGroupMember("Rose", 5, "Red"));
-        garden.addMember(new FlowerGroupMember("Tulip", 3, "Yellow"));
-        garden.addMember(new FlowerGroupMember("Daisy", 8, "White"));
-
-        System.out.println("Original: " + garden.getMembers());
-
-        // Sort by name
-        FlowerGroupMember.setKeyType(FlowerGroupMember.KeyType.NAME);
-        garden.sortMembers();
-        System.out.println("Sorted by Name: " + garden.getMembers());
-
-        // Sort by number
-        FlowerGroupMember.setKeyType(FlowerGroupMember.KeyType.NUMBER);
-        garden.sortMembers();
-        System.out.println("Sorted by Number: " + garden.getMembers());
-
-        // Sort by flower type
-        FlowerGroupMember.setKeyType(FlowerGroupMember.KeyType.FLOWER_TYPE);
-        garden.sortMembers();
-        System.out.println("Sorted by Flower Type: " + garden.getMembers());
-    }
 }
 ```
 
