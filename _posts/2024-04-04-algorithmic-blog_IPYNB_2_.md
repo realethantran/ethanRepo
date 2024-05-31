@@ -34,11 +34,19 @@ Quick sort, like merge sort is a divide-and-conquer algorithm. It picks a pivot 
 
 
 ```Java
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class FlowerGroupMember implements Comparable<FlowerGroupMember> {
     // instance variables
     private String name;         
     private int number;          
     private String flowerType; 
+
+    // enum for key types
+    public enum KeyType { NAME, NUMBER, FLOWER_TYPE }
+    private static KeyType currentKeyType = KeyType.NAME;
 
     // constructor
     public FlowerGroupMember(String name, int number, String flowerType) {
@@ -73,11 +81,24 @@ public class FlowerGroupMember implements Comparable<FlowerGroupMember> {
         this.flowerType = flowerType;
     }
 
+    // method to set the current key type
+    public static void setKeyType(KeyType keyType) {
+        currentKeyType = keyType;
+    }
+
     // compareTo method
     @Override
     public int compareTo(FlowerGroupMember other) {
-        // compare members
-        return this.name.compareTo(other.name);
+        switch (currentKeyType) {
+            case NAME:
+                return this.name.compareTo(other.name);
+            case NUMBER:
+                return Integer.compare(this.number, other.number);
+            case FLOWER_TYPE:
+                return this.flowerType.compareTo(other.flowerType);
+            default:
+                return 0; // should not reach here
+        }
     }
 
     // toString method for better object representation
@@ -90,8 +111,6 @@ public class FlowerGroupMember implements Comparable<FlowerGroupMember> {
                 '}';
     }
 }
-
-// garden class 
 public class Garden {
     private List<FlowerGroupMember> members;
 
@@ -106,6 +125,35 @@ public class Garden {
     public List<FlowerGroupMember> getMembers() {
         return members;
     }
+
+    public void sortMembers() {
+        Collections.sort(members);
+    }
+
+    public static void main(String[] args) {
+        Garden garden = new Garden();
+        
+        garden.addMember(new FlowerGroupMember("Rose", 5, "Red"));
+        garden.addMember(new FlowerGroupMember("Tulip", 3, "Yellow"));
+        garden.addMember(new FlowerGroupMember("Daisy", 8, "White"));
+
+        System.out.println("Original: " + garden.getMembers());
+
+        // Sort by name
+        FlowerGroupMember.setKeyType(FlowerGroupMember.KeyType.NAME);
+        garden.sortMembers();
+        System.out.println("Sorted by Name: " + garden.getMembers());
+
+        // Sort by number
+        FlowerGroupMember.setKeyType(FlowerGroupMember.KeyType.NUMBER);
+        garden.sortMembers();
+        System.out.println("Sorted by Number: " + garden.getMembers());
+
+        // Sort by flower type
+        FlowerGroupMember.setKeyType(FlowerGroupMember.KeyType.FLOWER_TYPE);
+        garden.sortMembers();
+        System.out.println("Sorted by Flower Type: " + garden.getMembers());
+    }
 }
 ```
 
@@ -113,118 +161,117 @@ public class Garden {
 
 
 ```Java
+import java.util.List;
+import java.util.ArrayList;
+
 public class Sorts {
-    // bubble sort method
+
+    // Bubble Sort
     public void bubbleSort(List<FlowerGroupMember> list) {
-        int n = list.size(); // get the size of the list
-        for (int i = 0; i < n - 1; i++) { // iterate over the list
-            for (int j = 0; j < n - i - 1; j++) { // inner loop for comparisons
-                if (list.get(j).compareTo(list.get(j + 1)) > 0) { // compare adjacent elements
-                    swap(list, j, j + 1); // swap if elements are out of order
+        int n = list.size();
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (list.get(j).compareTo(list.get(j + 1)) > 0) {
+                    FlowerGroupMember temp = list.get(j);
+                    list.set(j, list.get(j + 1));
+                    list.set(j + 1, temp);
                 }
             }
         }
     }
 
-    // selection sort method
+    // Selection Sort
     public void selectionSort(List<FlowerGroupMember> list) {
-        int n = list.size(); // get the size of the list
-        for (int i = 0; i < n - 1; i++) { // iterate over the list
-            int minIndex = i; // assume the minimum is the first element
-            for (int j = i + 1; j < n; j++) { // find the minimum element in the remaining list
-                if (list.get(j).compareTo(list.get(minIndex)) < 0) { // compare elements
-                    minIndex = j; // update the minimum element index
+        int n = list.size();
+        for (int i = 0; i < n - 1; i++) {
+            int minIdx = i;
+            for (int j = i + 1; j < n; j++) {
+                if (list.get(j).compareTo(list.get(minIdx)) < 0) {
+                    minIdx = j;
                 }
             }
-            swap(list, i, minIndex); // swap the found minimum with the first element
+            FlowerGroupMember temp = list.get(minIdx);
+            list.set(minIdx, list.get(i));
+            list.set(i, temp);
         }
     }
 
-    // insertion sort method
+    // Insertion Sort
     public void insertionSort(List<FlowerGroupMember> list) {
-        int n = list.size(); // get the size of the list
-        for (int i = 1; i < n; i++) { // iterate over the list starting from the second element
-            FlowerGroupMember key = list.get(i); // store the current element
-            int j = i - 1; // initialize the previous element index
-            while (j >= 0 && list.get(j).compareTo(key) > 0) { // move elements greater than key to one position ahead
-                list.set(j + 1, list.get(j)); // shift element
-                j = j - 1; // move to the previous element
+        int n = list.size();
+        for (int i = 1; i < n; ++i) {
+            FlowerGroupMember key = list.get(i);
+            int j = i - 1;
+
+            while (j >= 0 && list.get(j).compareTo(key) > 0) {
+                list.set(j + 1, list.get(j));
+                j = j - 1;
             }
-            list.set(j + 1, key); // place the key at its correct position
+            list.set(j + 1, key);
         }
     }
 
-    // merge sort method
+    // Merge Sort
     public void mergeSort(List<FlowerGroupMember> list) {
-        if (list.size() <= 1) // base case: if the list size is 1 or less
+        if (list.size() < 2) {
             return;
+        }
+        int mid = list.size() / 2;
+        List<FlowerGroupMember> left = new ArrayList<>(list.subList(0, mid));
+        List<FlowerGroupMember> right = new ArrayList<>(list.subList(mid, list.size()));
 
-        int mid = list.size() / 2; // find the midpoint
-        List<FlowerGroupMember> left = new ArrayList<>(list.subList(0, mid)); // create left sublist
-        List<FlowerGroupMember> right = new ArrayList<>(list.subList(mid, list.size())); // create right sublist
+        mergeSort(left);
+        mergeSort(right);
 
-        mergeSort(left); // recursively sort the left sublist
-        mergeSort(right); // recursively sort the right sublist
-
-        merge(list, left, right); // merge the sorted sublists
+        merge(list, left, right);
     }
 
-    // merge method to combine sorted sublists
     private void merge(List<FlowerGroupMember> list, List<FlowerGroupMember> left, List<FlowerGroupMember> right) {
-        int i = 0, j = 0, k = 0; // initialize pointers for left, right, and merged list
-
-        while (i < left.size() && j < right.size()) { // iterate until one sublist is exhausted
-            if (left.get(i).compareTo(right.get(j)) <= 0) { // compare elements of sublists
-                list.set(k++, left.get(i++)); // add smaller element to the merged list
+        int i = 0, j = 0, k = 0;
+        while (i < left.size() && j < right.size()) {
+            if (left.get(i).compareTo(right.get(j)) <= 0) {
+                list.set(k++, left.get(i++));
             } else {
-                list.set(k++, right.get(j++)); // add smaller element to the merged list
+                list.set(k++, right.get(j++));
             }
         }
-
-        while (i < left.size()) { // add remaining elements from left sublist
+        while (i < left.size()) {
             list.set(k++, left.get(i++));
         }
-
-        while (j < right.size()) { // add remaining elements from right sublist
+        while (j < right.size()) {
             list.set(k++, right.get(j++));
         }
     }
 
-    // quick sort method
+    // Quick Sort
     public void quickSort(List<FlowerGroupMember> list) {
-        quickSort(list, 0, list.size() - 1); // call the quicksort helper method
+        quickSort(list, 0, list.size() - 1);
     }
 
-    // quicksort helper method
     private void quickSort(List<FlowerGroupMember> list, int low, int high) {
-        if (low < high) { // base case: if low index is less than high index
-            int pi = partition(list, low, high); // partition the list and get the pivot index
-
-            quickSort(list, low, pi - 1); // recursively sort the left sublist
-            quickSort(list, pi + 1, high); // recursively sort the right sublist
+        if (low < high) {
+            int pi = partition(list, low, high);
+            quickSort(list, low, pi - 1);
+            quickSort(list, pi + 1, high);
         }
     }
 
-    // partition method for quicksort
     private int partition(List<FlowerGroupMember> list, int low, int high) {
-        FlowerGroupMember pivot = list.get(high); // choose the last element as the pivot
-        int i = low - 1; // initialize the smaller element index
-        for (int j = low; j < high; j++) { // iterate through the list
-            if (list.get(j).compareTo(pivot) < 0) { // if the current element is smaller than the pivot
-                i++; // increment the smaller element index
-                swap(list, i, j); // swap the elements
+        FlowerGroupMember pivot = list.get(high);
+        int i = (low - 1);
+        for (int j = low; j < high; j++) {
+            if (list.get(j).compareTo(pivot) < 0) {
+                i++;
+                FlowerGroupMember temp = list.get(i);
+                list.set(i, list.get(j));
+                list.set(j, temp);
             }
         }
+        FlowerGroupMember temp = list.get(i + 1);
+        list.set(i + 1, list.get(high));
+        list.set(high, temp);
 
-        swap(list, i + 1, high); // place the pivot in the correct position
-        return i + 1; // return the pivot index
-    }
-
-    // swap method to exchange elements in the list
-    private void swap(List<FlowerGroupMember> list, int i, int j) {
-        FlowerGroupMember temp = list.get(i); // store the first element in a temporary variable
-        list.set(i, list.get(j)); // assign the second element to the first element's position
-        list.set(j, temp); // assign the temporary variable to the second element's position
+        return i + 1;
     }
 }
 ```
@@ -264,53 +311,61 @@ public class Main {
         System.out.println("Unsorted list:");
         printList(members);
 
-        // Sort by name (alphabetical)
-        List<FlowerGroupMember> nameSorted = new ArrayList<>(members);
-        nameSorted.sort((m1, m2) -> m1.getName().compareTo(m2.getName()));
-        System.out.println("\nSorted by name:");
-        printList(nameSorted);
-
-        // Sort by number (numerical)
-        List<FlowerGroupMember> numberSorted = new ArrayList<>(members);
-        numberSorted.sort((m1, m2) -> Integer.compare(m1.getNumber(), m2.getNumber()));
-        System.out.println("\nSorted by number:");
-        printList(numberSorted);
-
-        // Sort by flowerType (alphabetical)
-        List<FlowerGroupMember> flowerTypeSorted = new ArrayList<>(members);
-        flowerTypeSorted.sort((m1, m2) -> m1.getFlowerType().compareTo(m2.getFlowerType()));
-        System.out.println("\nSorted by flower type:");
-        printList(flowerTypeSorted);
-
         // Bubble Sort
+        FlowerGroupMember.setKeyType(FlowerGroupMember.KeyType.NAME);
         List<FlowerGroupMember> bubbleSorted = new ArrayList<>(members);
         sorter.bubbleSort(bubbleSorted);
         System.out.println("\nBubble Sort:");
         printList(bubbleSorted);
 
-        // Selection Sort
+        // Selection Sort 
+        FlowerGroupMember.setKeyType(FlowerGroupMember.KeyType.NUMBER);
         List<FlowerGroupMember> selectionSorted = new ArrayList<>(members);
         sorter.selectionSort(selectionSorted);
         System.out.println("\nSelection Sort:");
         printList(selectionSorted);
 
         // Insertion Sort
+        FlowerGroupMember.setKeyType(FlowerGroupMember.KeyType.FLOWER_TYPE);
         List<FlowerGroupMember> insertionSorted = new ArrayList<>(members);
         sorter.insertionSort(insertionSorted);
         System.out.println("\nInsertion Sort:");
         printList(insertionSorted);
 
         // Merge Sort
+        FlowerGroupMember.setKeyType(FlowerGroupMember.KeyType.NAME);
         List<FlowerGroupMember> mergeSorted = new ArrayList<>(members);
         sorter.mergeSort(mergeSorted);
         System.out.println("\nMerge Sort:");
         printList(mergeSorted);
 
         // Quick Sort
+        FlowerGroupMember.setKeyType(FlowerGroupMember.KeyType.NUMBER);
         List<FlowerGroupMember> quickSorted = new ArrayList<>(members);
         sorter.quickSort(quickSorted);
         System.out.println("\nQuick Sort:");
+        
         printList(quickSorted);
+        // Sort by name (alphabetical)
+        FlowerGroupMember.setKeyType(FlowerGroupMember.KeyType.NAME);
+        List<FlowerGroupMember> nameSorted = new ArrayList<>(members);
+        sorter.bubbleSort(nameSorted);
+        System.out.println("\nSort by NAME:");
+        printList(nameSorted);
+
+        // Sort by number (numerical)
+        FlowerGroupMember.setKeyType(FlowerGroupMember.KeyType.NUMBER);
+        List<FlowerGroupMember> numberSorted = new ArrayList<>(members);
+        sorter.bubbleSort(numberSorted);
+        System.out.println("\nSort by NUMBER:");
+        printList(numberSorted);
+
+        // Sort by flowerType (alphabetical)
+        FlowerGroupMember.setKeyType(FlowerGroupMember.KeyType.FLOWER_TYPE);
+        List<FlowerGroupMember> flowerTypeSorted = new ArrayList<>(members);
+        sorter.bubbleSort(flowerTypeSorted);
+        System.out.println("\nSort by FLOWERTYPE:");
+        printList(flowerTypeSorted);
     }
 
     private static void printList(List<FlowerGroupMember> list) {
@@ -339,57 +394,6 @@ Main.main(null);
     FlowerGroupMember{name='Jishnu', number=6, flowerType='Orchid'}
     FlowerGroupMember{name='Krishiv', number=13, flowerType='Anemone'}
     
-    Sorted by name:
-    FlowerGroupMember{name='Abigail', number=2, flowerType='Tulip'}
-    FlowerGroupMember{name='Aditi', number=3, flowerType='Lily'}
-    FlowerGroupMember{name='Aditya', number=5, flowerType='Sunflower'}
-    FlowerGroupMember{name='Alara', number=1, flowerType='Rose'}
-    FlowerGroupMember{name='Alex', number=8, flowerType='Hydrangea'}
-    FlowerGroupMember{name='Anthony', number=11, flowerType='Dahlia'}
-    FlowerGroupMember{name='David', number=14, flowerType='Poppy'}
-    FlowerGroupMember{name='Emaad', number=12, flowerType='Freesia'}
-    FlowerGroupMember{name='Ethan T', number=7, flowerType='Carnation'}
-    FlowerGroupMember{name='James', number=10, flowerType='Cherry Blossom'}
-    FlowerGroupMember{name='Jishnu', number=6, flowerType='Orchid'}
-    FlowerGroupMember{name='Krishiv', number=13, flowerType='Anemone'}
-    FlowerGroupMember{name='Tanvi', number=9, flowerType='Peony'}
-    FlowerGroupMember{name='Tay', number=13, flowerType='Gerbera'}
-    FlowerGroupMember{name='Yuri', number=4, flowerType='Daisy'}
-    
-    Sorted by number:
-    FlowerGroupMember{name='Alara', number=1, flowerType='Rose'}
-    FlowerGroupMember{name='Abigail', number=2, flowerType='Tulip'}
-    FlowerGroupMember{name='Aditi', number=3, flowerType='Lily'}
-    FlowerGroupMember{name='Yuri', number=4, flowerType='Daisy'}
-    FlowerGroupMember{name='Aditya', number=5, flowerType='Sunflower'}
-    FlowerGroupMember{name='Jishnu', number=6, flowerType='Orchid'}
-    FlowerGroupMember{name='Ethan T', number=7, flowerType='Carnation'}
-    FlowerGroupMember{name='Alex', number=8, flowerType='Hydrangea'}
-    FlowerGroupMember{name='Tanvi', number=9, flowerType='Peony'}
-    FlowerGroupMember{name='James', number=10, flowerType='Cherry Blossom'}
-    FlowerGroupMember{name='Anthony', number=11, flowerType='Dahlia'}
-    FlowerGroupMember{name='Emaad', number=12, flowerType='Freesia'}
-    FlowerGroupMember{name='Tay', number=13, flowerType='Gerbera'}
-    FlowerGroupMember{name='Krishiv', number=13, flowerType='Anemone'}
-    FlowerGroupMember{name='David', number=14, flowerType='Poppy'}
-    
-    Sorted by flower type:
-    FlowerGroupMember{name='Krishiv', number=13, flowerType='Anemone'}
-    FlowerGroupMember{name='Ethan T', number=7, flowerType='Carnation'}
-    FlowerGroupMember{name='James', number=10, flowerType='Cherry Blossom'}
-    FlowerGroupMember{name='Anthony', number=11, flowerType='Dahlia'}
-    FlowerGroupMember{name='Yuri', number=4, flowerType='Daisy'}
-    FlowerGroupMember{name='Emaad', number=12, flowerType='Freesia'}
-    FlowerGroupMember{name='Tay', number=13, flowerType='Gerbera'}
-    FlowerGroupMember{name='Alex', number=8, flowerType='Hydrangea'}
-    FlowerGroupMember{name='Aditi', number=3, flowerType='Lily'}
-    FlowerGroupMember{name='Jishnu', number=6, flowerType='Orchid'}
-    FlowerGroupMember{name='Tanvi', number=9, flowerType='Peony'}
-    FlowerGroupMember{name='David', number=14, flowerType='Poppy'}
-    FlowerGroupMember{name='Alara', number=1, flowerType='Rose'}
-    FlowerGroupMember{name='Aditya', number=5, flowerType='Sunflower'}
-    FlowerGroupMember{name='Abigail', number=2, flowerType='Tulip'}
-    
     Bubble Sort:
     FlowerGroupMember{name='Abigail', number=2, flowerType='Tulip'}
     FlowerGroupMember{name='Aditi', number=3, flowerType='Lily'}
@@ -408,38 +412,38 @@ Main.main(null);
     FlowerGroupMember{name='Yuri', number=4, flowerType='Daisy'}
     
     Selection Sort:
+    FlowerGroupMember{name='Alara', number=1, flowerType='Rose'}
     FlowerGroupMember{name='Abigail', number=2, flowerType='Tulip'}
     FlowerGroupMember{name='Aditi', number=3, flowerType='Lily'}
-    FlowerGroupMember{name='Aditya', number=5, flowerType='Sunflower'}
-    FlowerGroupMember{name='Alara', number=1, flowerType='Rose'}
-    FlowerGroupMember{name='Alex', number=8, flowerType='Hydrangea'}
-    FlowerGroupMember{name='Anthony', number=11, flowerType='Dahlia'}
-    FlowerGroupMember{name='David', number=14, flowerType='Poppy'}
-    FlowerGroupMember{name='Emaad', number=12, flowerType='Freesia'}
-    FlowerGroupMember{name='Ethan T', number=7, flowerType='Carnation'}
-    FlowerGroupMember{name='James', number=10, flowerType='Cherry Blossom'}
-    FlowerGroupMember{name='Jishnu', number=6, flowerType='Orchid'}
-    FlowerGroupMember{name='Krishiv', number=13, flowerType='Anemone'}
-    FlowerGroupMember{name='Tanvi', number=9, flowerType='Peony'}
-    FlowerGroupMember{name='Tay', number=13, flowerType='Gerbera'}
     FlowerGroupMember{name='Yuri', number=4, flowerType='Daisy'}
+    FlowerGroupMember{name='Aditya', number=5, flowerType='Sunflower'}
+    FlowerGroupMember{name='Jishnu', number=6, flowerType='Orchid'}
+    FlowerGroupMember{name='Ethan T', number=7, flowerType='Carnation'}
+    FlowerGroupMember{name='Alex', number=8, flowerType='Hydrangea'}
+    FlowerGroupMember{name='Tanvi', number=9, flowerType='Peony'}
+    FlowerGroupMember{name='James', number=10, flowerType='Cherry Blossom'}
+    FlowerGroupMember{name='Anthony', number=11, flowerType='Dahlia'}
+    FlowerGroupMember{name='Emaad', number=12, flowerType='Freesia'}
+    FlowerGroupMember{name='Tay', number=13, flowerType='Gerbera'}
+    FlowerGroupMember{name='Krishiv', number=13, flowerType='Anemone'}
+    FlowerGroupMember{name='David', number=14, flowerType='Poppy'}
     
     Insertion Sort:
-    FlowerGroupMember{name='Abigail', number=2, flowerType='Tulip'}
-    FlowerGroupMember{name='Aditi', number=3, flowerType='Lily'}
-    FlowerGroupMember{name='Aditya', number=5, flowerType='Sunflower'}
-    FlowerGroupMember{name='Alara', number=1, flowerType='Rose'}
-    FlowerGroupMember{name='Alex', number=8, flowerType='Hydrangea'}
-    FlowerGroupMember{name='Anthony', number=11, flowerType='Dahlia'}
-    FlowerGroupMember{name='David', number=14, flowerType='Poppy'}
-    FlowerGroupMember{name='Emaad', number=12, flowerType='Freesia'}
+    FlowerGroupMember{name='Krishiv', number=13, flowerType='Anemone'}
     FlowerGroupMember{name='Ethan T', number=7, flowerType='Carnation'}
     FlowerGroupMember{name='James', number=10, flowerType='Cherry Blossom'}
-    FlowerGroupMember{name='Jishnu', number=6, flowerType='Orchid'}
-    FlowerGroupMember{name='Krishiv', number=13, flowerType='Anemone'}
-    FlowerGroupMember{name='Tanvi', number=9, flowerType='Peony'}
-    FlowerGroupMember{name='Tay', number=13, flowerType='Gerbera'}
+    FlowerGroupMember{name='Anthony', number=11, flowerType='Dahlia'}
     FlowerGroupMember{name='Yuri', number=4, flowerType='Daisy'}
+    FlowerGroupMember{name='Emaad', number=12, flowerType='Freesia'}
+    FlowerGroupMember{name='Tay', number=13, flowerType='Gerbera'}
+    FlowerGroupMember{name='Alex', number=8, flowerType='Hydrangea'}
+    FlowerGroupMember{name='Aditi', number=3, flowerType='Lily'}
+    FlowerGroupMember{name='Jishnu', number=6, flowerType='Orchid'}
+    FlowerGroupMember{name='Tanvi', number=9, flowerType='Peony'}
+    FlowerGroupMember{name='David', number=14, flowerType='Poppy'}
+    FlowerGroupMember{name='Alara', number=1, flowerType='Rose'}
+    FlowerGroupMember{name='Aditya', number=5, flowerType='Sunflower'}
+    FlowerGroupMember{name='Abigail', number=2, flowerType='Tulip'}
     
     Merge Sort:
     FlowerGroupMember{name='Abigail', number=2, flowerType='Tulip'}
@@ -459,6 +463,23 @@ Main.main(null);
     FlowerGroupMember{name='Yuri', number=4, flowerType='Daisy'}
     
     Quick Sort:
+    FlowerGroupMember{name='Alara', number=1, flowerType='Rose'}
+    FlowerGroupMember{name='Abigail', number=2, flowerType='Tulip'}
+    FlowerGroupMember{name='Aditi', number=3, flowerType='Lily'}
+    FlowerGroupMember{name='Yuri', number=4, flowerType='Daisy'}
+    FlowerGroupMember{name='Aditya', number=5, flowerType='Sunflower'}
+    FlowerGroupMember{name='Jishnu', number=6, flowerType='Orchid'}
+    FlowerGroupMember{name='Ethan T', number=7, flowerType='Carnation'}
+    FlowerGroupMember{name='Alex', number=8, flowerType='Hydrangea'}
+    FlowerGroupMember{name='Tanvi', number=9, flowerType='Peony'}
+    FlowerGroupMember{name='James', number=10, flowerType='Cherry Blossom'}
+    FlowerGroupMember{name='Anthony', number=11, flowerType='Dahlia'}
+    FlowerGroupMember{name='Emaad', number=12, flowerType='Freesia'}
+    FlowerGroupMember{name='Krishiv', number=13, flowerType='Anemone'}
+    FlowerGroupMember{name='Tay', number=13, flowerType='Gerbera'}
+    FlowerGroupMember{name='David', number=14, flowerType='Poppy'}
+    
+    Sort by NAME:
     FlowerGroupMember{name='Abigail', number=2, flowerType='Tulip'}
     FlowerGroupMember{name='Aditi', number=3, flowerType='Lily'}
     FlowerGroupMember{name='Aditya', number=5, flowerType='Sunflower'}
@@ -474,6 +495,40 @@ Main.main(null);
     FlowerGroupMember{name='Tanvi', number=9, flowerType='Peony'}
     FlowerGroupMember{name='Tay', number=13, flowerType='Gerbera'}
     FlowerGroupMember{name='Yuri', number=4, flowerType='Daisy'}
+    
+    Sort by NUMBER:
+    FlowerGroupMember{name='Alara', number=1, flowerType='Rose'}
+    FlowerGroupMember{name='Abigail', number=2, flowerType='Tulip'}
+    FlowerGroupMember{name='Aditi', number=3, flowerType='Lily'}
+    FlowerGroupMember{name='Yuri', number=4, flowerType='Daisy'}
+    FlowerGroupMember{name='Aditya', number=5, flowerType='Sunflower'}
+    FlowerGroupMember{name='Jishnu', number=6, flowerType='Orchid'}
+    FlowerGroupMember{name='Ethan T', number=7, flowerType='Carnation'}
+    FlowerGroupMember{name='Alex', number=8, flowerType='Hydrangea'}
+    FlowerGroupMember{name='Tanvi', number=9, flowerType='Peony'}
+    FlowerGroupMember{name='James', number=10, flowerType='Cherry Blossom'}
+    FlowerGroupMember{name='Anthony', number=11, flowerType='Dahlia'}
+    FlowerGroupMember{name='Emaad', number=12, flowerType='Freesia'}
+    FlowerGroupMember{name='Tay', number=13, flowerType='Gerbera'}
+    FlowerGroupMember{name='Krishiv', number=13, flowerType='Anemone'}
+    FlowerGroupMember{name='David', number=14, flowerType='Poppy'}
+    
+    Sort by FLOWERTYPE:
+    FlowerGroupMember{name='Krishiv', number=13, flowerType='Anemone'}
+    FlowerGroupMember{name='Ethan T', number=7, flowerType='Carnation'}
+    FlowerGroupMember{name='James', number=10, flowerType='Cherry Blossom'}
+    FlowerGroupMember{name='Anthony', number=11, flowerType='Dahlia'}
+    FlowerGroupMember{name='Yuri', number=4, flowerType='Daisy'}
+    FlowerGroupMember{name='Emaad', number=12, flowerType='Freesia'}
+    FlowerGroupMember{name='Tay', number=13, flowerType='Gerbera'}
+    FlowerGroupMember{name='Alex', number=8, flowerType='Hydrangea'}
+    FlowerGroupMember{name='Aditi', number=3, flowerType='Lily'}
+    FlowerGroupMember{name='Jishnu', number=6, flowerType='Orchid'}
+    FlowerGroupMember{name='Tanvi', number=9, flowerType='Peony'}
+    FlowerGroupMember{name='David', number=14, flowerType='Poppy'}
+    FlowerGroupMember{name='Alara', number=1, flowerType='Rose'}
+    FlowerGroupMember{name='Aditya', number=5, flowerType='Sunflower'}
+    FlowerGroupMember{name='Abigail', number=2, flowerType='Tulip'}
 
 
 ## Algorithmic Performance Experience
