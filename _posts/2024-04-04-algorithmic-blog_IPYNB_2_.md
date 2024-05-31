@@ -141,113 +141,128 @@ import java.util.ArrayList;
 
 public class Sorts {
 
-    // Bubble Sort
-    public void bubbleSort(List<FlowerGroupMember> list) {
-        int n = list.size();
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
-                if (list.get(j).compareTo(list.get(j + 1)) > 0) {
-                    FlowerGroupMember temp = list.get(j);
-                    list.set(j, list.get(j + 1));
-                    list.set(j + 1, temp);
-                }
+// Bubble Sort
+public void bubbleSort(List<FlowerGroupMember> list) {
+    int n = list.size();
+    // Traverse through all elements in the list
+    for (int i = 0; i < n - 1; i++) {
+        // Last i elements are already in place, so no need to traverse them
+        for (int j = 0; j < n - i - 1; j++) {
+            // Swap if the element found is greater than the next element
+            if (list.get(j).compareTo(list.get(j + 1)) > 0) {
+                FlowerGroupMember temp = list.get(j);
+                list.set(j, list.get(j + 1));
+                list.set(j + 1, temp);
             }
         }
     }
+}
 
-    // Selection Sort
-    public void selectionSort(List<FlowerGroupMember> list) {
-        int n = list.size();
-        for (int i = 0; i < n - 1; i++) {
-            int minIdx = i;
-            for (int j = i + 1; j < n; j++) {
-                if (list.get(j).compareTo(list.get(minIdx)) < 0) {
-                    minIdx = j;
-                }
-            }
-            FlowerGroupMember temp = list.get(minIdx);
-            list.set(minIdx, list.get(i));
-            list.set(i, temp);
-        }
-    }
-
-    // Insertion Sort
-    public void insertionSort(List<FlowerGroupMember> list) {
-        int n = list.size();
-        for (int i = 1; i < n; ++i) {
-            FlowerGroupMember key = list.get(i);
-            int j = i - 1;
-
-            while (j >= 0 && list.get(j).compareTo(key) > 0) {
-                list.set(j + 1, list.get(j));
-                j = j - 1;
-            }
-            list.set(j + 1, key);
-        }
-    }
-
-    // Merge Sort
-    public void mergeSort(List<FlowerGroupMember> list) {
-        if (list.size() < 2) {
-            return;
-        }
-        int mid = list.size() / 2;
-        List<FlowerGroupMember> left = new ArrayList<>(list.subList(0, mid));
-        List<FlowerGroupMember> right = new ArrayList<>(list.subList(mid, list.size()));
-
-        mergeSort(left);
-        mergeSort(right);
-
-        merge(list, left, right);
-    }
-
-    private void merge(List<FlowerGroupMember> list, List<FlowerGroupMember> left, List<FlowerGroupMember> right) {
-        int i = 0, j = 0, k = 0;
-        while (i < left.size() && j < right.size()) {
-            if (left.get(i).compareTo(right.get(j)) <= 0) {
-                list.set(k++, left.get(i++));
-            } else {
-                list.set(k++, right.get(j++));
+// Selection Sort
+public void selectionSort(List<FlowerGroupMember> list) {
+    int n = list.size();
+    // Traverse through all elements in the list
+    for (int i = 0; i < n - 1; i++) {
+        // Find the minimum element in the unsorted part of the list
+        int minIdx = i;
+        for (int j = i + 1; j < n; j++) {
+            if (list.get(j).compareTo(list.get(minIdx)) < 0) {
+                minIdx = j;
             }
         }
-        while (i < left.size()) {
+        // Swap the found minimum element with the first element
+        FlowerGroupMember temp = list.get(minIdx);
+        list.set(minIdx, list.get(i));
+        list.set(i, temp);
+    }
+}
+
+// Insertion Sort
+public void insertionSort(List<FlowerGroupMember> list) {
+    int n = list.size();
+    // Traverse through all elements in the list starting from the second element
+    for (int i = 1; i < n; ++i) {
+        FlowerGroupMember key = list.get(i);
+        int j = i - 1;
+        // Move elements of list[0..i-1], that are greater than key, to one position ahead of their current position
+        while (j >= 0 && list.get(j).compareTo(key) > 0) {
+            list.set(j + 1, list.get(j));
+            j = j - 1;
+        }
+        list.set(j + 1, key);
+    }
+}
+
+// Merge Sort
+public void mergeSort(List<FlowerGroupMember> list) {
+    if (list.size() < 2) {
+        return;
+    }
+    int mid = list.size() / 2;
+    List<FlowerGroupMember> left = new ArrayList<>(list.subList(0, mid));
+    List<FlowerGroupMember> right = new ArrayList<>(list.subList(mid, list.size()));
+
+    mergeSort(left);
+    mergeSort(right);
+
+    merge(list, left, right);
+}
+
+private void merge(List<FlowerGroupMember> list, List<FlowerGroupMember> left, List<FlowerGroupMember> right) {
+    int i = 0, j = 0, k = 0;
+    // Merge the two sublists into the original list in sorted order
+    while (i < left.size() && j < right.size()) {
+        if (left.get(i).compareTo(right.get(j)) <= 0) {
             list.set(k++, left.get(i++));
-        }
-        while (j < right.size()) {
+        } else {
             list.set(k++, right.get(j++));
         }
     }
-
-    // Quick Sort
-    public void quickSort(List<FlowerGroupMember> list) {
-        quickSort(list, 0, list.size() - 1);
+    // Copy remaining elements of left[] if any
+    while (i < left.size()) {
+        list.set(k++, left.get(i++));
     }
+    // Copy remaining elements of right[] if any
+    while (j < right.size()) {
+        list.set(k++, right.get(j++));
+    }
+}
 
-    private void quickSort(List<FlowerGroupMember> list, int low, int high) {
-        if (low < high) {
-            int pi = partition(list, low, high);
-            quickSort(list, low, pi - 1);
-            quickSort(list, pi + 1, high);
+// Quick Sort
+public void quickSort(List<FlowerGroupMember> list) {
+    quickSort(list, 0, list.size() - 1);
+}
+
+private void quickSort(List<FlowerGroupMember> list, int low, int high) {
+    if (low < high) {
+        // pi is partitioning index
+        int pi = partition(list, low, high);
+        // Recursively sort elements before and after partition
+        quickSort(list, low, pi - 1);
+        quickSort(list, pi + 1, high);
+    }
+}
+
+private int partition(List<FlowerGroupMember> list, int low, int high) {
+    FlowerGroupMember pivot = list.get(high);
+    int i = (low - 1);
+    // Traverse through all elements in the list
+    for (int j = low; j < high; j++) {
+        // If current element is smaller than or equal to pivot
+        if (list.get(j).compareTo(pivot) < 0) {
+            i++;
+            // Swap list[i] and list[j]
+            FlowerGroupMember temp = list.get(i);
+            list.set(i, list.get(j));
+            list.set(j, temp);
         }
     }
+    // Swap list[i+1] and list[high] (or pivot)
+    FlowerGroupMember temp = list.get(i + 1);
+    list.set(i + 1, list.get(high));
+    list.set(high, temp);
 
-    private int partition(List<FlowerGroupMember> list, int low, int high) {
-        FlowerGroupMember pivot = list.get(high);
-        int i = (low - 1);
-        for (int j = low; j < high; j++) {
-            if (list.get(j).compareTo(pivot) < 0) {
-                i++;
-                FlowerGroupMember temp = list.get(i);
-                list.set(i, list.get(j));
-                list.set(j, temp);
-            }
-        }
-        FlowerGroupMember temp = list.get(i + 1);
-        list.set(i + 1, list.get(high));
-        list.set(high, temp);
-
-        return i + 1;
-    }
+    return i + 1;
 }
 ```
 
