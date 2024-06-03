@@ -5,7 +5,7 @@ toc: True
 comments: True
 layout: post
 type: hacks
-courses: {'csse': {'week': 1}, 'csp': {'week': 1, 'categories': ['4.A']}, 'csa': {'week': 25}, 'labnotebook': {'week': 3}}
+courses: {'csse': {'week': 1}, 'csp': {'week': 1, 'categories': ['4.A']}, 'csa': {'week': 26}, 'labnotebook': {'week': 3}}
 ---
 
 ## Learn All sorts

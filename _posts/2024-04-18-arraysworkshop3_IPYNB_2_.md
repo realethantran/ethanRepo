@@ -2,7 +2,7 @@
 layout: post
 title: Arrays
 description: Arrays Lesson (FINAL)
-courses: {'csa': {'week': 25}}
+courses: {'csa': {'week': 27}}
 type: plans
 ---
 

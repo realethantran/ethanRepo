@@ -5,7 +5,7 @@ layout: post
 title: Searching Lesson
 author: Finn C, Theo H, Grace W, Emma S
 type: hacks
-courses: {'csse': {'week': 1}, 'csp': {'week': 1, 'categories': ['4.A']}, 'csa': {'week': 25}, 'labnotebook': {'week': 3}}
+courses: {'csse': {'week': 1}, 'csp': {'week': 1, 'categories': ['4.A']}, 'csa': {'week': 28}, 'labnotebook': {'week': 3}}
 ---
 
 # 7.5 Searching

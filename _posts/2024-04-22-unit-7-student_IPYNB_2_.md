@@ -5,7 +5,7 @@ layout: post
 title: Unit 7 Lesson
 description: ArrayList Lesson STUDENT STUDENT
 type: hacks
-courses: {'csa': {'week': 25}}
+courses: {'csa': {'week': 28}}
 ---
 
 # Unit 7: ArrayList
