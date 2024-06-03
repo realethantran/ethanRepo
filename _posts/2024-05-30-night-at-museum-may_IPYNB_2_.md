@@ -5,7 +5,7 @@ layout: post
 title: Final Night at the Museum 2024
 description: Blog about my final N@M experience at Del Norte Night School for Junior year!
 type: hacks
-courses: {'csa': {'week': 27}}
+courses: {'csa': {'week': 33}}
 ---
 
 # Night at the Museum (N@M)
