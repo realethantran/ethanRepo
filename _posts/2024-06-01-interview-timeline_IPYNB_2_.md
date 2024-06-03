@@ -22,6 +22,12 @@ courses: {'csa': {'week': 33}}
 
 - **Showcase Events:**
   - **[N@M 2024 Blog](https://realethantran.github.io/ethanRepo/2024/05/30/night-at-museum-may_IPYNB_2_.html)**
+  
+- **SDSC MAP Presentation:**
+
+<html>
+<img src="https://github.com/TEE-CSA/TEEBackend/assets/109186517/dea71901-2667-4f8c-a4bb-b7432503a9e9" alt="image" height="300"/>
+</html>
 
 ### Resume Overview + Key Interests
 
