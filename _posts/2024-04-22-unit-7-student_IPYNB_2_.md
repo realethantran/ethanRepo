@@ -29,7 +29,7 @@ courses: {'csa': {'week': 25}}
 In order to use the ArrayList class, the ArrayList class needs to be imported from the java util package. This can be done by writing import java.util.ArrayList at the top of the class file.
 
 
-```Java
+```java
 import java.util.ArrayList;  // Import the ArrayList class
 
 // Declare and initialize an ArrayList of integers
@@ -41,14 +41,14 @@ ArrayList objects are created in the same fashion as other object classes. The p
 This can be replaced by an object data type:
 
 
-```Java
+```java
 ArrayList<E> list = new ArrayList<E>();
 ```
 
 We can actually declare ArrayLists without specifying the type that will be included in the ArrayList, but specifying the data type is smarter because it allows the compiler to find errors before run time, so its more efficient and easy to spot errors.
 
 
-```Java
+```java
 ArrayList list = new ArrayList();
 ```
 
@@ -57,7 +57,7 @@ ArrayList list = new ArrayList();
 Create 2 ArrayLists, 1 called `studentName` and 1 called `studentAge`
 
 
-```Java
+```java
 public class Student
 {
     public static void main(String[] args)
@@ -100,7 +100,7 @@ Students will be able to represent collections of related object reference data 
 Consider the following code:
 
 
-```Java
+```java
 ArrayList<Integer> a1 = new ArrayList<>();
 System.out.println(a1.size());
 ```
@@ -116,7 +116,7 @@ System.out.println(a1.size());
 Consider the following code:
 
 
-```Java
+```java
 ArrayList<Double> a2 = new ArrayList<>();
 a2.add(1.0);
 a2.add(2.0);
@@ -133,7 +133,7 @@ System.out.println(a2);
 Consider the following code:
 
 
-```Java
+```java
 ArrayList<String> h = new ArrayList<>();
 
 h.add("Hello");
@@ -158,7 +158,7 @@ h.add(false);
 Now, consider this code:
 
 
-```Java
+```java
 ArrayList<String> g = new ArrayList<>();
 
 g.add("Hello");
@@ -184,7 +184,7 @@ adds correct data type into string arraylist
 `E remove(int index)` : Removes the element at position `index`, and moves the elements at position `index + 1` and higher to the left. It also subtracts one from the list's size. The return value is the element formerly at position `index`.
 
 
-```Java
+```java
 // If you are confused of what list g is, look back at the previous code.
 g.remove(3);
 String former = g.remove(0);
@@ -199,7 +199,7 @@ System.out.println(former);
 `E set(int index, E obj)` : Replaces the element at position `index` with `obj` and returns the element formerly at position `index`.
 
 
-```Java
+```java
 String helloFormer = g.set(1, "Bonjour");
 System.out.println(helloFormer);
 System.out.println(g);
@@ -214,7 +214,7 @@ System.out.println(g);
 `E get(int index)` Returns the element at position `index` in the list.
 
 
-```Java
+```java
 String hello = g.get(3);
 System.out.println(hello);
 System.out.println(g);
@@ -229,7 +229,7 @@ System.out.println(g);
 The only time that it is wise to use `ArrayList` instead of `ArrayList<E>` is when it is as a function parameter and it is only using `ArrayList<>.get(E)` or `ArrayList<>.size()`. Consider the following code:
 
 
-```Java
+```java
 private void accessOnly(ArrayList arr) {
     if (arr.size() > 0) {
         System.out.println(arr.get(0)); // Change the index to the one you want to access
@@ -250,7 +250,7 @@ accessOnly(myList);
 In order for you to return an `ArrayList`, the data type must be specified, and the return type must be the same as the return value. Consider the following code:
 
 
-```Java
+```java
 private ArrayList<String> returnTheSame() {
     ArrayList<String> arr = new ArrayList<String>(); // Initialize the ArrayList
     arr.add("Hello");
@@ -298,7 +298,7 @@ System.out.println(result);
 ### Hack Helper
 
 
-```Java
+```java
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -388,7 +388,7 @@ HackHelper.main(null);
 - The indicies of an Arraylist start at ___; If you try to use any value lower than 0, you will get an ______ error
 
 
-```Java
+```java
 import java.util.ArrayList;
 import java.util.List;
 
@@ -508,7 +508,7 @@ The code will print out the maximum value of the array.
 ### Let's Look at an Example (Example 1)
 
 
-```Java
+```java
 public class ArrayListExample {
     private double findMax(double[] values) {
         double max = values[0];
@@ -539,7 +539,7 @@ public class ArrayListExample {
 Take a closer look at the `findMax()` method. It takes in a list of doubles as parameters. It will then use a `for` loop to find the maximum value in the list. Now, using what we know, can we replace the list of doubles with an ArrayList of Doubles? We sure can! Take a look at how we can use ArrayList to do just that:
 
 
-```Java
+```java
 public class ArrayListExample {
     private double findMax(ArrayList<Double> values) {
         double max = values.get(0);
@@ -582,7 +582,7 @@ ArrayListExample.main(null);
 Take a look at this code:
 
 
-```Java
+```java
 public class ArrayListExample {
     private int findMin(int[] values) {
         //int min = Integer.MAX_VALUE;
@@ -608,7 +608,7 @@ ArrayListExample.main(null);
 Now, can we use ArrayLists to make this code better? We sure can! Take a look at the new and improved code that uses ArrayLists:
 
 
-```Java
+```java
 public class ArrayListExample {
     private int findMin(ArrayList<Integer> values) {
         //int min = Integer.MAX_VALUE;
@@ -655,7 +655,7 @@ Example 1 uses doubles to store values and finds the maximum while example 2 use
 ### Hack Helper
 
 
-```Java
+```java
 public class ArrayListHacks {
     private int findSum(ArrayList<Integer> values) {
         int sum = 0;
@@ -712,7 +712,7 @@ Linear structures are data structures such as Arrays or ArrayLists. Linear searc
 ### Searching an ``ArrayList`` of Double
 
 
-```Java
+```java
 public int where(double magicNumber, ArrayList<Double> realNumbers, double delta)
 {
     for (int index = 0; index < realNumbers.size(); index++)
@@ -729,7 +729,7 @@ public int where(double magicNumber, ArrayList<Double> realNumbers, double delta
 ### Searching an ``ArrayList`` of book for a ``String``
 
 
-```Java
+```java
 public int findTheWord(String searchedPhrase, ArrayList<Book> myBooks)
 {
     for (int index = 0; index < myBooks.size(); index++)
@@ -760,7 +760,7 @@ public int findTheWord(String searchedPhrase, ArrayList<Book> myBooks)
 
 
 
-```Java
+```java
 import java.util.ArrayList;
 
 public class ColorRemoval {
@@ -841,7 +841,7 @@ ColorRemoval.main(null);
 Example:
 
 
-```Java
+```java
 // with normal arrays
 for (int outerLoop = 0; outerLoop < myDucks.length; outerLoop ++)
 {
@@ -885,7 +885,7 @@ During each iteration of the outer loop, it finds the index of the minimum eleme
 Example:
 
 
-```Java
+```java
 for (int outer = 1; outer < randomList.size(); outer++)
 {
     DebugDuck tested = randomList.get(outer);
@@ -923,7 +923,7 @@ for (int outer = 1; outer < randomList.size(); outer++)
 ## Complete the hacks in the cell below
 
 
-```Java
+```java
 import java.util.ArrayList;
 
 public class SortingHack {

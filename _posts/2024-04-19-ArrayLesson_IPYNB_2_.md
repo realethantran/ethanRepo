@@ -6,6 +6,7 @@ title: Unit 6.1 - 6.3 Focused on Arrays and Array Examination
 description: Covering Arrays (Unit 6.1-6.3)
 type: hacks
 permalink: /ArraysLesson
+courses: {'csa': {'week': 25}}
 ---
 
 # 6.1 - Intro to Arrays

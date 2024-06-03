@@ -5,7 +5,7 @@ toc: True
 comments: True
 layout: post
 type: hacks
-courses: {'csse': {'week': 1}, 'csp': {'week': 1, 'categories': ['4.A']}, 'csa': {'week': 0}, 'labnotebook': {'week': 3}}
+courses: {'csse': {'week': 1}, 'csp': {'week': 1, 'categories': ['4.A']}, 'csa': {'week': 25}, 'labnotebook': {'week': 3}}
 ---
 
 ## Learn All sorts
@@ -33,7 +33,7 @@ Quick sort, like merge sort is a divide-and-conquer algorithm. It picks a pivot 
 ## FlowerGroupMember Comparable
 
 
-```Java
+```java
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -135,7 +135,7 @@ public class Garden {
 ## Class for all the sorts
 
 
-```Java
+```java
 import java.util.List;
 import java.util.ArrayList;
 
@@ -269,7 +269,7 @@ private int partition(List<FlowerGroupMember> list, int low, int high) {
 ## Main Class for testing
 
 
-```Java
+```java
 import java.util.ArrayList;
 import java.util.List;
 

@@ -3,6 +3,7 @@ title: Workshop 4 - Lesson on 2D Arrays and Traversing them
 description: Unit 8 of CB
 toc: True
 layout: post
+courses: {'csa': {'week': 25}}
 ---
 
 ### 8.1: Declaring + Initializing 2D Arrays; Determining their 
